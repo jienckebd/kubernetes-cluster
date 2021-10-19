@@ -1,0 +1,20 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  namespace: env-admin
+  name: pod-maintain
+spec:
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: sys-cron
+          containers:
+            - name: pod-maintain
+              image: bitnami/kubectl:latest
+              command:
+                - /bin/sh
+                - -c
+                - "kubectl delete pods --field-selector status.phase=Succeeded -A && kubectl delete pods --field-selector status.phase=Failed -A"
+          restartPolicy: OnFailure

@@ -1,0 +1,33 @@
+helmDefaults:
+  atomic: true
+  wait: true
+
+helmfiles:
+
+  # Admin / one.
+  - path: applications/admin/cert-manager/helmfile.yaml
+  - path: applications/admin/nginx-ingress-controller/helmfile.yaml
+  - path: applications/admin/kube-prometheus/helmfile.yaml
+  - path: applications/admin/grafana/helmfile.yaml
+  - path: applications/admin/keycloak/helmfile.yaml
+  - path: applications/admin/elasticsearch/helmfile.yaml
+  - path: applications/admin/filebeat/helmfile.yaml
+
+  # Env / many.
+  - path: applications/env/mariadb/helmfile.yaml
+  - path: applications/env/nginx-php-fpm/helmfile.yaml
+  - path: applications/env/redis-cluster/helmfile.yaml
+  - path: applications/env/elasticsearch/helmfile.yaml
+
+  # k10.
+  - path: applications/k10/k10/helmfile.yaml
+  - path: applications/k10/nfs-subdir-external-provisioner/helmfile.yaml
+
+environments:
+  prd: {  }
+  stg: {  }
+  dev: {  }
+  cid: {  }
+  ide: {  }
+  admin: {  }
+  k10: {  }

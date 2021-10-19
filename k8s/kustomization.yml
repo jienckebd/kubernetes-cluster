@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+commonLabels:
+  source: "sys.k8s"
+
+resources:
+  - cronjob/service-account.yml
+  - cronjob/pod-maintain.yml
+  - gitlab/service-account.yml
+#  - cluster-issuer/sys.yml
+#  - k10/volume-snapshot-class.yml
+  - nfs/nfs.yml
+  - mariadb/secret.yml

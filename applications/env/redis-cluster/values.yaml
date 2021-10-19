@@ -1,0 +1,10 @@
+password: "drupal"
+global:
+  redis:
+    password: "drupal"
+
+persistence:
+  enabled: true
+  storageClass: nfs
+  accessModes:
+    - ReadWriteMany

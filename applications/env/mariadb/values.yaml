@@ -1,0 +1,15 @@
+global:
+  storageClass: nfs
+  accessModes:
+    - ReadWriteMany
+
+enabled: true
+
+architecture: replication
+
+auth:
+  database: drupal
+  username: drupal
+  existingSecret: "mariadb"
+
+# MARIADB_MASTER_ROOT_PASSWORD

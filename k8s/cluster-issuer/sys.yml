@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  namespace: env-admin
+  name: tls-sys
+  labels:
+    name: tls-sys
+spec:
+  acme:
+    email: bryan.jiencke@gmail.com
+    privateKeySecretRef:
+      name: tls-sys
+    server: https://acme-v02.api.letsencrypt.org/directory
+    solvers:
+      - http01:
+          ingress:
+            class: nginx

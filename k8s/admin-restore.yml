@@ -1,0 +1,11 @@
+apiVersion: actions.kio.kasten.io/v1alpha1
+kind: RestoreAction
+metadata:
+  generateName: restore-env-admin-
+  namespace: env-admin
+spec:
+  subject:
+    kind: RestorePoint
+    name: scheduled-89b9j
+    namespace: env-admin
+  targetNamespace: env-admin

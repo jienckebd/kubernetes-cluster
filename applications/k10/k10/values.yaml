@@ -1,0 +1,22 @@
+global:
+  persistence:
+    enabled: true
+
+ingress:
+  create: true
+  host: "k10.sys.bostondrupal.com"
+  urlPath: "/k10"
+  tls:
+    enabled: false
+  annotations:
+    kubernetes.io/ingress.class: nginx
+
+auth:
+  tokenAuth:
+    enabled: false
+  oidcAuth:
+    enabled: true
+    secretName: k10-oidc-auth
+
+# injectKanisterSidecar:
+#   enabled: true

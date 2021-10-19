@@ -1,0 +1,15 @@
+repositories:
+  - name: kasten
+    url: https://charts.kasten.io
+
+releases:
+  - name: kasten
+    namespace: env-k10
+    chart: kasten/k10
+    installed: true
+
+    values:
+      - values.yaml
+
+environments:
+  k10: {  }

@@ -1,0 +1,6 @@
+# bal:
+#   loadBalancerIP: 34.145.167.41
+sys:
+  context: ide
+  subcontext: ide1
+  uri: https://ide1.env.sys.bostondrupal.com/

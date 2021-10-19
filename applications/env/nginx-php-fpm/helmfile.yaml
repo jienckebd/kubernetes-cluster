@@ -1,0 +1,23 @@
+
+repositories:
+  - name: nginx-php-fpm
+    url: https://gitlab.com/api/v4/projects/30564015/packages/helm/stable
+
+releases:
+  - name: web
+    namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
+    chart: nginx-php-fpm/nginx-php-fpm
+    installed: true
+
+    values:
+      - values.yaml
+      - env/{{ .Environment.Name }}/values.yaml
+      - persistence:
+          storageClass: nfs-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
+
+environments:
+  prd: {  }
+  stg: {  }
+  dev: {  }
+  cid: {  }
+  ide: {  }

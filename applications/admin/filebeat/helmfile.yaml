@@ -1,0 +1,14 @@
+repositories:
+  - name: elastic
+    url: https://helm.elastic.co
+
+releases:
+  - name: filebeat
+    namespace: env-{{ .Environment.Name }}
+    chart: elastic/filebeat
+    installed: true
+    values:
+      - values.yaml
+
+environments:
+  admin: {  }
