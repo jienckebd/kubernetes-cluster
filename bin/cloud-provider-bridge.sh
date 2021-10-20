@@ -5,12 +5,12 @@
 # gcloud beta container --project "bdbd-310322" clusters create "bd" --zone "us-east4-c" --no-enable-basic-auth --cluster-version "1.21.4-gke.301" --release-channel "rapid" --machine-type "e2-standard-4" --image-type "COS_CONTAINERD" --disk-type "pd-balanced" --disk-size "100" --metadata disable-legacy-endpoints=true --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --max-pods-per-node "110" --preemptible --num-nodes "3" --logging=SYSTEM,WORKLOAD --monitoring=SYSTEM --enable-private-nodes --master-ipv4-cidr "172.16.0.0/28" --enable-ip-alias --network "projects/bdbd-310322/global/networks/sys1" --subnetwork "projects/bdbd-310322/regions/us-east4/subnetworks/subnet-us-east-192" --no-enable-intra-node-visibility --default-max-pods-per-node "110" --enable-autoscaling --min-nodes "3" --max-nodes "5" --no-enable-master-authorized-networks --addons HorizontalPodAutoscaling,HttpLoadBalancing,GcePersistentDiskCsiDriver --enable-autoupgrade --enable-autorepair --max-surge-upgrade 1 --max-unavailable-upgrade 0 --enable-shielded-nodes --node-locations "us-east4-c"
 
 kubectl create secret generic ssh-config -n default --from-file=/Users/bry/sys/etc/k8s/ssh-config
-kubectl create secret tls "tls-sys" -n default --cert=/Users/bry/sys/etc/letsencrypt/live/bostondrupal.com-0002/fullchain.pem --key=/Users/bry/sys/etc/letsencrypt/live/bostondrupal.com-0002/privkey.pem
+kubectl create secret tls "tls-sys" -n default --cert=/etc/letsencrypt/live/sysf.one/fullchain.pem --key=/etc/letsencrypt/live/sysf.one/privkey.pem
 
 kubectl create namespace env-admin
 kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: .*/namespace: env-admin/' | kubectl apply --namespace=env-admin -f -
 kubectl create secret generic config-grafana -n env-admin --from-file=/Users/bry/sys/etc/grafana.ini 
-kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: .*/namespace: env-admin/' | sed 's/name: tls-sys/name: grafana.admin.sys.bostondrupal.com-tls/' | kubectl apply --namespace=env-admin -f -
+kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: .*/namespace: env-admin/' | sed 's/name: tls-sys/name: grafana.admin.sys.sysf.one-tls/' | kubectl apply --namespace=env-admin -f -
 
 kubectl create namespace env-prd
 kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: .*/namespace: env-prd/' | kubectl apply --namespace=env-prd -f -

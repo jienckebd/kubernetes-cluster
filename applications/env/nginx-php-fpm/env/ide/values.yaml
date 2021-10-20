@@ -3,4 +3,4 @@
 sys:
   context: ide
   subcontext: ide1
-  uri: https://ide1.env.sys.bostondrupal.com/
+  uri: https://ide1.env.sys.sysf.one/

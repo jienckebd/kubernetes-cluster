@@ -3,4 +3,4 @@
 sys:
   context: cloud
   subcontext: dev
-  uri: https://dev.env.sys.bostondrupal.com/
+  uri: https://dev.env.sys.sysf.one/

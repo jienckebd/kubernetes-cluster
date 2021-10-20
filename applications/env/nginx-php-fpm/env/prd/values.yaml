@@ -3,4 +3,4 @@
 sys:
   context: cloud
   subcontext: prd
-  uri: https://bostondrupal.com/
+  uri: https://sysf.one/

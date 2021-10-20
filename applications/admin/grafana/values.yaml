@@ -4,7 +4,7 @@ persistence:
 
 ingress:
   enabled: true
-  hostname: grafana.admin.sys.bostondrupal.com
+  hostname: grafana.admin.sys.sysf.one
   tls: false
   annotations:
     kubernetes.io/ingress.class: nginx

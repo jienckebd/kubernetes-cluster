@@ -4,7 +4,7 @@ global:
 
 ingress:
   create: true
-  host: "k10.sys.bostondrupal.com"
+  host: "k10.sys.sysf.one"
   urlPath: "/k10"
   tls:
     enabled: false

@@ -14,11 +14,11 @@ service:
 ingress:
   enabled: true
   certManager: false
-  hostname: id.admin.sys.bostondrupal.com
+  hostname: id.admin.sys.sysf.one
   tls: false
   annotations:
     kubernetes.io/ingress.class: nginx
 
 extraEnvVars:
   - name: KEYCLOAK_EXTRA_ARGS
-    value: "-Dkeycloak.frontendUrl=https://id.admin.sys.bostondrupal.com/auth"
+    value: "-Dkeycloak.frontendUrl=https://id.admin.sys.sysf.one/auth"
