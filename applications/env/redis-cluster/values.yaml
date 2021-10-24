@@ -5,6 +5,6 @@ global:
 
 persistence:
   enabled: true
-  storageClass: nfs
+  storageClass: ceph-filesystem
   accessModes:
     - ReadWriteMany

@@ -1,5 +1,5 @@
 global:
-  storageClass: nfs
+  storageClass: ceph-filesystem
   accessModes:
     - ReadWriteMany
 

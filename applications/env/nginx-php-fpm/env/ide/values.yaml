@@ -1,5 +1,3 @@
-# bal:
-#   loadBalancerIP: 34.145.167.41
 sys:
   context: ide
   subcontext: ide1

@@ -1,0 +1,5 @@
+persistence:
+  enabled: true
+  storageClass: ceph-filesystem
+  accessMode: ReadWriteMany
+  size: 20Gi
