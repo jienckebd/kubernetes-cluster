@@ -12,8 +12,6 @@ releases:
     values:
       - values.yaml
       - env/{{ .Environment.Name }}/values.yaml
-      - persistence:
-          storageClass: nfs-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
 
 environments:
   prd: {  }

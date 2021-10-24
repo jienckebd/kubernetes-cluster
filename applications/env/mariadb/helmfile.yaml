@@ -10,8 +10,6 @@ releases:
 
     values:
       - values.yaml
-      - global:
-          storageClass: nfs-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
 
 environments:
   prd: {  }
