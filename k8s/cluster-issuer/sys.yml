@@ -1,7 +1,7 @@
 apiVersion: cert-manager.io/v1alpha2
 kind: ClusterIssuer
 metadata:
-  namespace: env-admin
+  namespace: admin
   name: tls-sys
   labels:
     name: tls-sys

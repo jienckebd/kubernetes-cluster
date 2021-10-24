@@ -1,7 +1,7 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  namespace: env-admin
+  namespace: admin
   name: pod-maintain
 spec:
   schedule: "0 * * * *"

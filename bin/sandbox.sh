@@ -77,11 +77,11 @@ velero install --provider gcp --plugins velero/velero-plugin-for-gcp:v1.3.0-rc.1
 
 kubectl create clusterrolebinding "kasten-admin--bryan.jiencke@gmail.com" --clusterrole=kasten-admin --user=bryan.jiencke@gmail.com
 kubectl create clusterrolebinding "kasten-admin--bryan.jiencke@gmail.com--cluster-admin" --clusterrole=cluster-admin --user=bryan.jiencke@gmail.com
-# kubectl create rolebinding "kasten-admin--bryan.jiencke@gmail.com" --role=kasten-ns-admin --user=bryan.jiencke@gmail.com -n env-k10
+# kubectl create rolebinding "kasten-admin--bryan.jiencke@gmail.com" --role=kasten-ns-admin --user=bryan.jiencke@gmail.com -n k10
 
 kubectl create clusterrolebinding "kasten-admin--mijiencke@gmail.com" --clusterrole=kasten-admin --user=mijiencke@gmail.com
 kubectl create clusterrolebinding "kasten-admin--mijiencke@gmail.com--cluster-admin" --clusterrole=cluster-admin --user=mijiencke@gmail.com
-# kubectl create rolebinding "kasten-admin--mijiencke@gmail.com" --role=kasten-ns-admin --user=mijiencke@gmail.com -n env-k10
+# kubectl create rolebinding "kasten-admin--mijiencke@gmail.com" --role=kasten-ns-admin --user=mijiencke@gmail.com -n k10
 
 kubectl create secret generic k10-dr-secret \
    --namespace k10 \
@@ -106,3 +106,9 @@ helm install k10-restore kasten/k10restore --namespace=kasten-io \
 helmfile --environment=dev destroy; helmfile --environment=stg destroy; helmfile --environment=prd destroy;
 kubectl delete pods --all -force -n env-dev; kubectl delete pods --all -force -n env-stg; kubectl delete pods --all -force -n env-prd; 
 kubectl delete pvc --all -n env-dev; kubectl delete pvc --all -n env-stg; kubectl delete pvc --all -n env-prd; 
+
+kubectl -n rook-ceph patch cephclusters.ceph.rook.io rook-ceph -p '{"metadata":{"finalizers": []}}' --type=merge
+kubectl -n rook-ceph patch cephfilesystem.ceph.rook.io ceph-filesystem -p '{"metadata":{"finalizers": []}}' --type=merge
+kubectl -n rook-ceph patch cephobjectstore.ceph.rook.io ceph-objectstore -p '{"metadata":{"finalizers": []}}' --type=merge
+
+kubectl patch pvc data-keycloak-postgresql-0 -p '{"metadata":{"finalizers":null}}'

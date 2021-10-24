@@ -4,7 +4,7 @@ repositories:
 
 releases:
   - name: keycloak
-    namespace: env-{{ .Environment.Name }}
+    namespace: admin
     chart: bitnami/keycloak
     installed: true
 

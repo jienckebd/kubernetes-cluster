@@ -23,6 +23,10 @@ helmfiles:
   - path: applications/k10/k10/helmfile.yaml
   - path: applications/k10/nfs-subdir-external-provisioner/helmfile.yaml
 
+  # rook-ceph.
+  - path: applications/rook-ceph/rook-ceph/helmfile.yaml
+  - path: applications/rook-ceph/rook-ceph-cluster/helmfile.yaml
+
 environments:
   prd: {  }
   stg: {  }
@@ -31,3 +35,4 @@ environments:
   ide: {  }
   admin: {  }
   k10: {  }
+  rook-ceph: {  }

@@ -7,17 +7,15 @@
 kubectl create secret generic ssh-config -n default --from-file=/Users/bry/sys/etc/k8s/ssh-config
 kubectl create secret tls "tls-sys" -n default --cert=/etc/letsencrypt/live/sysf.one/fullchain.pem --key=/etc/letsencrypt/live/sysf.one/privkey.pem
 
-kubectl create namespace env-admin
-kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: .*/namespace: env-admin/' | kubectl apply --namespace=env-admin -f -
-kubectl create secret generic config-grafana -n env-admin --from-file=/Users/bry/sys/etc/grafana.ini 
-kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: .*/namespace: env-admin/' | sed 's/name: tls-sys/name: grafana.admin.sys.sysf.one-tls/' | kubectl apply --namespace=env-admin -f -
+kubectl create namespace admin
+kubectl create secret generic config-grafana -n admin --from-file=/Users/bry/sys/etc/grafana.ini 
+kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: admin/' | kubectl apply --namespace=admin -f - || true
 
-kubectl create namespace env-prd
-kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: .*/namespace: env-prd/' | kubectl apply --namespace=env-prd -f -
+# kubectl create namespace env-prd
+# kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: .*/namespace: env-prd/' | kubectl apply --namespace=env-prd -f -
 
-kubectl create namespace env-k10
-kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: .*/namespace: env-k10/' | kubectl apply --namespace=env-k10 -f -
-kubectl apply -f /Users/bry/sys/etc/k10-oidc-auth.yml
+# kubectl create namespace k10
+# kubectl apply -f /Users/bry/sys/etc/k10-oidc-auth.yml
 
 # export project_id="bdbd-310322"
 # gcloud iam --project=$project_id service-accounts create preemptible-killer \
@@ -36,7 +34,7 @@ kubectl apply -f /Users/bry/sys/etc/k10-oidc-auth.yml
 #     /Users/bry/sys/kubernetes/sc/k8s/estafette-gke-preemptible-killer/google_service_account.json
 
 # kubectl -n kube-system create serviceaccount tiller
-# kubectl create secret generic preemptible-killer-secrets -n env-admin --from-file=/Users/bry/sys/etc/gcloud/sa/preemptible-killer.json
+# kubectl create secret generic preemptible-killer-secrets -n admin --from-file=/Users/bry/sys/etc/gcloud/sa/preemptible-killer.json
 
 # cd ../k8s
 # kubectl apply -k ./

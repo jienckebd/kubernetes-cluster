@@ -4,7 +4,7 @@ repositories:
 
 releases:
   - name: filebeat
-    namespace: env-{{ .Environment.Name }}
+    namespace: admin
     chart: elastic/filebeat
     installed: true
     values:

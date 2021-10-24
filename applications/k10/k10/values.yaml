@@ -1,6 +1,7 @@
 global:
   persistence:
     enabled: true
+    storageClass: do-block-storage
 
 ingress:
   create: true
@@ -18,5 +19,7 @@ auth:
     enabled: true
     secretName: k10-oidc-auth
 
-# injectKanisterSidecar:
-#   enabled: true
+prometheus:
+  server:
+    persistentVolume:
+      enabled: false

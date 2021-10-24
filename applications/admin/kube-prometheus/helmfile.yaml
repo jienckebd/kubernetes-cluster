@@ -4,7 +4,7 @@ repositories:
 
 releases:
   - name: kube-prometheus
-    namespace: env-{{ .Environment.Name }}
+    namespace: admin
     chart: bitnami/kube-prometheus
     installed: true
     disableValidation: true

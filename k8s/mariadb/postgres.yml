@@ -6,7 +6,7 @@ kind: Secret
 metadata:
   annotations:
     meta.helm.sh/release-name: keycloak
-    meta.helm.sh/release-namespace: env-admin
+    meta.helm.sh/release-namespace: admin
   creationTimestamp: "2021-10-13T01:44:08Z"
   labels:
     app.kubernetes.io/instance: keycloak
@@ -14,5 +14,5 @@ metadata:
     app.kubernetes.io/name: postgresql
     helm.sh/chart: postgresql-10.12.0
   name: keycloak-postgresql
-  namespace: env-admin
+  namespace: admin
 type: Opaque

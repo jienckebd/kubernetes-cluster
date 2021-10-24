@@ -4,7 +4,7 @@ repositories:
 
 releases:
   - name: nginx-ingress-controller
-    namespace: env-{{ .Environment.Name }}
+    namespace: admin
     chart: bitnami/nginx-ingress-controller
     installed: true
 

@@ -1,2 +1,6 @@
 publishService:
   enabled: true
+
+service:
+  annotations:
+    service.beta.kubernetes.io/do-loadbalancer-hostname: "sys.sysf.one"

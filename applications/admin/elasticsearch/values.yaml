@@ -1,0 +1,11 @@
+data:
+  persistence:
+    storageClass: ceph-filesystem
+    accessModes:
+      - ReadWriteMany
+
+master:
+  persistence:
+    storageClass: ceph-filesystem
+    accessModes:
+      - ReadWriteMany
