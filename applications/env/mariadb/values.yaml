@@ -1,9 +1,16 @@
-global:
-  storageClass: ceph-filesystem
-  accessModes:
-    - ReadWriteMany
+primary:
+  persistence:
+    enabled: true
+    storageClass: ceph-filesystem
+    accessModes:
+      - ReadWriteMany
 
-enabled: true
+secondary:
+  persistence:
+    enabled: true
+    storageClass: ceph-filesystem
+    accessModes:
+      - ReadWriteMany
 
 architecture: replication
 

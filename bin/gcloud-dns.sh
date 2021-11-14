@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-ip_old="138.197.60.175"
-ip_new="159.203.144.23"
+ip_old="159.203.144.23"
+ip_new="35.199.10.52"
 
 gcloud beta dns --project=bdbd-310322 record-sets transaction start --zone="sysf-one"
 

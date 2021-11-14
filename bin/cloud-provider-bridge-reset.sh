@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-gcloud beta container --project "bdbd-310322" clusters delete --region us-east4-c sys -q
+gcloud beta container --project "sysf-12" clusters delete --region us-east4-a sysf -q
+
+bash /Users/bry/sys/kubernetes/cluster/sysf/bin/delete-gcloud-unused-disk.sh
 
 #gcloud compute disks delete --zone=us-east4-c sys -q
 

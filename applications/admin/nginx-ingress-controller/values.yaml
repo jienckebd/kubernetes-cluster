@@ -2,5 +2,4 @@ publishService:
   enabled: true
 
 service:
-  annotations:
-    service.beta.kubernetes.io/do-loadbalancer-hostname: "sys.sysf.one"
+  loadBalancerIP: 35.199.10.52

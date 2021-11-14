@@ -1,16 +1,18 @@
 global:
   persistence:
     enabled: true
-    storageClass: do-block-storage
+    storageClass: standard-rwo
 
 ingress:
   create: true
   host: "k10.sys.sysf.one"
   urlPath: "/k10"
   tls:
-    enabled: false
+    enabled: true
+    secretName: tls-sys
   annotations:
     kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: tls-sys
 
 auth:
   tokenAuth:
@@ -21,5 +23,9 @@ auth:
 
 prometheus:
   server:
+    enabled: false
     persistentVolume:
       enabled: false
+
+grafana:
+  enabled: false

@@ -1,4 +1,4 @@
-PROJECT="bdbd-310322"
+PROJECT="sysf-12"
 
 #   --filter="status:( Released )" \
 
@@ -15,7 +15,7 @@ do
   printf "Attempting to delete disk: %s [%s]\n" ${NAME}
 
   gcloud compute disks delete ${NAME} \
-  --zone=us-east4-c \
+  --zone=us-east4-a \
   --project=${PROJECT} \
   --quiet
 done
