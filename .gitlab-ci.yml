@@ -12,17 +12,17 @@ admin:
   script:
     - gl-helmfile --environment admin apply --suppress-secrets
 
-# env-prd:
-#  stage: deploy
-#  image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.1.0"
-#  environment: prd
-#  script:
-#    - gl-ensure-namespace env-prd
-#    - kubectl config set-context --current --namespace=env-prd
-#    - "kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: env-prd/' | kubectl apply --namespace=env-prd -f - || true"
-#    - "kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: env-prd/' | kubectl apply --namespace=env-prd -f - || true"
-#    - "kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: default/namespace: env-prd/' | kubectl apply --namespace=env-prd -f - || true"
-#    - gl-helmfile --environment prd apply --suppress-secrets
+env-prd:
+ stage: deploy
+ image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.1.0"
+ environment: prd
+ script:
+   - gl-ensure-namespace env-prd
+   - kubectl config set-context --current --namespace=env-prd
+   - "kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: env-prd/' | kubectl apply --namespace=env-prd -f - || true"
+   - "kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: env-prd/' | kubectl apply --namespace=env-prd -f - || true"
+   - "kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: default/namespace: env-prd/' | kubectl apply --namespace=env-prd -f - || true"
+   - gl-helmfile --environment prd apply --suppress-secrets
 
 # env-stg:
 #  stage: deploy
