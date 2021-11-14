@@ -3,3 +3,6 @@ publishService:
 
 service:
   loadBalancerIP: 35.199.10.52
+
+defaultBackend:
+  enabled: false
