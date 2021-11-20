@@ -61,7 +61,7 @@ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | gre
 kubectl --namespace kasten-io port-forward service/gateway 8080:8000
 
 kubectl expose service elastic-stack-kibana --type=LoadBalancer --name=elastic-stack-kibana-bal --load-balancer-ip=34.138.195.248
-kubectl expose service web-nginx-php-fpm --type=LoadBalancer --name=web-nginx-php-fpm-bal -n env-ide1 --load-balancer-ip=35.245.179.195
+kubectl expose deployment web-nginx-php-fpm --type=LoadBalancer --name=web-nginx-php-fpm-bal -n env-ide1 --load-balancer-ip=35.245.179.195
 
 kubectl get pv | grep Released | awk '$1 {print$1}' | while read vol; do kubectl delete pv/${vol}; done
 
