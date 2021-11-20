@@ -6,17 +6,17 @@ gcloud compute addresses create sys-env-dev --region=us-east4
 gcloud compute addresses create sys-env-ide1 --region=us-east4
 exit 0
 
-kubectl delete customresourcedefinition backendconfigs.cloud.google.com           
-kubectl delete customresourcedefinition capacityrequests.internal.autoscaling.k8s.io  
-kubectl delete customresourcedefinition frontendconfigs.networking.gke.io               
-kubectl delete customresourcedefinition managedcertificates.networking.gke.io           
-# kubectl delete customresourcedefinition servicenetworkendpointgroups.networking.gke.io --force   
-kubectl delete customresourcedefinition storagestates.migration.k8s.io --force                  
-kubectl delete customresourcedefinition storageversionmigrations.migration.k8s.io      
-kubectl delete customresourcedefinition updateinfos.nodemanagement.gke.io               
-kubectl delete customresourcedefinition volumesnapshotclasses.snapshot.storage.k8s.io   
-#kubectl delete customresourcedefinition volumesnapshotcontents.snapshot.storage.k8s.io  
-kubectl delete customresourcedefinition volumesnapshots.snapshot.storage.k8s.io         
+kubectl delete customresourcedefinition backendconfigs.cloud.google.com
+kubectl delete customresourcedefinition capacityrequests.internal.autoscaling.k8s.io
+kubectl delete customresourcedefinition frontendconfigs.networking.gke.io
+kubectl delete customresourcedefinition managedcertificates.networking.gke.io
+# kubectl delete customresourcedefinition servicenetworkendpointgroups.networking.gke.io --force
+kubectl delete customresourcedefinition storagestates.migration.k8s.io --force
+kubectl delete customresourcedefinition storageversionmigrations.migration.k8s.io
+kubectl delete customresourcedefinition updateinfos.nodemanagement.gke.io
+kubectl delete customresourcedefinition volumesnapshotclasses.snapshot.storage.k8s.io
+#kubectl delete customresourcedefinition volumesnapshotcontents.snapshot.storage.k8s.io
+kubectl delete customresourcedefinition volumesnapshots.snapshot.storage.k8s.io
 exit 0
 #helm install kibana bitnami/kibana --set elasticsearch.enabled=false --set elasticsearch.hosts[0]=elasticsearch-coordinating-only.log.svc.cluster.local --set elasticsearch.port=9200 --set service.type=LoadBalancer
 
@@ -61,6 +61,7 @@ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | gre
 kubectl --namespace kasten-io port-forward service/gateway 8080:8000
 
 kubectl expose service elastic-stack-kibana --type=LoadBalancer --name=elastic-stack-kibana-bal --load-balancer-ip=34.138.195.248
+kubectl expose service web-nginx-php-fpm --type=LoadBalancer --name=web-nginx-php-fpm-bal -n env-ide1 --load-balancer-ip=35.245.179.195
 
 kubectl get pv | grep Released | awk '$1 {print$1}' | while read vol; do kubectl delete pv/${vol}; done
 
@@ -104,8 +105,8 @@ helm install k10-restore kasten/k10restore --namespace=kasten-io \
     --set profile.name=gce-useast4
 
 helmfile --environment=dev destroy; helmfile --environment=stg destroy; helmfile --environment=prd destroy;
-kubectl delete pods --all -force -n env-dev; kubectl delete pods --all -force -n env-stg; kubectl delete pods --all -force -n env-prd; 
-kubectl delete pvc --all -n env-dev; kubectl delete pvc --all -n env-stg; kubectl delete pvc --all -n env-prd; 
+kubectl delete pods --all -force -n env-dev; kubectl delete pods --all -force -n env-stg; kubectl delete pods --all -force -n env-prd;
+kubectl delete pvc --all -n env-dev; kubectl delete pvc --all -n env-stg; kubectl delete pvc --all -n env-prd;
 
 kubectl -n rook-ceph patch cephclusters.ceph.rook.io rook-ceph -p '{"metadata":{"finalizers": []}}' --type=merge
 kubectl -n rook-ceph patch cephfilesystem.ceph.rook.io ceph-filesystem -p '{"metadata":{"finalizers": []}}' --type=merge
