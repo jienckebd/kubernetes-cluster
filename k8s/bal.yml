@@ -14,7 +14,7 @@ spec:
             name: service1
             port:
               number: 80
-  - host: "*.foo.com"
+  - host: "ide1.env.sys.sysf.one"
     http:
       paths:
       - pathType: Prefix
