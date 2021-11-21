@@ -4,7 +4,10 @@ global:
     password: "drupal"
 
 persistence:
-  enabled: true
+  enabled: false
   storageClass: ceph-filesystem
   accessModes:
     - ReadWriteMany
+
+cluster:
+  nodes: 6

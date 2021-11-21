@@ -212,15 +212,17 @@ cephClusterSpec:
   #     tokenSecretName: rook-vault-token
 
 ingress:
-  dashboard: {}
-    # annotations:
-    #   kubernetes.io/ingress.class: nginx
-    #   external-dns.alpha.kubernetes.io/hostname: example.com
-    #   nginx.ingress.kubernetes.io/rewrite-target: /ceph-dashboard/$2
-    # host:
-    #   name: example.com
-    #   path: "/ceph-dashboard(/|$)(.*)"
-    # tls:
+  dashboard:
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      cert-manager.io/cluster-issuer: tls-sys
+    host:
+      name: ceph.sys.sysf.one
+      path: "/ceph-dashboard(/|$)(.*)"
+    tls:
+      - hosts:
+        - ceph.sys.sysf.one
+        secretName: tls-sys
 
 cephBlockPools:
   - name: ceph-blockpool
