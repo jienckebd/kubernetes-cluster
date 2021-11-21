@@ -1,8 +1,8 @@
 service:
   loadBalancerIP: 35.199.10.52
 
-defaultBackend:
-  enabled: false
-
 tcp:
   22: "env-prd/web-nginx-php-fpm:22"
+
+extraArgs:
+  enable-ssl-passthrough: ""
