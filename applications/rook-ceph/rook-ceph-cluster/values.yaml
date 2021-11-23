@@ -218,7 +218,7 @@ ingress:
       cert-manager.io/cluster-issuer: tls-sys
     host:
       name: ceph.sys.sysf.one
-      path: "/ceph-dashboard(/|$)(.*)"
+      path: "/"
     tls:
       - hosts:
         - ceph.sys.sysf.one
