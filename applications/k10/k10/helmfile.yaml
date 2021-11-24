@@ -4,7 +4,7 @@ repositories:
 
 releases:
   - name: kasten
-    namespace: kasten-io
+    namespace: k10
     chart: kasten/k10
     installed: true
 
