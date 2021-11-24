@@ -1,0 +1,18 @@
+helmDefaults:
+  recreatePods: true
+
+repositories:
+  - name: estafette
+    url: https://helm.estafette.io
+
+releases:
+  - name: gke-preemptible-killer
+    namespace: admin
+    chart: estafette/estafette-gke-preemptible-killer
+    installed: true
+
+    values:
+      - values.yaml
+
+environments:
+  admin: {  }

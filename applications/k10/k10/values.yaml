@@ -16,9 +16,9 @@ ingress:
 
 auth:
   tokenAuth:
-    enabled: false
-  oidcAuth:
     enabled: true
+  oidcAuth:
+    enabled: false
     secretName: k10-oidc-auth
 
 prometheus:

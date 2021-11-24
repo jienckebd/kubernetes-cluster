@@ -8,7 +8,7 @@ set -e
 
 # gcloud beta container --project "sysf-12" clusters create "cluster-1" --zone "us-east4-a" --no-enable-basic-auth --cluster-version "1.20.10-gke.301" --release-channel "regular" --machine-type "e2-medium" --image-type "COS_CONTAINERD" --disk-type "pd-standard" --disk-size "100" --metadata disable-legacy-endpoints=true --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --max-pods-per-node "110" --num-nodes "3" --logging=SYSTEM,WORKLOAD --monitoring=SYSTEM --enable-ip-alias --network "projects/sysf-12/global/networks/sysf" --subnetwork "projects/sysf-12/regions/us-east4/subnetworks/us-east4-192" --no-enable-intra-node-visibility --default-max-pods-per-node "110" --no-enable-master-authorized-networks --addons HorizontalPodAutoscaling,HttpLoadBalancing,GcePersistentDiskCsiDriver --enable-autoupgrade --enable-autorepair --max-surge-upgrade 1 --max-unavailable-upgrade 0 --enable-shielded-nodes --node-locations "us-east4-a"
 
-gcloud container clusters create sysf \
+gcloud container clusters create sysf2 \
 --cluster-version "1.21.5-gke.1302" \
 --no-enable-basic-auth \
 --no-enable-master-authorized-networks \
@@ -33,7 +33,7 @@ gcloud container clusters create sysf \
 --enable-autorepair \
 --labels owner=sysf,zonal=true \
 --zone us-east4-a --project sysf-12
-
+exit 0
 kubectl patch storageclass standard \
     -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
 

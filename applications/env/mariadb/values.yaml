@@ -12,7 +12,7 @@ secondary:
     accessModes:
       - ReadWriteMany
 
-architecture: replication
+# architecture: replication
 
 auth:
   database: drupal

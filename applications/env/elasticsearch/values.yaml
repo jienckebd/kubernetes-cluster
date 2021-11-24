@@ -1,5 +1,5 @@
 data:
-  replicas: 2
+  replicas: 1
   persistence:
     storageClass: ceph-filesystem
     accessModes:

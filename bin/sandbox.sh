@@ -57,8 +57,13 @@ gcloud dns --project=bdbd-310322 record-sets transaction execute --zone=tef
 echo | openssl s_client -showcerts -servername gnupg.org -connect k8s.theentityframework.com:8443 2>/dev/null | openssl x509 -inform pem -noout -text
 
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep gitlab | awk '{print $1}')
+kubectl -n kasten-io describe secret $(kubectl -n kasten-io get secret | grep kasten-k10-token | awk '{print $1}')
 
 kubectl --namespace kasten-io port-forward service/gateway 8080:8000
+
+helm install k10-restore kasten/k10restore --namespace=kasten-io \
+    --set sourceClusterID=c899451b-8042-4156-ad20-90aa0d173fb8 \
+    --set profile.name=gce
 
 kubectl expose service elastic-stack-kibana --type=LoadBalancer --name=elastic-stack-kibana-bal --load-balancer-ip=34.138.195.248
 kubectl expose deployment web-nginx-php-fpm --type=LoadBalancer --name=web-nginx-php-fpm-bal -n env-ide1 --load-balancer-ip=35.245.179.195
@@ -113,3 +118,5 @@ kubectl -n rook-ceph patch cephfilesystem.ceph.rook.io ceph-filesystem -p '{"met
 kubectl -n rook-ceph patch cephobjectstore.ceph.rook.io ceph-objectstore -p '{"metadata":{"finalizers": []}}' --type=merge
 
 kubectl patch pvc data-keycloak-postgresql-0 -p '{"metadata":{"finalizers":null}}'
+
+kubectl -n admin patch pvc data-keycloak-postgresql-0 -p '{"metadata":{"finalizers": []}}' --type=merge
