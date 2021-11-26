@@ -1,9 +1,14 @@
 data:
-  replicas: 2
+  replicas: 1
   persistence:
     storageClass: ceph-filesystem
     accessModes:
       - ReadWriteMany
+  resources:
+    limits: {}
+    requests:
+      cpu: 25m
+      memory: 1024Mi
 
 master:
   replicas: 1
