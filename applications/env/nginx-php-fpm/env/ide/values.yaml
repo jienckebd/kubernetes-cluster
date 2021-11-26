@@ -5,5 +5,3 @@ sys:
 ingress:
   hosts:
     - ide1.env.sys.sysf.one
-nodeSelector:
-  cloud.google.com/gke-nodepool=persistent-1
