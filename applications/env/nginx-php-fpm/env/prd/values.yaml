@@ -2,3 +2,4 @@ sys:
   context: cloud
   subcontext: prd
   uri: https://sysf.one/
+  redis_node_count: 1
