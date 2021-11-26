@@ -11,3 +11,4 @@ persistence:
 
 cluster:
   nodes: 1
+
