@@ -12,7 +12,7 @@ helmfiles:
   - path: applications/admin/keycloak/helmfile.yaml
   - path: applications/admin/elasticsearch/helmfile.yaml
   - path: applications/admin/filebeat/helmfile.yaml
-  - path: applications/admin/gke-preemptible-killer/helmfile.yaml
+  # - path: applications/admin/gke-preemptible-killer/helmfile.yaml
 
   # Env / many.
   - path: applications/env/mariadb/helmfile.yaml

@@ -48,16 +48,15 @@ env-prd:
 #    - "kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | kubectl apply --namespace=env-dev -f - || true"
 #    - gl-helmfile --environment dev apply --suppress-secrets
 
-
-env-ide1:
- stage: deploy
- image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.1.0"
- environment: ide1
- script:
-   - export SYS_HELM_NAMESPACE_SUFFIX=ide1
-   - gl-ensure-namespace env-ide1
-   - kubectl config set-context --current --namespace=env-ide1
-   - "kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | kubectl apply --namespace=env-ide1 -f - || true"
-   - "kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | kubectl apply --namespace=env-ide1 -f - || true"
-   - "kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | kubectl apply --namespace=env-ide1 -f - || true"
-   - gl-helmfile --environment ide apply --suppress-secrets
+# env-ide1:
+#  stage: deploy
+#  image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.1.0"
+#  environment: ide1
+#  script:
+#    - export SYS_HELM_NAMESPACE_SUFFIX=ide1
+#    - gl-ensure-namespace env-ide1
+#    - kubectl config set-context --current --namespace=env-ide1
+#    - "kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | kubectl apply --namespace=env-ide1 -f - || true"
+#    - "kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | kubectl apply --namespace=env-ide1 -f - || true"
+#    - "kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | kubectl apply --namespace=env-ide1 -f - || true"
+#    - gl-helmfile --environment ide apply --suppress-secrets
