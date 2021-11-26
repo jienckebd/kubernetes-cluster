@@ -48,6 +48,7 @@ env-prd:
 #    - "kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | kubectl apply --namespace=env-dev -f - || true"
 #    - gl-helmfile --environment dev apply --suppress-secrets
 
+
 env-ide1:
  stage: deploy
  image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.1.0"
