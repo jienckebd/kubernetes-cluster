@@ -35,7 +35,7 @@ env-stg:
    - "kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: env-stg/' | kubectl apply --namespace=env-stg -f - || true"
    - "kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: env-stg/' | kubectl apply --namespace=env-stg -f - || true"
    - "kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: default/namespace: env-stg/' | kubectl apply --namespace=env-stg -f - || true"
-   - "kubectl get secret sys-env-var-config-prd --namespace=default -o yaml | sed 's/namespace: default/namespace: env-stg/' | sed 's/name: sys-env-var-config-stg/name: sys-env-var-config/' | kubectl apply --namespace=env-stg -f - || true"
+   - "kubectl get secret sys-env-var-config-stg --namespace=default -o yaml | sed 's/namespace: default/namespace: env-stg/' | sed 's/name: sys-env-var-config-stg/name: sys-env-var-config/' | kubectl apply --namespace=env-stg -f - || true"
    - gl-helmfile --environment stg apply --suppress-secrets
 
 env-dev:
