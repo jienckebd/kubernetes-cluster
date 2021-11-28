@@ -8,9 +8,9 @@ metadata:
   name: docker-dind-data
   namespace: gitlab
 spec:
-  storageClassName: ceph-filesystem
+  storageClassName: standard-rwo
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 50Gi
@@ -25,6 +25,8 @@ metadata:
   name: docker-dind
   namespace: gitlab
 spec:
+  strategy:
+    type: Recreate
   replicas: 1
   selector:
     matchLabels:
