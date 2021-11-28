@@ -51,7 +51,8 @@ kubectl create namespace admin
 kubectl create secret generic config-grafana -n admin --from-file=/Users/bry/sys/etc/k8s/grafana.ini
 kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: admin/' | kubectl apply --namespace=admin -f - || true
 
-kubectl create secret generic -n admin google-application-credentials --from-file=gcs-application-credentials-file=/Users/bry/sys/etc/gcloud/sa/gitlab-runner.json
+kubectl create namespace gitlab
+kubectl create secret generic -n gitlab google-application-credentials --from-file=gcs-application-credentials-file=/Users/bry/sys/etc/gcloud/sa/gitlab-runner.json
 
 cd /Users/bry/sys/kubernetes/cluster/sysf/k8s
 kubectl apply -k ./

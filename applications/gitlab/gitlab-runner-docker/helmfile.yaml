@@ -1,0 +1,15 @@
+repositories:
+  - name: gitlab
+    url: https://charts.gitlab.io
+
+releases:
+  - name: gitlab-runner-docker
+    namespace: gitlab
+    chart: gitlab/gitlab-runner
+    installed: true
+
+    values:
+      - values.yaml
+
+environments:
+  gitlab: {  }

@@ -287,11 +287,12 @@ runners:
   # runner configuration: https://docs.gitlab.com/runner/configuration/advanced-configuration.html
   config: |
     [[runners]]
-      [runners.kubernetes]
-        image = "ubuntu:16.04"
+      executor = "docker"
+      [runners.docker]
+        privileged = true
         [runners.cache]
           Type = "gcs"
-          Path = "runner"
+          Path = "docker"
           Shared = true
           [runners.cache.gcs]
             BucketName = "sysf-12-gitlab-runners-cache"
@@ -299,10 +300,9 @@ runners:
   cache:
       secretName: google-application-credentials
 
-
   ## Which executor should be used
   ##
-  executor: kubernetes
+  # executor: docker
 
   ## Default container image to use for builds when none is specified
   ##
@@ -335,7 +335,7 @@ runners:
   ##
   ## ref: https://docs.gitlab.com/ce/ci/runners/#use-tags-to-limit-the-number-of-jobs-using-the-runner
   ##
-  # tags: ""
+  tags: "sysf,docker"
 
   ## Specify the name for the runner.
   ##

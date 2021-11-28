@@ -12,7 +12,6 @@ helmfiles:
   - path: applications/admin/keycloak/helmfile.yaml
   - path: applications/admin/elasticsearch/helmfile.yaml
   - path: applications/admin/filebeat/helmfile.yaml
-  - path: applications/admin/gitlab-runner/helmfile.yaml
   - path: applications/admin/kubefledged/helmfile.yaml
   # - path: applications/admin/gke-preemptible-killer/helmfile.yaml
 
@@ -30,6 +29,10 @@ helmfiles:
   - path: applications/rook-ceph/rook-ceph/helmfile.yaml
   - path: applications/rook-ceph/rook-ceph-cluster/helmfile.yaml
 
+  # Gitlab.
+  - path: applications/gitlab/gitlab-runner-kubernetes/helmfile.yaml
+  - path: applications/gitlab/gitlab-runner-docker/helmfile.yaml
+
 environments:
   prd: {  }
   stg: {  }
@@ -39,3 +42,4 @@ environments:
   admin: {  }
   k10: {  }
   rook-ceph: {  }
+  gitlab: {  }
