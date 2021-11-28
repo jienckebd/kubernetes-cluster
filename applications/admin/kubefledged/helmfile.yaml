@@ -1,0 +1,14 @@
+repositories:
+  - name: kubefledged-charts
+    url: https://senthilrch.github.io/kubefledged-charts/
+
+releases:
+  - name: kubefledged
+    namespace: admin
+    chart: kubefledged-charts/kube-fledged
+    installed: true
+    values:
+      - values.yaml
+
+environments:
+  admin: {  }
