@@ -10,4 +10,4 @@ persistence:
     - ReadWriteMany
 
 cluster:
-  nodes: 1
+  nodes: 6
