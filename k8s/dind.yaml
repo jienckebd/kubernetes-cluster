@@ -1,0 +1,106 @@
+---
+# PVC for storing dind data
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app: docker-dind
+  name: docker-dind-data
+  namespace: gitlab
+spec:
+  storageClassName: ceph-filesystem
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 50Gi
+
+---
+## Deployment for docker-dind
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: docker-dind
+  name: docker-dind
+  namespace: gitlab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docker-dind
+  template:
+    metadata:
+      labels:
+        app: docker-dind
+    spec:
+      containers:
+        - image: docker:19.03.12-dind
+          name: docker-dind
+          env:
+            - name: DOCKER_HOST
+              value: tcp://0.0.0.0:2375
+            - name: DOCKER_TLS_CERTDIR #Disable TLS as traffic is not going outside of network.
+              value: ""
+          volumeMounts:
+            - name: docker-dind-data-vol #Persisting the docker data
+              mountPath: /var/lib/docker/
+          ports:
+            - name: daemon-port
+              containerPort: 2375
+              protocol: TCP
+          securityContext:
+            privileged: true #Required for dind container to work.
+      volumes:
+        - name: docker-dind-data-vol
+          persistentVolumeClaim:
+            claimName: docker-dind-data
+
+---
+## Service for exposing docker-dind
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: docker-dind
+  name: docker-dind
+  namespace: gitlab
+spec:
+  ports:
+    - port: 2375
+      protocol: TCP
+      targetPort: 2375
+  selector:
+    app: docker-dind
+
+---
+# Cronjob to clear docker cache every monday so we start fresh
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  labels:
+    app: docker-dind
+  namespace: gitlab
+  name: docker-dind-clear-cache
+spec:
+  jobTemplate:
+    metadata:
+      labels:
+        app: docker-dind
+      name: docker-dind-clear-cache
+    spec:
+      template:
+        spec:
+          containers:
+            - command:
+                - docker
+                - system
+                - prune
+                - -af
+              image: docker:git
+              name: docker-dind-clear-cache
+              env:
+                - name: DOCKER_HOST
+                  value: tcp://docker-dind:2375
+          restartPolicy: OnFailure
+  schedule: 0 0 * * 0

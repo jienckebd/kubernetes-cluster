@@ -120,3 +120,11 @@ kubectl -n rook-ceph patch cephobjectstore.ceph.rook.io ceph-objectstore -p '{"m
 kubectl patch pvc data-keycloak-postgresql-0 -p '{"metadata":{"finalizers":null}}'
 
 kubectl -n admin patch pvc data-keycloak-postgresql-0 -p '{"metadata":{"finalizers": []}}' --type=merge
+
+kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}" |\
+tr -s '[[:space:]]' '\n' |\
+sort |\
+uniq
+
+
+kubectl annotate imagecaches imagecache1 -n admin kubefledged.io/refresh-imagecache=
