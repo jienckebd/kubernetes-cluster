@@ -7,14 +7,14 @@ before_script:
 
 # admin:
 #   stage: deploy
-#   image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.1.0"
+#   image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.3.2"
 #   environment: admin
 #   script:
-#     - helmfile --environment admin apply --suppress-secrets --wait
+#     - gl-helmfile --environment admin apply --suppress-secrets --wait
 
 env-prd:
  stage: deploy
- image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.1.0"
+ image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.3.2"
  environment: prd
  script:
    - gl-ensure-namespace env-prd
@@ -23,11 +23,11 @@ env-prd:
    - "kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: env-prd/' | kubectl apply --namespace=env-prd -f - || true"
    - "kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: default/namespace: env-prd/' | kubectl apply --namespace=env-prd -f - || true"
    - "kubectl get secret sys-env-var-config-prd --namespace=default -o yaml | sed 's/namespace: default/namespace: env-prd/' | sed 's/name: sys-env-var-config-prd/name: sys-env-var-config/' | kubectl apply --namespace=env-prd -f - || true"
-   - helmfile --environment prd apply --suppress-secrets --wait
+   - gl-helmfile --environment prd apply --suppress-secrets --wait
 
 # env-stg:
 #  stage: deploy
-#  image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.1.0"
+#  image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.3.2"
 #  environment: stg
 #  script:
 #    - gl-ensure-namespace env-stg
@@ -36,11 +36,11 @@ env-prd:
 #    - "kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: env-stg/' | kubectl apply --namespace=env-stg -f - || true"
 #    - "kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: default/namespace: env-stg/' | kubectl apply --namespace=env-stg -f - || true"
 #    - "kubectl get secret sys-env-var-config-prd --namespace=default -o yaml | sed 's/namespace: default/namespace: env-stg/' | sed 's/name: sys-env-var-config-stg/name: sys-env-var-config/' | kubectl apply --namespace=env-stg -f - || true"
-#    - helmfile --environment stg apply --suppress-secrets --wait
+#    - gl-helmfile --environment stg apply --suppress-secrets --wait
 
 env-dev:
  stage: deploy
- image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.1.0"
+ image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.3.2"
  environment: dev
  script:
    - gl-ensure-namespace env-dev
@@ -49,12 +49,12 @@ env-dev:
    - "kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | kubectl apply --namespace=env-dev -f - || true"
    - "kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | kubectl apply --namespace=env-dev -f - || true"
    - "kubectl get secret sys-env-var-config-dev --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | sed 's/name: sys-env-var-config-dev/name: sys-env-var-config/' | kubectl apply --namespace=env-dev -f - || true"
-   - helmfile --environment dev apply --suppress-secrets --wait
+   - gl-helmfile --environment dev apply --suppress-secrets --wait
 
 
 env-ide1:
  stage: deploy
- image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.1.0"
+ image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.3.2"
  environment: ide1
  script:
    - export SYS_HELM_NAMESPACE_SUFFIX=ide1
@@ -64,4 +64,4 @@ env-ide1:
    - "kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | kubectl apply --namespace=env-ide1 -f - || true"
    - "kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | kubectl apply --namespace=env-ide1 -f - || true"
    - "kubectl get secret sys-env-var-config-ide --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | sed 's/name: sys-env-var-config-ide/name: sys-env-var-config/' | kubectl apply --namespace=env-ide1 -f - || true"
-   - helmfile --environment ide apply --suppress-secrets --wait
+   - gl-helmfile --environment ide apply --suppress-secrets --wait
