@@ -34,15 +34,24 @@ gcloud container clusters create sysf2 \
 --labels owner=sysf,zonal=true \
 --zone us-east4-a --project sysf-12
 exit 0
+
 kubectl patch storageclass standard \
     -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
+
+kubectl create secret generic -n default sys-env-var-config-prd --from-env-file=/Users/bry/sys/etc/k8s/env/prd.env
+kubectl create secret generic -n default sys-env-var-config-stg --from-env-file=/Users/bry/sys/etc/k8s/env/stg.env
+kubectl create secret generic -n default sys-env-var-config-dev --from-env-file=/Users/bry/sys/etc/k8s/env/dev.env
+kubectl create secret generic -n default sys-env-var-config-ide --from-env-file=/Users/bry/sys/etc/k8s/env/ide.env
+kubectl create secret generic -n default sys-env-var-config-cid --from-env-file=/Users/bry/sys/etc/k8s/env/cid.env
 
 kubectl create secret generic ssh-config -n default --from-file=/Users/bry/sys/etc/k8s/ssh-config
 kubectl create secret tls "tls-sys" -n default --cert=/etc/letsencrypt/live/sysf.one/fullchain.pem --key=/etc/letsencrypt/live/sysf.one/privkey.pem
 
 kubectl create namespace admin
-kubectl create secret generic config-grafana -n admin --from-file=/Users/bry/sys/etc/grafana.ini
+kubectl create secret generic config-grafana -n admin --from-file=/Users/bry/sys/etc/k8s/grafana.ini
 kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: admin/' | kubectl apply --namespace=admin -f - || true
+
+kubectl create secret generic -n admin google-application-credentials --from-file=gcs-application-credentials-file=/Users/bry/sys/etc/gcloud/sa/gitlab-runner.json
 
 cd /Users/bry/sys/kubernetes/cluster/sysf/k8s
 kubectl apply -k ./
@@ -59,7 +68,7 @@ helmfile --environment=rook-ceph apply
 cd -
 
 #kubectl create namespace k10
-#kubectl apply -f /Users/bry/sys/etc/k10-oidc-auth.yml
+#kubectl apply -f /Users/bry/sys/etc/k8s/k10-oidc-auth.yml
 #kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: k10/' | kubectl apply --namespace=k10 -f - || true
 
 kubectl create clusterrolebinding "kasten-admin--bryan.jiencke@gmail.com" --clusterrole=kasten-admin --user=bryan.jiencke@gmail.com

@@ -12,6 +12,7 @@ helmfiles:
   - path: applications/admin/keycloak/helmfile.yaml
   - path: applications/admin/elasticsearch/helmfile.yaml
   - path: applications/admin/filebeat/helmfile.yaml
+  - path: applications/admin/gitlab-runner/helmfile.yaml
   # - path: applications/admin/gke-preemptible-killer/helmfile.yaml
 
   # Env / many.
