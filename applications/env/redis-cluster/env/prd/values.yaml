@@ -1,2 +1,5 @@
 cluster:
   nodes: 6
+  update:
+    addNodes: true
+    currentNumberOfNodes: 6
