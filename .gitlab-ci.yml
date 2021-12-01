@@ -64,4 +64,3 @@ env-ide1:
    - "kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | kubectl apply --namespace=env-ide1 -f - || true"
    - "kubectl get secret sys-env-var-config-ide --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | sed 's/name: sys-env-var-config-ide/name: sys-env-var-config/' | kubectl apply --namespace=env-ide1 -f - || true"
    - gl-helmfile --environment ide apply --suppress-secrets
-
