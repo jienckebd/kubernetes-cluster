@@ -12,8 +12,6 @@ helmfiles:
   - path: applications/admin/keycloak/helmfile.yaml
   - path: applications/admin/elasticsearch/helmfile.yaml
   - path: applications/admin/filebeat/helmfile.yaml
-  - path: applications/admin/kubefledged/helmfile.yaml
-  # - path: applications/admin/gke-preemptible-killer/helmfile.yaml
 
   # Env / many.
   - path: applications/env/mariadb/helmfile.yaml
@@ -32,6 +30,8 @@ helmfiles:
   # Gitlab.
   - path: applications/gitlab/gitlab-runner-kubernetes/helmfile.yaml
   - path: applications/gitlab/gitlab-runner-docker/helmfile.yaml
+  - path: applications/gitlab/kubefledged/helmfile.yaml
+  # - path: applications/admin/gke-preemptible-killer/helmfile.yaml
 
 environments:
   prd: {  }

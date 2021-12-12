@@ -4,11 +4,11 @@ repositories:
 
 releases:
   - name: kubefledged
-    namespace: admin
+    namespace: gitlab
     chart: kubefledged-charts/kube-fledged
     installed: true
     values:
       - values.yaml
 
 environments:
-  admin: {  }
+  gitlab: {  }
