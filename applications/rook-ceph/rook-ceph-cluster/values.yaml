@@ -148,7 +148,7 @@ cephClusterSpec:
             spec:
               resources:
                 requests:
-                  storage: 500Gi
+                  storage: 200Gi
               # IMPORTANT: Change the storage class depending on your environment
               storageClassName: standard-rwo
               volumeMode: Block
