@@ -3,7 +3,7 @@ kind: VolumeSnapshotClass
 metadata:
   name: csi-gce-pd-snapshot-class-with-storage-locations
   annotations:
-    k10.kasten.io/is-snapshot-class: 'true'
+    snapshot.storage.kubernetes.io/is-default-class: "false"
 parameters:
   storage-locations: us-east4
 driver: pd.csi.storage.gke.io

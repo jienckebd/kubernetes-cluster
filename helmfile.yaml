@@ -19,10 +19,6 @@ helmfiles:
   - path: applications/env/redis-cluster/helmfile.yaml
   - path: applications/env/elasticsearch/helmfile.yaml
 
-  # k10.
-  - path: applications/k10/k10/helmfile.yaml
-  - path: applications/k10/nfs-subdir-external-provisioner/helmfile.yaml
-
   # rook-ceph.
   - path: applications/rook-ceph/rook-ceph/helmfile.yaml
   - path: applications/rook-ceph/rook-ceph-cluster/helmfile.yaml
@@ -31,6 +27,7 @@ helmfiles:
   - path: applications/gitlab/gitlab-runner-kubernetes/helmfile.yaml
   - path: applications/gitlab/gitlab-runner-docker/helmfile.yaml
   - path: applications/gitlab/kubefledged/helmfile.yaml
+  - path: applications/gitlab/nfs-subdir-external-provisioner/helmfile.yaml
   # - path: applications/admin/gke-preemptible-killer/helmfile.yaml
 
 environments:
@@ -40,6 +37,5 @@ environments:
   cid: {  }
   ide: {  }
   admin: {  }
-  k10: {  }
   rook-ceph: {  }
   gitlab: {  }

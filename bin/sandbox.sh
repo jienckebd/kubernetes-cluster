@@ -57,13 +57,8 @@ gcloud dns --project=bdbd-310322 record-sets transaction execute --zone=tef
 echo | openssl s_client -showcerts -servername gnupg.org -connect k8s.theentityframework.com:8443 2>/dev/null | openssl x509 -inform pem -noout -text
 
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep gitlab | awk '{print $1}')
-kubectl -n kasten-io describe secret $(kubectl -n kasten-io get secret | grep kasten-k10-token | awk '{print $1}')
 
 kubectl --namespace kasten-io port-forward service/gateway 8080:8000
-
-helm install k10-restore kasten/k10restore --namespace=kasten-io \
-    --set sourceClusterID=c899451b-8042-4156-ad20-90aa0d173fb8 \
-    --set profile.name=gce
 
 kubectl expose service elastic-stack-kibana --type=LoadBalancer --name=elastic-stack-kibana-bal --load-balancer-ip=34.138.195.248
 kubectl expose deployment web-nginx-php-fpm --type=LoadBalancer --name=web-nginx-php-fpm-bal -n env-ide1 --load-balancer-ip=35.245.179.195
@@ -89,26 +84,6 @@ kubectl create clusterrolebinding "kasten-admin--mijiencke@gmail.com" --clusterr
 kubectl create clusterrolebinding "kasten-admin--mijiencke@gmail.com--cluster-admin" --clusterrole=cluster-admin --user=mijiencke@gmail.com
 # kubectl create rolebinding "kasten-admin--mijiencke@gmail.com" --role=kasten-ns-admin --user=mijiencke@gmail.com -n k10
 
-kubectl create secret generic k10-dr-secret \
-   --namespace k10 \
-   --from-literal key=<passphrase>
-
-kubectl create secret generic k10-dr-secret \
---namespace kasten-io \
---from-literal key=ZDhMwVz5fBe4a8L
-
-# Install the helm chart that creates the K10 restore job and wait for completion of the `k10-restore` job
-# Assumes that K10 is installed in 'kasten-io' namespace.
-helm install k10-restore kasten/k10restore --namespace=kasten-io \
-    --set sourceClusterID=7b1ce47b-0aaf-4672-b2b9-dd31adaad9e8 \
-    --set profile.name=gce-k10
-
-# Install the helm chart that creates the K10 restore job and wait for completion of the `k10-restore` job
-# Assumes that K10 is installed in 'kasten-io' namespace.
-helm install k10-restore kasten/k10restore --namespace=kasten-io \
-    --set sourceClusterID=7b1ce47b-0aaf-4672-b2b9-dd31adaad9e8 \
-    --set profile.name=gce-useast4
-
 helmfile --environment=dev destroy; helmfile --environment=stg destroy; helmfile --environment=prd destroy;
 kubectl delete pods --all -force -n env-dev; kubectl delete pods --all -force -n env-stg; kubectl delete pods --all -force -n env-prd;
 kubectl delete pvc --all -n env-dev; kubectl delete pvc --all -n env-stg; kubectl delete pvc --all -n env-prd;
@@ -128,3 +103,5 @@ uniq
 
 
 kubectl annotate imagecaches imagecache1 -n admin kubefledged.io/refresh-imagecache=
+
+velero backup create ns--admin--2 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces admin --wait

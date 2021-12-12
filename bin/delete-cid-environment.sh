@@ -10,7 +10,7 @@ kubectl get ns | grep env-ci | awk '$1 {print$1}' | while read ns; do
   kubectl delete ns $ns --force
 done
 
-kubectl get ns | grep env-de | awk '$1 {print$1}' | while read ns; do
+kubectl get ns | grep env-ide | awk '$1 {print$1}' | while read ns; do
   kubectl config set-context --current --namespace=$ns
   helm ls --all --short | xargs -L1 helm delete
   kubectl delete pods --all --force

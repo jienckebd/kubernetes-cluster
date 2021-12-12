@@ -62,14 +62,6 @@ cd /Users/bry/sys/kubernetes/cluster/sysf/applications/rook-ceph/rook-ceph-clust
 helmfile --environment=rook-ceph apply
 cd -
 
-#kubectl create namespace k10
-#kubectl apply -f /Users/bry/sys/etc/k8s/k10-oidc-auth.yml
-#kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: k10/' | kubectl apply --namespace=k10 -f - || true
-
-kubectl create clusterrolebinding "kasten-admin--bryan.jiencke@gmail.com" --clusterrole=kasten-admin --user=bryan.jiencke@gmail.com
-kubectl create clusterrolebinding "kasten-admin--bryan.jiencke@gmail.com--cluster-admin" --clusterrole=cluster-admin --user=bryan.jiencke@gmail.com
-# kubectl create rolebinding "kasten-admin--bryan.jiencke@gmail.com" --role=kasten-ns-admin --user=bryan.jiencke@gmail.com -n k10
-
 # kubectl create namespace env-prd
 # kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: .*/namespace: env-prd/' | kubectl apply --namespace=env-prd -f -
 
@@ -99,5 +91,3 @@ kubectl create clusterrolebinding "kasten-admin--bryan.jiencke@gmail.com--cluste
 # cd ../k8s/estafette-gke-preemptible-killer
 # kubectl apply -k ./
 # cd -
-
-# kubectl annotate storageclass nfs k10.kasten.io/forcegenericbackup="true"

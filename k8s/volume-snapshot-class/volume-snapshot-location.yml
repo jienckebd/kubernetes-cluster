@@ -1,0 +1,19 @@
+apiVersion: velero.io/v1
+kind: VolumeSnapshotLocation
+metadata:
+  name: gcp-default
+  namespace: velero
+spec:
+  # Name of the volume snapshotter plugin to use to connect to this location.
+  #
+  # Required.
+  provider: velero.io/gcp
+
+  config:
+    # The GCP location where snapshots should be stored. See the GCP documentation
+    # (https://cloud.google.com/storage/docs/locations#available_locations) for the
+    # full list. If not specified, snapshots are stored in the default location
+    # (https://cloud.google.com/compute/docs/disks/create-snapshots#default_location).
+    #
+    # Optional.
+    snapshotLocation: us-east4

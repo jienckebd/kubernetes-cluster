@@ -4,7 +4,7 @@ repositories:
 
 releases:
   - name: nfs-subdir-external-provisioner
-    namespace: k10
+    namespace: gitlab
     chart: nfs-subdir-external-provisioner/nfs-subdir-external-provisioner
     installed: true
 
@@ -12,4 +12,4 @@ releases:
       - values.yaml
 
 environments:
-  k10: {  }
+  gitlab: {  }
