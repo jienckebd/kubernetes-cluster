@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: nfs-bryan
-  namespace: k10
+  namespace: gitlab
 spec:
   storageClassName: nfs-client
   accessModes:

@@ -6,10 +6,6 @@ helmfile --environment=admin destroy
 kubectl delete pods --all --force -n admin
 kubectl delete pvc --all -n admin
 
-# helmfile --environment=k10 destroy
-# kubectl delete pods --all --force -n k10
-# kubectl delete pvc --all -n k10
-
 # helmfile --environment=dev destroy
 # kubectl delete pods --all --force -n env-dev
 # kubectl delete pvc --all -n env-dev
