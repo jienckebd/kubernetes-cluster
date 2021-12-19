@@ -67,14 +67,19 @@ kubectl get pv | grep Released | awk '$1 {print$1}' | while read vol; do kubectl
 
 kubectl create secret generic keycloak-tls --from-file=/Users/bry/sys/etc/k8s/tls-sys/keycloak.truststore.jks --from-file=/Users/bry/sys/etc/k8s/tls-sys/keycloak-0.keystore.jks
 
-
 velero install \
     --provider gcp \
-    --plugins velero/velero-plugin-for-gcp:v1.3.0-rc.1 \
-    --bucket $BUCKET \
-    --secret-file ./credentials-velero
+    --plugins velero/velero-plugin-for-gcp:v1.3.0 \
+    --bucket sysf-12--velero--0 \
+    --secret-file ~/sys/etc/gcloud/credentials-velero --features=EnableCSI --use-restic
 
-velero install --provider gcp --plugins velero/velero-plugin-for-gcp:v1.3.0-rc.1 --bucket jienckebd3 --secret-file ./credentials-velero
+velero schedule create daily --schedule="@every 1h" --include-namespaces admin --snapshot-volumes=true --default-volumes-to-restic --ttl 24h0m0s
+# velero schedule create daily --schedule="@every 1h" --include-namespaces rook-ceph --snapshot-volumes=true --default-volumes-to-restic --ttl 24h0m0s
+velero schedule create daily --schedule="@every 1h" --include-namespaces env-prd --snapshot-volumes=true --default-volumes-to-restic --ttl 24h0m0s
+velero schedule create daily --schedule="@every 1h" --include-namespaces env-ide1 --snapshot-volumes=true --default-volumes-to-restic --ttl 24h0m0s
+
+
+velero backup create ns--env-prd--1 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces env-prd --wait
 
 
 kubectl create clusterrolebinding "kasten-admin--bryan.jiencke@gmail.com" --clusterrole=kasten-admin --user=bryan.jiencke@gmail.com
@@ -104,5 +109,3 @@ uniq
 
 
 kubectl annotate imagecaches imagecache1 -n admin kubefledged.io/refresh-imagecache=
-
-velero backup create ns--admin--2 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces admin --wait
