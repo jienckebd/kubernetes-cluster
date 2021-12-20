@@ -29,6 +29,29 @@ gcloud container clusters create sysf \
 --labels owner=sysf,zonal=true \
 --zone us-east4-a --project sysf-12
 
+gcloud container clusters create sysf2 \
+--cluster-version "1.21.5-gke.1302" \
+--no-enable-basic-auth \
+--no-enable-master-authorized-networks \
+--enable-ip-alias \
+--enable-private-nodes \
+--image-type "UBUNTU_CONTAINERD" \
+--machine-type "e2-standard-4" \
+--disk-type "pd-balanced" \
+--disk-size "50" \
+--preemptible \
+--max-pods-per-node "100" \
+--num-nodes "3" \
+--node-labels owner=sysf,zonal=true \
+--metadata disable-legacy-endpoints=true \
+--enable-stackdriver-kubernetes \
+--scopes "https://www.googleapis.com/auth/cloud-platform" \
+--addons HorizontalPodAutoscaling,HttpLoadBalancing \
+--enable-autoupgrade \
+--enable-autorepair \
+--labels owner=sysf,zonal=true \
+--zone us-east4-a --project sysf-12
+
 kubectl patch storageclass standard \
     -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
 
