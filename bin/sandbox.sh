@@ -77,8 +77,9 @@ velero schedule create daily --schedule="@every 1h" --include-namespaces admin -
 # velero schedule create daily --schedule="@every 1h" --include-namespaces rook-ceph --snapshot-volumes=true --default-volumes-to-restic --ttl 24h0m0s
 velero schedule create daily --schedule="@every 1h" --include-namespaces env-prd --snapshot-volumes=true --default-volumes-to-restic --ttl 24h0m0s
 
-velero schedule create ns--admin--daily -n admin --include-namespaces admin --schedule="0 0 * * *" --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s --wait
-velero schedule create mariadb--prd--hourly -n env-prd --selector app.kubernetes.io/name=mariadb --schedule="0 * * * *" --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s --wait
+velero schedule create ns--admin--daily -n admin --include-namespaces admin --schedule="0 0 * * *" --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s
+velero schedule create mariadb--prd--hourly -n env-prd --selector app.kubernetes.io/name=mariadb --schedule="0 * * * *" --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s
+
 
 
 velero backup create ns--env-prd--1 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces env-prd --wait
