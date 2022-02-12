@@ -58,6 +58,8 @@ echo | openssl s_client -showcerts -servername gnupg.org -connect k8s.theentityf
 
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep gitlab | awk '{print $1}')
 
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep gitlab | awk '{print $1}')
+
 kubectl --namespace kasten-io port-forward service/gateway 8080:8000
 
 kubectl expose service elastic-stack-kibana --type=LoadBalancer --name=elastic-stack-kibana-bal --load-balancer-ip=34.138.195.248
@@ -80,12 +82,14 @@ velero schedule create daily --schedule="@every 1h" --include-namespaces env-prd
 velero schedule create ns--admin--daily -n admin --include-namespaces admin --schedule="0 0 * * *" --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s
 velero schedule create mariadb--prd--hourly -n env-prd --selector app.kubernetes.io/name=mariadb --schedule="0 * * * *" --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s
 
+velero schedule create web--prd--hourly -n env-prd --selector app=web-nginx-php-fpm --schedule="15 * * * *" --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s
+velero schedule create web--ide1--hourly -n env-ide1 --selector app=web-nginx-php-fpm --schedule="45 * * * *" --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s
 
 
 velero backup create ns--env-prd--1 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces env-prd --wait
 velero backup create ns--env-admin--6 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces admin --wait
 
-velero backup create mariadb--prd--1 --snapshot-volumes=true --default-volumes-to-restic --selector app.kubernetes.io/name=mariadb --wait
+velero backup create web--prd--1 --snapshot-volumes=true --default-volumes-to-restic --selector app=web-nginx-php-fpm --wait
 velero backup create keycloak-postgresql--1 --snapshot-volumes=true --default-volumes-to-restic --selector app.kubernetes.io/name=postgresql --wait
 
 
@@ -116,3 +120,5 @@ uniq
 
 
 kubectl annotate imagecaches imagecache1 -n admin kubefledged.io/refresh-imagecache=
+
+sysf-12--velero--0
