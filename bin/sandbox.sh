@@ -58,8 +58,6 @@ echo | openssl s_client -showcerts -servername gnupg.org -connect k8s.theentityf
 
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep gitlab | awk '{print $1}')
 
-kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep gitlab | awk '{print $1}')
-
 kubectl --namespace kasten-io port-forward service/gateway 8080:8000
 
 kubectl expose service elastic-stack-kibana --type=LoadBalancer --name=elastic-stack-kibana-bal --load-balancer-ip=34.138.195.248
