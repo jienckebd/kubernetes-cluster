@@ -2,7 +2,6 @@
 
 # set -e
 
-# gcloud beta container --project "bdbd-310322" clusters create "sys" --zone "us-east4-c" --no-enable-basic-auth --cluster-version "1.20.9-gke.701" --release-channel "regular" --machine-type "e2-standard-4" --image-type "COS_CONTAINERD" --disk-type "pd-balanced" --disk-size "100" --metadata disable-legacy-endpoints=true --service-account "sys-admin@bdbd-310322.iam.gserviceaccount.com" --max-pods-per-node "110" --preemptible --num-nodes "3" --logging=SYSTEM,WORKLOAD --monitoring=SYSTEM --enable-ip-alias --network "projects/bdbd-310322/global/networks/default" --subnetwork "projects/bdbd-310322/regions/us-east4/subnetworks/default" --no-enable-intra-node-visibility --default-max-pods-per-node "110" --enable-autoscaling --min-nodes "0" --max-nodes "5" --no-enable-master-authorized-networks --addons HorizontalPodAutoscaling,HttpLoadBalancing,GcePersistentDiskCsiDriver --enable-autoupgrade --enable-autorepair --max-surge-upgrade 1 --max-unavailable-upgrade 0 --enable-shielded-nodes --node-locations "us-east4-c"
 gcloud container clusters create sysf \
 --no-enable-basic-auth \
 --no-enable-master-authorized-networks \
@@ -28,6 +27,27 @@ gcloud container clusters create sysf \
 --labels owner=sysf,zonal=true \
 --zone us-east4-a --project sysf-12
 
+# gcloud container clusters create sysf2 \
+# --no-enable-basic-auth \
+# --no-enable-master-authorized-networks \
+# --enable-ip-alias \
+# --image-type "UBUNTU_CONTAINERD" \
+# --machine-type "e2-standard-4" \
+# --disk-type "pd-balanced" \
+# --disk-size "50" \
+# --preemptible \
+# --max-pods-per-node "100" \
+# --num-nodes "3" \
+# --node-labels owner=sysf,zonal=true \
+# --metadata disable-legacy-endpoints=true \
+# --enable-stackdriver-kubernetes \
+# --scopes "https://www.googleapis.com/auth/cloud-platform" \
+# --addons HorizontalPodAutoscaling,HttpLoadBalancing \
+# --enable-autoupgrade \
+# --enable-autorepair \
+# --labels owner=sysf,zonal=true \
+# --zone us-east4-a --project sysf-12
+
 kubectl patch storageclass standard \
     -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
 
@@ -51,13 +71,7 @@ cd /Users/bry/sys/kubernetes/cluster/sysf/k8s
 kubectl apply -k ./
 cd -
 
-cd /Users/bry/sys/kubernetes/cluster/sysf/applications/rook-ceph/rook-ceph
-helmfile --environment=rook-ceph apply
-cd -
-
-sleep 90
-
-cd /Users/bry/sys/kubernetes/cluster/sysf/applications/rook-ceph/rook-ceph-cluster
+cd /Users/bry/sys/kubernetes/cluster/sysf
 helmfile --environment=rook-ceph apply
 cd -
 

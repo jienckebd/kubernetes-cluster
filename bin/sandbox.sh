@@ -73,9 +73,9 @@ velero install \
     --bucket sysf-12--velero--0 \
     --secret-file ~/sys/etc/gcloud/credentials-velero --features=EnableCSI --use-restic
 
-velero schedule create daily --schedule="@every 1h" --include-namespaces admin --snapshot-volumes=true --default-volumes-to-restic --ttl 24h0m0s
-# velero schedule create daily --schedule="@every 1h" --include-namespaces rook-ceph --snapshot-volumes=true --default-volumes-to-restic --ttl 24h0m0s
-velero schedule create daily --schedule="@every 1h" --include-namespaces env-prd --snapshot-volumes=true --default-volumes-to-restic --ttl 24h0m0s
+velero schedule create admin--hourly --schedule="@every 1h" --include-namespaces admin --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s
+velero schedule create env-prd--hourly --schedule="@every 1h" --include-namespaces env-prd --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s
+velero schedule create env-ide1--hourly --schedule="@every 1h" --include-namespaces env-ide1 --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s
 
 velero schedule create ns--admin--daily -n admin --include-namespaces admin --schedule="0 0 * * *" --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s
 velero schedule create mariadb--prd--hourly -n env-prd --selector app.kubernetes.io/name=mariadb --schedule="0 * * * *" --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s
@@ -85,7 +85,7 @@ velero schedule create web--ide1--hourly -n env-ide1 --selector app=web-nginx-ph
 
 
 velero backup create ns--env-prd--1 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces env-prd --wait
-velero backup create ns--env-admin--6 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces admin --wait
+velero backup create ns--env-admin--1 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces admin --wait
 
 velero backup create web--prd--1 --snapshot-volumes=true --default-volumes-to-restic --selector app=web-nginx-php-fpm --wait
 velero backup create keycloak-postgresql--1 --snapshot-volumes=true --default-volumes-to-restic --selector app.kubernetes.io/name=postgresql --wait
