@@ -9,22 +9,40 @@ daemonset:
   filebeatConfig:
     filebeat.yml: |
 
-      filebeat.modules:
+      # filebeat.modules:
 
-      - module: system
-        auth:
-          enabled: true
-          var.paths: ["/var/log/pods/*/auth.syslog.log"]
-          var.convert_timezone: true
-          input:
-            tags:
-              - syslog
-              - auth
-          processors:
-            - add_kubernetes_metadata:
-                host: ${NODE_NAME}
+      # - module: system
+      #   syslog:
+      #     enabled: true
+      #     var.paths: ["/var/log/pods/*/syslog"]
+      #   auth:
+      #     enabled: true
+      #     tags:
+      #       - syslog
+      #       - auth
+      #     var.paths: ["/var/log/pods/*/auth.syslog.log"]
+
+      # - module: system
+      #   auth:
+      #     enabled: true
+      #     var.paths: ["/var/log/pods/*/auth.syslog.log"]
+      #     var.convert_timezone: true
+      #     input:
+      #       tags:
+      #         - syslog
+      #         - auth
+      #     processors:
+      #       - add_kubernetes_metadata:
+      #           host: ${NODE_NAME}
 
       filebeat.inputs:
+
+      - type: log
+        tags:
+          - syslog
+          - auth
+        paths:
+          - '/var/log/pods/*/auth.syslog.log'
 
       - type: container
         tags:

@@ -85,7 +85,7 @@ velero schedule create web--ide1--hourly -n env-ide1 --selector app=web-nginx-ph
 
 
 velero backup create ns--env-prd--1 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces env-prd --wait
-velero backup create ns--env-admin--1 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces admin --wait
+velero backup create ns--env-admin--3 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces admin --wait
 
 velero backup create web--prd--1 --snapshot-volumes=true --default-volumes-to-restic --selector app=web-nginx-php-fpm --wait
 velero backup create keycloak-postgresql--1 --snapshot-volumes=true --default-volumes-to-restic --selector app.kubernetes.io/name=postgresql --wait

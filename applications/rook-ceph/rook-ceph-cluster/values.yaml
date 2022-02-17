@@ -1,3 +1,5 @@
+toolbox:
+  enabled: true
 cephClusterSpec:
   network:
     hostNetwork: false
