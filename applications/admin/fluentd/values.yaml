@@ -1,0 +1,14 @@
+aggregator:
+  configMap: elasticsearch-output
+  extraEnvVars:
+    - name: ELASTICSEARCH_HOST
+      value: ELASTICSEARCH-COORDINATING-NODE-NAME
+    - name: ELASTICSEARCH_PORT
+      value: 9200
+forwarder:
+  configMap: apache-log-parser
+  extraEnvVars:
+    - name: FLUENTD_DAEMON_USER
+      value: root
+    - name: FLUENTD_DAEMON_GROUP
+      value: root

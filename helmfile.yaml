@@ -11,7 +11,7 @@ helmfiles:
   - path: applications/admin/grafana/helmfile.yaml
   - path: applications/admin/keycloak/helmfile.yaml
   - path: applications/admin/elasticsearch/helmfile.yaml
-  - path: applications/admin/filebeat/helmfile.yaml
+  - path: applications/admin/fluentd/helmfile.yaml
 
   # Env / many.
   - path: applications/env/mariadb/helmfile.yaml

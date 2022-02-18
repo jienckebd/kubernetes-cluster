@@ -3,9 +3,9 @@ repositories:
     url: https://charts.bitnami.com/bitnami
 
 releases:
-  - name: grafana
+  - name: fluentd
     namespace: admin
-    chart: bitnami/grafana
+    chart: bitnami/fluentd
     installed: true
 
     values:

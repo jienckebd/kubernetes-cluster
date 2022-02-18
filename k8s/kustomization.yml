@@ -15,3 +15,5 @@ resources:
   - mariadb/secret.yml
   - gitlab/dind.yaml
   - gitlab/image-cache.yaml
+  - fluentd/config-map-elasticsearch-output.yaml
+  - fluentd/config-map-forwarder.yaml
