@@ -1,0 +1,7 @@
+primary:
+  persistence:
+    enabled: false
+
+secondary:
+  persistence:
+    enabled: false

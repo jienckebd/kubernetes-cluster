@@ -1,0 +1,7 @@
+data:
+  persistence:
+    enabled: false
+
+master:
+  persistence:
+    enabled: false
