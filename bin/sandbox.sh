@@ -120,3 +120,15 @@ uniq
 kubectl annotate imagecaches imagecache1 -n admin kubefledged.io/refresh-imagecache=
 
 sysf-12--velero--0
+
+helm install fluentd bitnami/fluentd \
+  --set aggregator.configMap=elasticsearch-output \
+  --set forwarder.configMap=fluentd-forwarder \
+  --set aggregator.extraEnv[0].name=ELASTICSEARCH_HOST \
+  --set aggregator.extraEnv[0].value=elasticsearch-coordinating-only.admin.svc.cluster.local \
+  --set aggregator.extraEnv[1].name=ELASTICSEARCH_PORT \
+  --set-string aggregator.extraEnv[1].value=9200 \
+  --set forwarder.extraEnv[0].name=FLUENTD_DAEMON_USER \
+  --set forwarder.extraEnv[0].value=root \
+  --set forwarder.extraEnv[1].name=FLUENTD_DAEMON_GROUP \
+  --set forwarder.extraEnv[1].value=root

@@ -2,13 +2,13 @@ aggregator:
   configMap: elasticsearch-output
   extraEnvVars:
     - name: ELASTICSEARCH_HOST
-      value: ELASTICSEARCH-COORDINATING-NODE-NAME
+      value: "elasticsearch-coordinating-only.admin.svc.cluster.local"
     - name: ELASTICSEARCH_PORT
-      value: 9200
+      value: "9200"
 forwarder:
-  configMap: apache-log-parser
+  configMap: fluentd-forwarder
   extraEnvVars:
     - name: FLUENTD_DAEMON_USER
-      value: root
+      value: "root"
     - name: FLUENTD_DAEMON_GROUP
-      value: root
+      value: "root"
