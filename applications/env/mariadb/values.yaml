@@ -8,7 +8,7 @@ primary:
       - ReadWriteMany
 
 secondary:
-  replicaCount: 5
+  replicaCount: 3
   persistence:
     enabled: true
     storageClass: ceph-filesystem

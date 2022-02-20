@@ -1,16 +1,11 @@
 data:
-  replicas: 1
   persistence:
     storageClass: ceph-filesystem
     accessModes:
       - ReadWriteMany
 
 master:
-  replicas: 1
   persistence:
     storageClass: ceph-filesystem
     accessModes:
       - ReadWriteMany
-
-coordinating:
-  replicas: 1
