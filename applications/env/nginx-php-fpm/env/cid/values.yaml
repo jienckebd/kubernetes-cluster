@@ -1,3 +1,5 @@
 sys:
   context: cid
   subcontext: cid1
+persistence:
+  enabled: false
