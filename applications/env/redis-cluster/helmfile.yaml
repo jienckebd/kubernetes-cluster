@@ -1,3 +1,6 @@
+helmDefaults:
+  wait: false
+  cleanupOnFail: true
 
 repositories:
   - name: bitnami

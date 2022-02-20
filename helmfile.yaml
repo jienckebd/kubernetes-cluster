@@ -1,6 +1,6 @@
 helmDefaults:
-  atomic: true
   wait: true
+  cleanupOnFail: true
 
 helmfiles:
 
