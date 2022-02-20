@@ -1,4 +1,5 @@
 helmDefaults:
+  wait: true
   cleanupOnFail: true
 
 repositories:

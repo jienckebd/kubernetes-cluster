@@ -1,5 +1,4 @@
 helmDefaults:
-  wait: true
   cleanupOnFail: true
 
 helmfiles:
@@ -15,9 +14,9 @@ helmfiles:
 
   # Env / many.
   - path: applications/env/mariadb/helmfile.yaml
-  - path: applications/env/nginx-php-fpm/helmfile.yaml
   - path: applications/env/redis-cluster/helmfile.yaml
   - path: applications/env/elasticsearch/helmfile.yaml
+  - path: applications/env/nginx-php-fpm/helmfile.yaml
 
   # rook-ceph.
   - path: applications/rook-ceph/rook-ceph/helmfile.yaml
