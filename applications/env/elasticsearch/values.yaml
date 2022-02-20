@@ -1,11 +1,34 @@
 data:
+  replicas: 2
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 11
+    targetCPU: 80
+    targetMemory: 80
   persistence:
     storageClass: ceph-filesystem
     accessModes:
       - ReadWriteMany
 
 master:
+  replicas: 2
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 11
+    targetCPU: 80
+    targetMemory: 80
   persistence:
     storageClass: ceph-filesystem
     accessModes:
       - ReadWriteMany
+
+coordinating:
+  replicas: 2
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 11
+    targetCPU: 80
+    targetMemory: 80
