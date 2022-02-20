@@ -1,3 +1,5 @@
+architecture: replication
+
 primary:
   persistence:
     enabled: true
@@ -6,13 +8,12 @@ primary:
       - ReadWriteMany
 
 secondary:
+  replicaCount: 5
   persistence:
     enabled: true
     storageClass: ceph-filesystem
     accessModes:
       - ReadWriteMany
-
-# architecture: replication
 
 auth:
   database: drupal
