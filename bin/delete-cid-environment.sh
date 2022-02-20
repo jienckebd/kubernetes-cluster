@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
+namespace="${1:-env-cid}"
+
 current_namespace=$(kubectl config view --minify --output 'jsonpath={..namespace}'; echo)
 
-kubectl get ns | grep env-cid | awk '$1 {print$1}' | while read ns; do
+kubectl get ns | grep "${namespace}" | awk '$1 {print$1}' | while read ns; do
   kubectl config set-context --current --namespace=$ns
   helm ls --all --short | xargs -L1 helm delete
   kubectl delete pods --all --force

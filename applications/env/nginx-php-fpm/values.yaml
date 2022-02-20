@@ -6,7 +6,6 @@ persistence:
 
 autoscaling:
   enabled: true
-  minReplica: 2
-  maxReplica: 11
+  minReplicas: 2
+  maxReplicas: 5
   targetCPU: 80
-  targetMemory: 80
