@@ -39,7 +39,7 @@ env-stg:
  environment: stg
  script:
    - gl-ensure-namespace env-stg
-   - export SYS_HELM_NEW="true"
+   - export SYS_HELM_NEW="false"
    - kubectl config set-context --current --namespace=env-stg
    - "kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: env-stg/' | kubectl apply --namespace=env-stg -f - || true"
    - "kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: env-stg/' | kubectl apply --namespace=env-stg -f - || true"
@@ -53,7 +53,7 @@ env-dev:
  environment: dev
  script:
    - gl-ensure-namespace env-dev
-   - export SYS_HELM_NEW="true"
+   - export SYS_HELM_NEW="false"
    - kubectl config set-context --current --namespace=env-dev
    - "kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | kubectl apply --namespace=env-dev -f - || true"
    - "kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | kubectl apply --namespace=env-dev -f - || true"
@@ -67,7 +67,7 @@ env-ide1:
  environment: ide1
  script:
    - export SYS_HELM_NAMESPACE_SUFFIX=ide1
-   - export SYS_HELM_NEW="true"
+   - export SYS_HELM_NEW="false"
    - gl-ensure-namespace env-ide1
    - kubectl config set-context --current --namespace=env-ide1
    - "kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | kubectl apply --namespace=env-ide1 -f - || true"
