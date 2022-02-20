@@ -1,5 +1,5 @@
 helmDefaults:
-  cleanupOnFail: true
+  cleanupOnFail: false
 
 repositories:
   - name: bitnami

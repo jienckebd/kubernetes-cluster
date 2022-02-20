@@ -1,6 +1,6 @@
 helmDefaults:
   wait: true
-  cleanupOnFail: true
+  cleanupOnFail: false
 
 repositories:
   - name: nginx-php-fpm
