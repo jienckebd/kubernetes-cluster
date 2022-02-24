@@ -6,6 +6,7 @@ releases:
   - name: keycloak
     namespace: admin
     chart: bitnami/keycloak
+    version: 6.1.5
     installed: true
 
     values:

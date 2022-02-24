@@ -6,6 +6,7 @@ releases:
   - name: nginx-ingress-controller
     namespace: admin
     chart: bitnami/nginx-ingress-controller
+    version: 9.1.5
     installed: true
 
     values:

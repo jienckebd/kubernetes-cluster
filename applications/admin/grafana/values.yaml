@@ -15,12 +15,14 @@ admin:
   user: "admin"
   password: "drupal"
 
-extraVolumes:
-- name: config-grafana 
-  secret:
-    secretName: config-grafana 
+grafana:
 
-extraVolumeMounts:
-- name: config-grafana 
-  mountPath: /opt/bitnami/grafana/conf/grafana.ini
-  subPath: grafana.ini
+  extraVolumes:
+  - name: config-grafana
+    secret:
+      secretName: config-grafana
+
+  extraVolumeMounts:
+  - name: config-grafana
+    mountPath: /opt/bitnami/grafana/conf/grafana.ini
+    subPath: grafana.ini

@@ -9,6 +9,7 @@ releases:
   - name: mariadb
     namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
     chart: bitnami/mariadb
+    version: 10.3.5
     installed: true
 
     values:

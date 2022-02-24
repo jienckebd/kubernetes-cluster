@@ -6,6 +6,7 @@ releases:
   - name: cert-manager
     namespace: admin
     chart: bitnami/cert-manager
+    version: 0.4.5
     installed: true
 
     values:

@@ -9,6 +9,7 @@ releases:
   - name: elasticsearch
     namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
     chart: bitnami/elasticsearch
+    version: 17.9.3
     installed: true
 
     values:

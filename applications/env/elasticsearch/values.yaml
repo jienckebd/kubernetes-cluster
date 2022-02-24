@@ -5,6 +5,11 @@ data:
     minReplicas: 2
     maxReplicas: 5
     targetCPU: 80
+  resources:
+    limits: {}
+    requests:
+      cpu: 500m
+      memory: 1024Mi
   persistence:
     storageClass: ceph-filesystem
     accessModes:
@@ -17,6 +22,11 @@ master:
     minReplicas: 2
     maxReplicas: 5
     targetCPU: 80
+  resources:
+    limits: {}
+    requests:
+      cpu: 500m
+      memory: 1024Mi
   persistence:
     storageClass: ceph-filesystem
     accessModes:
@@ -29,3 +39,8 @@ coordinating:
     minReplicas: 2
     maxReplicas: 5
     targetCPU: 80
+  resources:
+    limits: {}
+    requests:
+      cpu: 500m
+      memory: 1024Mi
