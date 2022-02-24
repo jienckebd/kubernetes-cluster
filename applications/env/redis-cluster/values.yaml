@@ -5,7 +5,7 @@ global:
 
 persistence:
   enabled: true
-  storageClass: ceph-filesystem-wait
+  storageClass: ceph-filesystem
   accessModes:
     - ReadWriteMany
 

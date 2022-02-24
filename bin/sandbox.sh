@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 gcloud compute addresses create sys-env-stg --region=us-east4
 gcloud compute addresses create sys-env-dev --region=us-east4
 gcloud compute addresses create sys-env-ide1 --region=us-east4
