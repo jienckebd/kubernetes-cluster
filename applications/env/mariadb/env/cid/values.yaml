@@ -3,5 +3,6 @@ primary:
     enabled: false
 
 secondary:
+  replicaCount: 1
   persistence:
     enabled: false
