@@ -47,19 +47,19 @@ env-prd:
 #    - "kubectl get secret sys-env-var-config-stg --namespace=default -o yaml | sed 's/namespace: default/namespace: env-stg/' | sed 's/name: sys-env-var-config-stg/name: sys-env-var-config/' | kubectl apply --namespace=env-stg -f - || true"
 #    - gl-helmfile --environment stg apply --suppress-secrets
 
-# env-dev:
-#  stage: deploy
-#  image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.3.2"
-#  environment: dev
-#  script:
-#    - gl-ensure-namespace env-dev
-#    - export SYS_HELM_NEW="false"
-#    - kubectl config set-context --current --namespace=env-dev
-#    - "kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | kubectl apply --namespace=env-dev -f - || true"
-#    - "kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | kubectl apply --namespace=env-dev -f - || true"
-#    - "kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | kubectl apply --namespace=env-dev -f - || true"
-#    - "kubectl get secret sys-env-var-config-dev --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | sed 's/name: sys-env-var-config-dev/name: sys-env-var-config/' | kubectl apply --namespace=env-dev -f - || true"
-#    - gl-helmfile --environment dev apply --suppress-secrets
+env-dev:
+ stage: deploy
+ image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.3.2"
+ environment: dev
+ script:
+   - gl-ensure-namespace env-dev
+   - export SYS_HELM_NEW="true"
+   - kubectl config set-context --current --namespace=env-dev
+   - "kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | kubectl apply --namespace=env-dev -f - || true"
+   - "kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | kubectl apply --namespace=env-dev -f - || true"
+   - "kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | kubectl apply --namespace=env-dev -f - || true"
+   - "kubectl get secret sys-env-var-config-dev --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | sed 's/name: sys-env-var-config-dev/name: sys-env-var-config/' | kubectl apply --namespace=env-dev -f - || true"
+   - gl-helmfile --environment dev apply --suppress-secrets
 
 env-ide1:
  stage: deploy

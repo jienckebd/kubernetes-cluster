@@ -2,3 +2,5 @@ sys:
   context: cloud
   subcontext: dev
   uri: https://dev.env.sys.sysf.one/
+
+replicas: 1
