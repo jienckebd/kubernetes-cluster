@@ -1,46 +1,43 @@
 data:
-  replicas: 2
   autoscaling:
     enabled: true
-    minReplicas: 2
+    minReplicas: 1
     maxReplicas: 5
     targetCPU: 80
   resources:
     limits: {}
     requests:
-      cpu: 500m
-      memory: 1024Mi
+      cpu: 200m
+      memory: 512Mi
   persistence:
     storageClass: ceph-filesystem
     accessModes:
       - ReadWriteMany
 
 master:
-  replicas: 2
   autoscaling:
     enabled: true
-    minReplicas: 2
+    minReplicas: 1
     maxReplicas: 5
     targetCPU: 80
   resources:
     limits: {}
     requests:
-      cpu: 500m
-      memory: 1024Mi
+      cpu: 200m
+      memory: 512Mi
   persistence:
     storageClass: ceph-filesystem
     accessModes:
       - ReadWriteMany
 
 coordinating:
-  replicas: 2
   autoscaling:
     enabled: true
-    minReplicas: 2
+    minReplicas: 1
     maxReplicas: 5
     targetCPU: 80
   resources:
     limits: {}
     requests:
-      cpu: 500m
-      memory: 1024Mi
+      cpu: 200m
+      memory: 512Mi

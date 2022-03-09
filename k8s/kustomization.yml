@@ -14,5 +14,5 @@ resources:
   - nfs/nfs.yml
   - mariadb/secret.yml
   - gitlab/dind.yaml
-  - gitlab/image-cache.yaml
+#  - gitlab/image-cache.yaml
 

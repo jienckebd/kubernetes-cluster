@@ -8,12 +8,12 @@ gcloud container clusters create sysf \
 --enable-ip-alias \
 --enable-private-nodes \
 --image-type "UBUNTU_CONTAINERD" \
---machine-type "e2-standard-4" \
+--machine-type "n2-standard-4" \
 --disk-type "pd-balanced" \
 --disk-size "50" \
 --preemptible \
 --max-pods-per-node "100" \
---num-nodes "3" \
+--num-nodes "5" \
 --master-ipv4-cidr 172.16.0.0/28 \
 --network "projects/sysf-12/global/networks/sysf" \
 --subnetwork "projects/sysf-12/regions/us-east4/subnetworks/us-east4-192" \
@@ -34,7 +34,7 @@ gcloud container clusters create sysf \
 # --image-type "UBUNTU_CONTAINERD" \
 # --machine-type "e2-standard-4" \
 # --disk-type "pd-balanced" \
-# --disk-size "50" \
+# --disk-size "50" \k
 # --preemptible \
 # --max-pods-per-node "100" \
 # --num-nodes "3" \

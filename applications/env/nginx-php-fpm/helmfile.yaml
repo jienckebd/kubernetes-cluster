@@ -1,5 +1,5 @@
 helmDefaults:
-  wait: true
+  wait: false
   cleanupOnFail: false
 
 repositories:
@@ -10,7 +10,6 @@ releases:
   - name: web
     namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
     chart: nginx-php-fpm/nginx-php-fpm
-    version: 0.1.0
     installed: true
 
     values:

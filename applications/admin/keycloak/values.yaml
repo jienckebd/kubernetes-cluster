@@ -26,3 +26,6 @@ ingress:
 extraEnvVars:
   - name: KEYCLOAK_EXTRA_ARGS
     value: "-Dkeycloak.frontendUrl=https://id.sys.sysf.one/auth"
+
+metrics:
+  enabled: true

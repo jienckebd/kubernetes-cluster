@@ -21,3 +21,8 @@ kubectl get secret sys-env-var-config-prd --namespace=default -o yaml | sed 's/n
 kubectl get secret sys-env-var-config-stg --namespace=default -o yaml | sed 's/namespace: default/namespace: env-stg/' | sed 's/name: sys-env-var-config-stg/name: sys-env-var-config/' | kubectl apply --namespace=env-stg -f -
 kubectl get secret sys-env-var-config-dev --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | sed 's/name: sys-env-var-config-dev/name: sys-env-var-config/' | kubectl apply --namespace=env-dev -f -
 kubectl get secret sys-env-var-config-ide --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | sed 's/name: sys-env-var-config-ide/name: sys-env-var-config/' | kubectl apply --namespace=env-ide1 -f -
+
+kubectl rollout restart statefulset web-nginx-php-fpm -n env-prd
+kubectl rollout restart statefulset web-nginx-php-fpm -n env-stg
+kubectl rollout restart statefulset web-nginx-php-fpm -n env-dev
+kubectl rollout restart statefulset web-nginx-php-fpm -n env-ide1

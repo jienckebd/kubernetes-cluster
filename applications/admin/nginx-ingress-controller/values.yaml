@@ -6,3 +6,6 @@ tcp:
 
 extraArgs:
   enable-ssl-passthrough: ""
+
+metrics:
+  enabled: true

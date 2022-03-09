@@ -17,6 +17,10 @@ admin:
 
 grafana:
 
+  podSecurityContext:
+    runAsUser: 0
+    runAsNonRoot: false
+
   extraVolumes:
   - name: config-grafana
     secret:
@@ -26,3 +30,8 @@ grafana:
   - name: config-grafana
     mountPath: /opt/bitnami/grafana/conf/grafana.ini
     subPath: grafana.ini
+
+plugins: "redis-datasource"
+
+metrics:
+  enabled: true

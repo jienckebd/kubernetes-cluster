@@ -5,6 +5,7 @@ aggregator:
       value: "elasticsearch-coordinating-only.admin.svc.cluster.local"
     - name: ELASTICSEARCH_PORT
       value: "9200"
+
 forwarder:
   configMap: fluentd-forwarder
   extraEnvVars:

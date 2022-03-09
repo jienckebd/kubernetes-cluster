@@ -89,6 +89,11 @@ velero backup create ns--env-admin--3 --snapshot-volumes=true --default-volumes-
 velero backup create web--prd--1 --snapshot-volumes=true --default-volumes-to-restic --selector app=web-nginx-php-fpm --wait
 velero backup create keycloak-postgresql--1 --snapshot-volumes=true --default-volumes-to-restic --selector app.kubernetes.io/name=postgresql --wait
 
+velero restore create --from-backup admin--24h-20220214132035 --include-resources persistentvolumeclaims,persistentvolumes
+velero restore create --from-backup admin--24h-20220308133144
+velero restore create --from-backup env-prd--24h-20220309134221
+velero restore create --from-backup env-ide1--24h-20220309135221
+
 
 kubectl create clusterrolebinding "kasten-admin--bryan.jiencke@gmail.com" --clusterrole=kasten-admin --user=bryan.jiencke@gmail.com
 kubectl create clusterrolebinding "kasten-admin--bryan.jiencke@gmail.com--cluster-admin" --clusterrole=cluster-admin --user=bryan.jiencke@gmail.com
@@ -131,3 +136,5 @@ helm install fluentd bitnami/fluentd \
   --set forwarder.extraEnv[0].value=root \
   --set forwarder.extraEnv[1].name=FLUENTD_DAEMON_GROUP \
   --set forwarder.extraEnv[1].value=root
+
+k get secret -n rook-ceph rook-ceph-dashboard-password -o yaml
