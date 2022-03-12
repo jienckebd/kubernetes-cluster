@@ -17,14 +17,14 @@ replicas: 1
 
 phpfpm:
   resources:
-    limits: {}
-    requests:
-      cpu: 1000m
-      memory: 512Mi
+    requests: {}
+    limits:
+      cpu: 2000m
+      memory: 2048Mi
 
 nginx:
   resources:
-    limits: {}
-    requests:
-      cpu: 200m
-      memory: 256Mi
+    requests: {}
+    limits:
+      cpu: 1000m
+      memory: 1024Mi
