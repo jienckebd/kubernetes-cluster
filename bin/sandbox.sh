@@ -70,7 +70,13 @@ velero install \
     --provider gcp \
     --plugins velero/velero-plugin-for-gcp:v1.3.0 \
     --bucket sysf-12--velero--0 \
-    --secret-file ~/sys/etc/gcloud/credentials-velero --features=EnableCSI --use-restic
+    --secret-file ~/sys/etc/gcloud/credentials-velero \
+    --features=EnableCSI \
+    --use-restic \
+    --restic-pod-cpu-request=50m \
+    --restic-pod-mem-request=128Mi \
+    --velero-pod-cpu-request=50m \
+    --velero-pod-mem-request=128Mi
 
 velero schedule create admin--hourly --schedule="@every 1h" --include-namespaces admin --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s
 velero schedule create env-prd--hourly --schedule="@every 1h" --include-namespaces env-prd --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s
