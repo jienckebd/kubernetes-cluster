@@ -11,24 +11,20 @@ autoscaling:
   enabled: true
   minReplicas: 1
   maxReplicas: 5
-  targetCPU: 90
+  targetCPU: 80
 
 replicas: 1
 
 phpfpm:
   resources:
-    requests:
-      cpu: 500m
-      memory: 512Mi
+    requests: {}
     limits:
       cpu: 2000m
       memory: 2048Mi
 
 nginx:
   resources:
-    requests:
-      cpu: 300m
-      memory: 256Mi
+    requests: {}
     limits:
       cpu: 1000m
       memory: 1024Mi
