@@ -8,7 +8,7 @@ gcloud container clusters create sysf \
 --enable-ip-alias \
 --enable-private-nodes \
 --image-type "UBUNTU_CONTAINERD" \
---machine-type "n2-standard-4" \
+--machine-type "c2-standard-4" \
 --disk-type "pd-balanced" \
 --disk-size "50" \
 --preemptible \
