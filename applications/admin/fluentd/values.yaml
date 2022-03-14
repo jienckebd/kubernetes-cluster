@@ -1,4 +1,13 @@
 aggregator:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: cloud.google.com/gke-nodepool
+            operator: In
+            values:
+            - default-pool
   configMap: elasticsearch-output
   extraEnvVars:
     - name: ELASTICSEARCH_HOST
@@ -7,6 +16,15 @@ aggregator:
       value: "9200"
 
 forwarder:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: cloud.google.com/gke-nodepool
+            operator: In
+            values:
+            - default-pool
   configMap: fluentd-forwarder
   extraEnvVars:
     - name: FLUENTD_DAEMON_USER

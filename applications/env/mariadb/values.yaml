@@ -1,8 +1,27 @@
-architecture: standalone
+architecture: replication
 
 primary:
+  containerSecurityContext:
+    runAsUser: 0
+    runAsNonRoot: false
+  extraVolumeMounts:
+    - mountPath: "/bitnami/mariadb/data"
+      name: "mariadb-local-ssd"
+  extraVolumes:
+    - name: "mariadb-local-ssd"
+      hostPath:
+        path: "/mnt/disks/ssd0/env-prd--maria-db"
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: cloud.google.com/gke-nodepool
+            operator: In
+            values:
+            - local-ssd
   persistence:
-    enabled: true
+    enabled: false
     storageClass: ceph-filesystem
     accessModes:
       - ReadWriteMany
@@ -55,6 +74,15 @@ primary:
     pid-file=/opt/bitnami/mariadb/tmp/mysqld.pid
 
 secondary:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: cloud.google.com/gke-nodepool
+            operator: In
+            values:
+            - default-pool
   replicaCount: 3
   persistence:
     enabled: true

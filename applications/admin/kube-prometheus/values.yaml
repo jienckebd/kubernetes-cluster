@@ -1,5 +1,15 @@
 prometheus:
 
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: cloud.google.com/gke-nodepool
+            operator: In
+            values:
+            - default-pool
+
   ingress:
     enabled: true
     hostname: pro.sys.sysf.one
@@ -35,3 +45,25 @@ prometheus:
         - job_name: 'admin--keycloak-metrics'
           static_configs:
             - targets: ['keycloak-metrics.admin.svc.cluster.local:9990']
+
+operator:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: cloud.google.com/gke-nodepool
+            operator: In
+            values:
+            - default-pool
+
+alertmanager:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: cloud.google.com/gke-nodepool
+            operator: In
+            values:
+            - default-pool

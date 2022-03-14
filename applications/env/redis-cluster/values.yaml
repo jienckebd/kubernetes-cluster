@@ -3,8 +3,19 @@ global:
   redis:
     password: "drupal"
 
+redis:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: cloud.google.com/gke-nodepool
+            operator: In
+            values:
+            - default-pool
+
 persistence:
-  enabled: true
+  enabled: false
   storageClass: ceph-filesystem
   accessModes:
     - ReadWriteMany

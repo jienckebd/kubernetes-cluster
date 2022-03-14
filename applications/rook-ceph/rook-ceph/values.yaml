@@ -1,0 +1,13 @@
+# discover:
+#   nodeAffinity: "cloud.google.com/gke-nodepool=default-pool"
+
+# csi:
+#   provisionerNodeAffinity: "cloud.google.com/gke-nodepool=default-pool"
+#   pluginNodeAffinity: "cloud.google.com/gke-nodepool=default-pool"
+#   rbdProvisionerNodeAffinity: "cloud.google.com/gke-nodepool=default-pool"
+#   rbdPluginNodeAffinity: "cloud.google.com/gke-nodepool=default-pool"
+#   cephFSProvisionerNodeAffinity: "cloud.google.com/gke-nodepool=default-pool"
+#   cephFSPluginNodeAffinity: "cloud.google.com/gke-nodepool=default-pool"
+
+# admissionController:
+#   nodeAffinity: "cloud.google.com/gke-nodepool=default-pool"

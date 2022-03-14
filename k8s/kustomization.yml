@@ -11,8 +11,7 @@ resources:
   - cluster-issuer/sys.yml
   - volume-snapshot-class/rook-ceph.yml
   - volume-snapshot-class/gce-useast-4.yml
-  - nfs/nfs.yml
+  # - nfs/nfs.yml
   - mariadb/secret.yml
   - gitlab/dind.yaml
-#  - gitlab/image-cache.yaml
-
+  - gitlab/image-cache.yaml

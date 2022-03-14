@@ -1,13 +1,22 @@
 data:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: cloud.google.com/gke-nodepool
+            operator: In
+            values:
+            - default-pool
   autoscaling:
     enabled: true
-    minReplicas: 1
+    minReplicas: 2
     maxReplicas: 5
-    targetCPU: 80
+    targetCPU: 90
   resources:
     limits: {}
     requests:
-      cpu: 200m
+      cpu: 500m
       memory: 512Mi
   persistence:
     storageClass: ceph-filesystem
@@ -15,15 +24,24 @@ data:
       - ReadWriteMany
 
 master:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: cloud.google.com/gke-nodepool
+            operator: In
+            values:
+            - default-pool
   autoscaling:
     enabled: true
-    minReplicas: 1
+    minReplicas: 2
     maxReplicas: 5
-    targetCPU: 80
+    targetCPU: 90
   resources:
     limits: {}
     requests:
-      cpu: 200m
+      cpu: 500m
       memory: 512Mi
   persistence:
     storageClass: ceph-filesystem
@@ -31,13 +49,22 @@ master:
       - ReadWriteMany
 
 coordinating:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: cloud.google.com/gke-nodepool
+            operator: In
+            values:
+            - default-pool
   autoscaling:
     enabled: true
-    minReplicas: 1
+    minReplicas: 2
     maxReplicas: 5
-    targetCPU: 80
+    targetCPU: 90
   resources:
     limits: {}
     requests:
-      cpu: 200m
+      cpu: 500m
       memory: 512Mi

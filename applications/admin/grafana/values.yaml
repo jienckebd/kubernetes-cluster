@@ -17,6 +17,16 @@ admin:
 
 grafana:
 
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: cloud.google.com/gke-nodepool
+            operator: In
+            values:
+            - default-pool
+
   podSecurityContext:
     runAsUser: 0
     runAsNonRoot: false
