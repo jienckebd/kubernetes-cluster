@@ -1,16 +1,16 @@
 architecture: replication
 
 primary:
-  containerSecurityContext:
-    runAsUser: 0
-    runAsNonRoot: false
-  extraVolumeMounts:
-    - mountPath: "/bitnami/mariadb/data"
-      name: "mariadb-local-ssd"
-  extraVolumes:
-    - name: "mariadb-local-ssd"
-      hostPath:
-        path: "/mnt/disks/ssd0/env-prd--maria-db"
+  # containerSecurityContext:
+  #   runAsUser: 0
+  #   runAsNonRoot: false
+  # extraVolumeMounts:
+  #   - mountPath: "/bitnami/mariadb/data"
+  #     name: "mariadb-local-ssd"
+  # extraVolumes:
+  #   - name: "mariadb-local-ssd"
+  #     hostPath:
+  #       path: "/mnt/disks/ssd0/env-prd--maria-db"
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:

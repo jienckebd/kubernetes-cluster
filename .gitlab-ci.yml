@@ -25,7 +25,7 @@ env-prd:
  environment: prd
  script:
    - gl-ensure-namespace env-prd
-   - export SYS_HELM_NEW="true"
+   - export SYS_HELM_NEW="false"
    - kubectl config set-context --current --namespace=env-prd
    - "kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: env-prd/' | kubectl apply --namespace=env-prd -f - || true"
    - "kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: env-prd/' | kubectl apply --namespace=env-prd -f - || true"
