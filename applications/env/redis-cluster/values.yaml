@@ -4,6 +4,15 @@ global:
     password: "drupal"
 
 redis:
+  configmap: "cluster-config-file /bitnami/volume/nodes.conf"
+  extraVolumeMounts:
+    - mountPath: "/bitnami/redis/data"
+      name: "redis-data-memory"
+  extraVolumes:
+    - name: "redis-data-memory"
+      emptyDir:
+        medium: Memory
+        sizeLimit: 2Gi
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -14,8 +23,13 @@ redis:
             values:
             - default-pool
 
+containerSecurityContext:
+  runAsUser: 0
+  runAsNonRoot: false
+  privileged: true
+
 persistence:
-  enabled: false
+  path: "/bitnami/volume"
   storageClass: ceph-filesystem
   accessModes:
     - ReadWriteMany

@@ -145,3 +145,21 @@ helm install fluentd bitnami/fluentd \
   --set forwarder.extraEnv[1].value=root
 
 k get secret -n rook-ceph rook-ceph-dashboard-password -o yaml
+
+dd if=/dev/zero of=/app/test1.img bs=1G count=3 oflag=dsync
+dd if=/dev/zero of=/app/test2.img bs=512 count=1000 oflag=dsync
+
+dd if=/dev/zero of=/bitnami/mariadb/data/test1.img bs=1G count=3 oflag=dsync
+dd if=/dev/zero of=/bitnami/mariadb/data/test2.img bs=512 count=1000 oflag=dsync
+
+dd if=/dev/zero of=/bitnami/redis/data/test1.img bs=1G count=3 oflag=dsync
+
+
+gcloud beta container node-pools create local-ssd \
+    --ephemeral-storage local-ssd-count=1 \
+    --machine-type=c2d-standard-4 \
+    --num-nodes=1
+
+mkdir -p /mnt/ram-mariadb-data
+
+mount -t tmpfs -o size=1g tmpfs /bitnami/ram
