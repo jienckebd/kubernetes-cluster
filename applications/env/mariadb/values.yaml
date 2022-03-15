@@ -71,12 +71,12 @@ mariadbConfiguration: |-
   socket=/opt/bitnami/mariadb/tmp/mysql.sock
   pid-file=/opt/bitnami/mariadb/tmp/mysqld.pid
 
-rootUser:
-  password: drupal
+# rootUser:
+#   password: drupal
 
-galera:
-  mariabackup:
-    password: drupal
+# galera:
+#   mariabackup:
+#     password: drupal
 
 db:
   user: drupal
