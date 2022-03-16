@@ -13,7 +13,7 @@ helmfiles:
   - path: applications/admin/fluentd/helmfile.yaml
 
   # Env / many.
-  - path: applications/env/mariadb/helmfile.yaml
+  - path: applications/env/mariadb-galera/helmfile.yaml
   - path: applications/env/redis-cluster/helmfile.yaml
   - path: applications/env/elasticsearch/helmfile.yaml
   - path: applications/env/nginx-php-fpm/helmfile.yaml
