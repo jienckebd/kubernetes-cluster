@@ -6,7 +6,7 @@ repositories:
     url: https://charts.bitnami.com/bitnami
 
 releases:
-  - name: mariadb
+  - name: mariadb-galera
     namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
     chart: bitnami/mariadb-galera
     version: 7.1.1
