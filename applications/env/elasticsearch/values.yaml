@@ -19,6 +19,7 @@ data:
       cpu: 500m
       memory: 512Mi
   persistence:
+    enabled: false
     storageClass: ceph-filesystem
     accessModes:
       - ReadWriteMany

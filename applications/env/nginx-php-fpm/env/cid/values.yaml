@@ -8,5 +8,3 @@ persistence:
 autoscaling:
   minReplicas: 1
   maxReplicas: 1
-
-replicas: 1

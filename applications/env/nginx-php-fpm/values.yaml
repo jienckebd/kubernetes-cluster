@@ -23,8 +23,6 @@ autoscaling:
   maxReplicas: 5
   targetCPU: 80
 
-replicas: 2
-
 phpfpm:
   resources:
     limits: {}

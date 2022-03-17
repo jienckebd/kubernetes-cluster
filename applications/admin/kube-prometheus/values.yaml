@@ -11,7 +11,7 @@ prometheus:
             - default-pool
 
   ingress:
-    enabled: true
+    enabled: false
     hostname: pro.sys.sysf.one
     tls: true
     annotations:
