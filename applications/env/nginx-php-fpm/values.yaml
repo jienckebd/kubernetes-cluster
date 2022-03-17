@@ -27,12 +27,12 @@ phpfpm:
   resources:
     limits: {}
     requests:
-      cpu: 1000m
+      cpu: 500m
       memory: 2048Mi
 
 nginx:
   resources:
     limits: {}
     requests:
-      cpu: 500m
-      memory: 1024Mi
+      cpu: 200m
+      memory: 256Mi

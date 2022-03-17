@@ -10,7 +10,7 @@ data:
             - default-pool
   autoscaling:
     enabled: true
-    minReplicas: 2
+    minReplicas: 1
     maxReplicas: 5
     targetCPU: 90
   resources:
@@ -19,7 +19,6 @@ data:
       cpu: 500m
       memory: 512Mi
   persistence:
-    enabled: false
     storageClass: ceph-filesystem
     accessModes:
       - ReadWriteMany
@@ -36,7 +35,7 @@ master:
             - default-pool
   autoscaling:
     enabled: true
-    minReplicas: 2
+    minReplicas: 1
     maxReplicas: 5
     targetCPU: 90
   resources:
@@ -61,7 +60,7 @@ coordinating:
             - default-pool
   autoscaling:
     enabled: true
-    minReplicas: 2
+    minReplicas: 1
     maxReplicas: 5
     targetCPU: 90
   resources:

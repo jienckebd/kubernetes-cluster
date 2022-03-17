@@ -1,12 +1,39 @@
 data:
   replicas: 1
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 1
+  resources:
+    limits: {}
+    requests:
+      cpu: 1m
+      memory: 1Mi
   persistence:
     enabled: false
 
 master:
   replicas: 1
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 1
+  resources:
+    limits: {}
+    requests:
+      cpu: 1m
+      memory: 1Mi
   persistence:
     enabled: false
 
 coordinating:
   replicas: 1
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 1
+  resources:
+    limits: {}
+    requests:
+      cpu: 1m
+      memory: 1Mi
