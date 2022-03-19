@@ -4,9 +4,9 @@ global:
     password: "drupal"
 
 redis:
-  configmap: "cluster-config-file /bitnami/volume/nodes.conf"
+  configmap: "dir /mnt/data"
   extraVolumeMounts:
-    - mountPath: "/bitnami/redis/data"
+    - mountPath: "/mnt/data"
       name: "redis-data-memory"
   extraVolumes:
     - name: "redis-data-memory"
@@ -29,7 +29,6 @@ containerSecurityContext:
   privileged: true
 
 persistence:
-  path: "/bitnami/volume"
   storageClass: ceph-filesystem
   accessModes:
     - ReadWriteMany
