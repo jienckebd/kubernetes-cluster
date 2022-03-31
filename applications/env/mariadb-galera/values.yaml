@@ -18,11 +18,11 @@
 #           operator: In
 #           values:
 #           - default-pool
-# persistence:
-#   enabled: true
-#   storageClass: ceph-filesystem
-#   accessModes:
-#     - ReadWriteMany
+persistence:
+  enabled: true
+  storageClass: ceph-block
+  accessModes:
+    - ReadWriteOnce
 
 extraVolumeMounts:
     - mountPath: "/bitnami/mariadb/data"
