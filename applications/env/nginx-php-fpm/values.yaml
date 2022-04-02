@@ -36,3 +36,4 @@ nginx:
     requests:
       cpu: 50m
       memory: 256Mi
+
