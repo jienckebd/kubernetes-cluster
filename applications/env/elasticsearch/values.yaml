@@ -16,7 +16,7 @@ data:
   resources:
     limits: {}
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 512Mi
   persistence:
     storageClass: ceph-filesystem
@@ -41,7 +41,7 @@ master:
   resources:
     limits: {}
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 512Mi
   persistence:
     storageClass: ceph-filesystem
@@ -66,5 +66,5 @@ coordinating:
   resources:
     limits: {}
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 512Mi
