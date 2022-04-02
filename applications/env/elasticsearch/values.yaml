@@ -9,7 +9,7 @@ data:
             values:
             - default-pool
   autoscaling:
-    enabled: true
+    enabled: false
     minReplicas: 2
     maxReplicas: 5
     targetCPU: 90
@@ -34,7 +34,7 @@ master:
             values:
             - default-pool
   autoscaling:
-    enabled: true
+    enabled: false
     minReplicas: 2
     maxReplicas: 5
     targetCPU: 90
@@ -59,7 +59,7 @@ coordinating:
             values:
             - default-pool
   autoscaling:
-    enabled: true
+    enabled: false
     minReplicas: 2
     maxReplicas: 5
     targetCPU: 90
