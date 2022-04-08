@@ -1,0 +1,16 @@
+repositories:
+  - name: kubernetes-dashboard
+    url: https://kubernetes.github.io/dashboard
+
+releases:
+  - name: kubernetes-dashboard
+    namespace: admin
+    chart: kubernetes-dashboard/kubernetes-dashboard
+    version: 5.4.1
+    installed: true
+
+    values:
+      - values.yaml
+
+environments:
+  admin: {  }

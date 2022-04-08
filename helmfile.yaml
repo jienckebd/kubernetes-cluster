@@ -11,6 +11,7 @@ helmfiles:
   - path: applications/admin/keycloak/helmfile.yaml
   - path: applications/admin/elasticsearch/helmfile.yaml
   - path: applications/admin/fluentd/helmfile.yaml
+  - path: applications/admin/kubernetes-dashboard/helmfile.yaml
 
   # Env / many.
   - path: applications/env/mariadb-galera/helmfile.yaml
