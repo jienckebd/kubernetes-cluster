@@ -31,7 +31,7 @@ env-prd:
     entrypoint: [""]
  environment: prd
  script:
-   - gl-ensure-namespace env-prd
+   - kubectl create namespace env-prd || true
    - export SYS_HELM_NEW="false"
    - kubectl config set-context --current --namespace=env-prd
    - "kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: env-prd/' | kubectl apply --namespace=env-prd -f - || true"
@@ -48,7 +48,7 @@ env-prd:
 #     entrypoint: [""]
 #  environment: stg
 #  script:
-#    - gl-ensure-namespace env-stg
+#    - kubectl create namespace env-stg || true
 #    - export SYS_HELM_NEW="false"
 #    - kubectl config set-context --current --namespace=env-stg
 #    - "kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: env-stg/' | kubectl apply --namespace=env-stg -f - || true"
@@ -64,7 +64,7 @@ env-prd:
 #     entrypoint: [""]
 #  environment: dev
 #  script:
-#    - gl-ensure-namespace env-dev
+#    - kubectl create namespace env-dev || true
 #    - export SYS_HELM_NEW="true"
 #    - kubectl config set-context --current --namespace=env-dev
 #    - "kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | kubectl apply --namespace=env-dev -f - || true"
@@ -82,7 +82,7 @@ env-prd:
 #  script:
 #    - export SYS_HELM_NAMESPACE_SUFFIX=ide1
 #    - export SYS_HELM_NEW="false"
-#    - gl-ensure-namespace env-ide1
+#    - kubectl create namespace env-ide1 || true
 #    - kubectl config set-context --current --namespace=env-ide1
 #    - "kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | kubectl apply --namespace=env-ide1 -f - || true"
 #    - "kubectl get secret tls-sys --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | kubectl apply --namespace=env-ide1 -f - || true"
