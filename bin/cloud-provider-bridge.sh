@@ -13,7 +13,7 @@ gcloud container clusters create sysf \
 --disk-size "50" \
 --preemptible \
 --max-pods-per-node "100" \
---num-nodes "5" \
+--num-nodes "3" \
 --master-ipv4-cidr 172.16.0.0/28 \
 --network "projects/sysf-12/global/networks/sysf" \
 --subnetwork "projects/sysf-12/regions/us-east4/subnetworks/us-east4-192" \
