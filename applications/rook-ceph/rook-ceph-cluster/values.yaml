@@ -97,11 +97,11 @@ ingress:
   dashboard:
     annotations:
       kubernetes.io/ingress.class: nginx
-      cert-manager.io/cluster-issuer: tls-sys
+      cert-manager.io/cluster-issuer: letsencrypt
     host:
       name: ceph.sys.sysf.one
       path: "/"
     tls:
       - hosts:
         - ceph.sys.sysf.one
-        secretName: tls-sys
+        secretName: sysf.one-tls

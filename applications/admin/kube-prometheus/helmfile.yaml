@@ -6,7 +6,7 @@ releases:
   - name: kube-prometheus
     namespace: admin
     chart: bitnami/kube-prometheus
-    version: 6.6.8
+    version: 6.9.2
     installed: true
     disableValidation: true
     values:

@@ -1,8 +1,8 @@
 ---
 apiVersion: cert-manager.io/v1
-kind: Issuer
+kind: ClusterIssuer
 metadata:
-  name: google-clouddns
+  name: letsencrypt-staging
   namespace: admin
 spec:
   acme:
@@ -13,21 +13,42 @@ spec:
     solvers:
     - dns01:
         cloudDNS:
-          project: sysf-12
+          project: bdbd-310322
           serviceAccountSecretRef:
             name: clouddns-dns01-solver-svc-acct
-            key: dns01-solver.json
+            key: key.json
+
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: letsencrypt-staging
+  namespace: admin
+spec:
+  acme:
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: 'bryan.jiencke@gmail.com'
+    privateKeySecretRef:
+      name: letsencrypt-account-key-staging
+    solvers:
+    - dns01:
+        cloudDNS:
+          project: bdbd-310322
+          serviceAccountSecretRef:
+            name: clouddns-dns01-solver-svc-acct
+            key: key.json
 
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: sysf.one-tls
+  name: sysf.one-staging-tls
   namespace: admin
 spec:
-  secretName: sysf.one-tls
+  secretName: sysf.one-staging-tls
   issuerRef:
-    name: google-clouddns
+    name: letsencrypt-staging
+    kind: ClusterIssuer
   dnsNames:
   - 'sysf.one'
   - '*.sysf.one'
@@ -41,12 +62,13 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: systemf.one-tls
+  name: systemf.one-staging-tls
   namespace: admin
 spec:
-  secretName: systemf.one-tls
+  secretName: systemf.one-staging-tls
   issuerRef:
-    name: google-clouddns
+    name: letsencrypt-staging
+    kind: ClusterIssuer
   dnsNames:
   - 'systemf.one'
   - '*.systemf.one'
@@ -55,12 +77,13 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: theentityframework.com-tls
+  name: theentityframework.com-staging-tls
   namespace: admin
 spec:
-  secretName: theentityframework.com-tls
+  secretName: theentityframework.com-staging-tls
   issuerRef:
-    name: google-clouddns
+    name: letsencrypt-staging
+    kind: ClusterIssuer
   dnsNames:
   - 'theentityframework.com'
   - '*.theentityframework.com'
@@ -69,12 +92,13 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: bryanjiencke.com-tls
+  name: bryanjiencke.com-staging-tls
   namespace: admin
 spec:
-  secretName: bryanjiencke.com-tls
+  secretName: bryanjiencke.com-staging-tls
   issuerRef:
-    name: google-clouddns
+    name: letsencrypt-staging
+    kind: ClusterIssuer
   dnsNames:
   - 'bryanjiencke.com'
   - '*.bryanjiencke.com'
@@ -83,12 +107,13 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: stevenjiencke.com-tls
+  name: stevenjiencke.com-staging-tls
   namespace: admin
 spec:
-  secretName: stevenjiencke.com-tls
+  secretName: stevenjiencke.com-staging-tls
   issuerRef:
-    name: google-clouddns
+    name: letsencrypt-staging
+    kind: ClusterIssuer
   dnsNames:
   - 'stevenjiencke.com'
   - '*.stevenjiencke.com'

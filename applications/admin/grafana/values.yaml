@@ -9,7 +9,7 @@ ingress:
   tls: true
   annotations:
     kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: tls-sys
+    cert-manager.io/cluster-issuer: letsencrypt
 
 admin:
   user: "admin"

@@ -1,0 +1,16 @@
+repositories:
+  - name: emberstack
+    url: https://emberstack.github.io/helm-charts
+
+releases:
+  - name: reflector
+    namespace: admin
+    chart: emberstack/reflector
+    version: 6.1.47
+    installed: true
+
+    values:
+      - values.yaml
+
+environments:
+  admin: {  }
