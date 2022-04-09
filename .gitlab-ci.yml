@@ -39,6 +39,7 @@ env-prd:
    - "kubectl get secret sys-env-var-config-prd --namespace=default -o yaml | sed 's/namespace: default/namespace: env-prd/' | sed 's/name: sys-env-var-config-prd/name: sys-env-var-config/' | kubectl apply --namespace=env-prd -f - || true"
    - helmfile --environment prd apply --suppress-secrets
 
+
 # env-stg:
 #  stage: deploy
 #  image:
