@@ -8,7 +8,7 @@ before_script:
 deploy:
   stage: deploy
   image:
-    name: bitnami/kubectl:latest
+    name: registry.gitlab.com/sysf/docker/image/kubectl:latest
     entrypoint: [""]
   script:
   - kubectl config get-contexts
