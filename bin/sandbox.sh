@@ -97,8 +97,8 @@ velero backup create web--prd--1 --snapshot-volumes=true --default-volumes-to-re
 velero backup create keycloak-postgresql--1 --snapshot-volumes=true --default-volumes-to-restic --selector app.kubernetes.io/name=postgresql --wait
 
 velero restore create --from-backup admin--24h-20220214132035 --include-resources persistentvolumeclaims,persistentvolumes
-velero restore create --from-backup admin--24h-20220308133144
-velero restore create --from-backup env-prd--24h-20220309134221
+velero restore create --from-backup admin--24h-20220407212605
+velero restore create --from-backup env-prd--24h-20220407213605
 velero restore create --from-backup env-ide1--24h-20220309135221
 
 

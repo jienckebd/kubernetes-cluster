@@ -1,0 +1,94 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: google-clouddns
+  namespace: admin
+spec:
+  acme:
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: 'bryan.jiencke@gmail.com'
+    privateKeySecretRef:
+      name: letsencrypt-account-key-staging
+    solvers:
+    - dns01:
+        cloudDNS:
+          project: sysf-12
+          serviceAccountSecretRef:
+            name: clouddns-dns01-solver-svc-acct
+            key: dns01-solver.json
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: sysf.one-tls
+  namespace: admin
+spec:
+  secretName: sysf.one-tls
+  issuerRef:
+    name: google-clouddns
+  dnsNames:
+  - 'sysf.one'
+  - '*.sysf.one'
+  - '*.sys.sysf.one'
+  - '*.env.sys.sysf.one'
+  - '*.app.sys.sysf.one'
+  - '*.platform.sys.sysf.one'
+  - '*.network.sys.sysf.one'
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: systemf.one-tls
+  namespace: admin
+spec:
+  secretName: systemf.one-tls
+  issuerRef:
+    name: google-clouddns
+  dnsNames:
+  - 'systemf.one'
+  - '*.systemf.one'
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: theentityframework.com-tls
+  namespace: admin
+spec:
+  secretName: theentityframework.com-tls
+  issuerRef:
+    name: google-clouddns
+  dnsNames:
+  - 'theentityframework.com'
+  - '*.theentityframework.com'
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: bryanjiencke.com-tls
+  namespace: admin
+spec:
+  secretName: bryanjiencke.com-tls
+  issuerRef:
+    name: google-clouddns
+  dnsNames:
+  - 'bryanjiencke.com'
+  - '*.bryanjiencke.com'
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: stevenjiencke.com-tls
+  namespace: admin
+spec:
+  secretName: stevenjiencke.com-tls
+  issuerRef:
+    name: google-clouddns
+  dnsNames:
+  - 'stevenjiencke.com'
+  - '*.stevenjiencke.com'
