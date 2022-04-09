@@ -14,6 +14,7 @@ deploy:
   - kubectl config get-contexts
   - kubectl config use-context sysf/kubernetes/cluster/sysf:sysf
   - kubectl get pods --all-namespaces
+  - helmfile --version
 
 
 # admin:
