@@ -15,6 +15,7 @@ deploy:
   - kubectl config use-context sysf/kubernetes/cluster/sysf:sysf
   - kubectl get pods
 
+
 # admin:
 #   stage: deploy
 #   image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.3.2"
