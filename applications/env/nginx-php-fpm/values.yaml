@@ -23,10 +23,10 @@ autoscaling:
   maxReplicas: 5
   targetCPU: 80
 
-extraVolumes:
-  - name: sysf.one-tls
-    secret:
-      secretName: sysf.one-tls
+# extraVolumes:
+#   - name: sysf.one-tls
+#     secret:
+#       secretName: sysf.one-tls
 
 phpfpm:
   resources:
@@ -34,10 +34,10 @@ phpfpm:
     requests:
       cpu: 50m
       memory: 2048Mi
-  extraVolumeMounts:
-    - mountPath: "/etc/letsencrypt"
-      name: sysf.one-tls
-      readOnly: true
+  # extraVolumeMounts:
+  #   - mountPath: "/etc/letsencrypt"
+  #     name: sysf.one-tls
+  #     readOnly: true
 
 nginx:
   resources:
