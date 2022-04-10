@@ -2,3 +2,9 @@ persistence:
   enabled: true
   storageClass: ceph-block
   accessMode: ReadWriteOnce
+mongodb:
+  enabled: false
+  auth:
+    rootPassword: drupal
+    username: drupal
+    password: drupal
