@@ -8,7 +8,7 @@ resources:
   - cronjob/service-account.yml
   - cronjob/pod-maintain.yml
   - gitlab/service-account.yml
-  - cluster-issuer/sys.yml
+#  - cluster-issuer/sys.yml
   - volume-snapshot-class/rook-ceph.yml
   - volume-snapshot-class/gce-useast-4.yml
   # - nfs/nfs.yml

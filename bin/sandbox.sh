@@ -89,7 +89,7 @@ velero schedule create mariadb--prd--hourly -n env-prd --selector app.kubernetes
 velero schedule create web--prd--hourly -n env-prd --selector app=web-nginx-php-fpm --schedule="15 * * * *" --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s
 velero schedule create web--ide1--hourly -n env-ide1 --selector app=web-nginx-php-fpm --schedule="45 * * * *" --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s
 
-velero backup create ns--env-admin--test4 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces admin --include-cluster-resources true --wait
+velero backup create ns--env-admin--test4 --snapshot-volumes=true --include-cluster-resources=true --default-volumes-to-restic --include-namespaces admin --wait
 velero backup create ns--env-prd--test1 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces env-prd --wait
 
 velero backup create ns--env-prd--1 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces env-prd --wait
@@ -99,7 +99,7 @@ velero backup create web--prd--1 --snapshot-volumes=true --default-volumes-to-re
 velero backup create keycloak-postgresql--1 --snapshot-volumes=true --default-volumes-to-restic --selector app.kubernetes.io/name=postgresql --wait
 
 velero restore create --from-backup admin--24h-20220214132035 --include-resources persistentvolumeclaims,persistentvolumes
-velero restore create --from-backup admin--24h-20220407212605
+velero restore create --from-backup ns--env-admin--test1
 velero restore create --from-backup env-prd--24h-20220407213605
 velero restore create --from-backup env-ide1--24h-20220309135221
 
