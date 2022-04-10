@@ -13,7 +13,7 @@ gcloud container clusters create sysf \
 --disk-size "50" \
 --preemptible \
 --max-pods-per-node "100" \
---num-nodes "3" \
+--num-nodes "5" \
 --master-ipv4-cidr 172.16.0.0/28 \
 --network "projects/sysf-12/global/networks/sysf" \
 --subnetwork "projects/sysf-12/regions/us-east4/subnetworks/us-east4-192" \
@@ -26,6 +26,8 @@ gcloud container clusters create sysf \
 --enable-autorepair \
 --labels owner=sysf,zonal=true \
 --zone us-east4-a --project sysf-12 \
+--logging="" \
+--monitoring="" \
 --system-config-from-file=/Users/bry/sys/etc/k8s/node-system.yml
 
 # gcloud container clusters create sysf2 \
@@ -47,7 +49,10 @@ gcloud container clusters create sysf \
 # --enable-autoupgrade \
 # --enable-autorepair \
 # --labels owner=sysf,zonal=true \
-# --zone us-east4-a --project sysf-12
+# --zone us-east4-a --project sysf-12 \
+# --logging="" \
+# --monitoring="" \
+# --system-config-from-file=/Users/bry/sys/etc/k8s/node-system.yml
 
 kubectl patch storageclass standard \
     -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'

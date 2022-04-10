@@ -3,7 +3,7 @@ persistence:
   storageClass: ceph-block
   accessMode: ReadWriteOnce
 mongodb:
-  enabled: false
+  enabled: true
   auth:
     rootPassword: drupal
     username: drupal

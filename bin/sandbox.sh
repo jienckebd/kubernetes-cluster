@@ -69,9 +69,9 @@ kubectl create secret generic keycloak-tls --from-file=/Users/bry/sys/etc/k8s/tl
 
 velero install \
     --provider gcp \
-    --plugins velero/velero-plugin-for-gcp:v1.3.0 \
+    --plugins velero/velero-plugin-for-gcp:v1.4.1 \
     --bucket sysf-12--velero--0 \
-    --secret-file ~/sys/etc/gcloud/credentials-velero \
+    --secret-file ~/sys/etc/gcloud/sa/credentials-velero \
     --features=EnableCSI \
     --use-restic
     # --restic-pod-cpu-request=50m \
@@ -89,7 +89,8 @@ velero schedule create mariadb--prd--hourly -n env-prd --selector app.kubernetes
 velero schedule create web--prd--hourly -n env-prd --selector app=web-nginx-php-fpm --schedule="15 * * * *" --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s
 velero schedule create web--ide1--hourly -n env-ide1 --selector app=web-nginx-php-fpm --schedule="45 * * * *" --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s
 
-velero backup create ns--env-admin--test1 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces admin --wait
+velero backup create ns--env-admin--test4 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces admin --include-cluster-resources true --wait
+velero backup create ns--env-prd--test1 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces env-prd --wait
 
 velero backup create ns--env-prd--1 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces env-prd --wait
 velero backup create ns--env-admin--3 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces admin --wait

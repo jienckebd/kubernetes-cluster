@@ -32,3 +32,8 @@ cainjector:
             operator: In
             values:
             - default-pool
+
+metrics:
+  serviceMonitor:
+    enabled: true
+    namespace: admin
