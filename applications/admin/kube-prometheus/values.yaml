@@ -36,9 +36,6 @@ prometheus:
         - job_name: 'admin--nginx-ingress-controller-metrics'
           static_configs:
             - targets: ['nginx-ingress-controller-metrics.admin.svc.cluster.local:9913']
-        - job_name: 'admin--elasticsearch-metrics'
-          static_configs:
-            - targets: ['elasticsearch-metrics.admin.svc.cluster.local:9114']
         - job_name: 'admin--grafana'
           static_configs:
             - targets: ['grafana.admin.svc.cluster.local:3000']
