@@ -26,8 +26,6 @@ gcloud container clusters create sysf \
 --enable-autorepair \
 --labels owner=sysf,zonal=true \
 --zone us-east4-a --project sysf-12 \
---logging="" \
---monitoring="" \
 --system-config-from-file=/Users/bry/sys/etc/k8s/node-system.yml
 
 # gcloud container clusters create sysf2 \
