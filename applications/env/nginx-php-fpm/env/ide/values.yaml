@@ -3,5 +3,6 @@ sys:
   subcontext: ide1
   uri: https://ide1.env.sys.sysf.one/
 ingress:
+  enabled: true
   hosts:
     - ide1.env.sys.sysf.one
