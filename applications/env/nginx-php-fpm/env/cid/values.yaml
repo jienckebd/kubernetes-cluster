@@ -10,9 +10,3 @@ autoscaling:
   maxReplicas: 1
 
 replicas: 1
-
-extraVolumes: {}
-
-nginx:
-  extraVolumeMounts: {}
-

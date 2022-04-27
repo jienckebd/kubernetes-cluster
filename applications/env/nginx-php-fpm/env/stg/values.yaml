@@ -2,3 +2,8 @@ sys:
   context: cloud
   subcontext: stg
   uri: https://stg.env.sys.sysf.one/
+
+ingress:
+  enabled: true
+  hosts:
+    - stg.env.sys.sysf.one

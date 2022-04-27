@@ -2,3 +2,8 @@ sys:
   context: cloud
   subcontext: dev
   uri: https://dev.env.sys.sysf.one/
+
+ingress:
+  enabled: true
+  hosts:
+    - dev.env.sys.sysf.one
