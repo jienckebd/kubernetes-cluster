@@ -77,7 +77,7 @@ env-ide1:
  environment: ide1
  script:
    - export SYS_HELM_NAMESPACE_SUFFIX=ide1
-   - export SYS_HELM_NEW="true"
+   - export SYS_HELM_NEW="false"
    - kubectl create namespace env-ide1 || true
    - kubectl config set-context --current --namespace=env-ide1
    - "kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | kubectl apply --namespace=env-ide1 -f - || true"
