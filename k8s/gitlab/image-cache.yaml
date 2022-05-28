@@ -17,4 +17,6 @@ spec:
     - bitnami/elasticsearch
     - bitnami/mariadb
     - bitnami/redis-cluster
+    - bitnami/node
+    - bitnami/mongodb
     - registry.gitlab.com/sysf/docker/image/php-fpm
