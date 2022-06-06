@@ -24,6 +24,7 @@ gitlab:
   script:
     - helmfile --environment gitlab apply --suppress-secrets
 
+
 env-prd:
  stage: deploy
  image:
