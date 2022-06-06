@@ -8,8 +8,6 @@ metadata:
   annotations:
     meta.helm.sh/release-name: mariadb-galera
     meta.helm.sh/release-namespace: default
-    reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
-    reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
   labels:
     app.kubernetes.io/instance: mariadb-galera
     app.kubernetes.io/managed-by: Helm
