@@ -4,7 +4,7 @@ stages:
 before_script:
   - env
   - uname -a
-  - kubectl config use-context sysf/kubernetes/cluster/sysf:sysf
+  - kubectl config use-context kubernetes/cluster/sysf:sysf
 
 admin:
   stage: deploy
