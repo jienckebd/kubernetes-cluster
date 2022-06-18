@@ -15,6 +15,7 @@ admin:
   script:
     - helmfile --environment admin apply --suppress-secrets
 
+
 gitlab:
   stage: deploy
   image:
