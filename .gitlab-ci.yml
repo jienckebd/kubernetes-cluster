@@ -9,7 +9,7 @@ before_script:
 admin:
   stage: deploy
   image:
-    name: registry.gitlab.com/sysf/docker/image/helmfile:latest
+    name: registry.gitlab.sysf.one/docker/image/helmfile:latest
     entrypoint: [""]
   environment: admin
   script:
@@ -18,7 +18,7 @@ admin:
 gitlab:
   stage: deploy
   image:
-    name: registry.gitlab.com/sysf/docker/image/helmfile:latest
+    name: registry.gitlab.sysf.one/docker/image/helmfile:latest
     entrypoint: [""]
   environment: gitlab
   script:
@@ -27,7 +27,7 @@ gitlab:
 env-prd:
  stage: deploy
  image:
-    name: registry.gitlab.com/sysf/docker/image/helmfile:latest
+    name: registry.gitlab.sysf.one/docker/image/helmfile:latest
     entrypoint: [""]
  environment: prd
  script:
@@ -42,7 +42,7 @@ env-prd:
 # env-stg:
 #  stage: deploy
 #  image:
-#     name: registry.gitlab.com/sysf/docker/image/helmfile:latest
+#     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
 #     entrypoint: [""]
 #  environment: stg
 #  script:
@@ -57,7 +57,7 @@ env-prd:
 # env-dev:
 #  stage: deploy
 #  image:
-#     name: registry.gitlab.com/sysf/docker/image/helmfile:latest
+#     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
 #     entrypoint: [""]
 #  environment: dev
 #  script:
@@ -72,7 +72,7 @@ env-prd:
 env-ide1:
  stage: deploy
  image:
-    name: registry.gitlab.com/sysf/docker/image/helmfile:latest
+    name: registry.gitlab.sysf.one/docker/image/helmfile:latest
     entrypoint: [""]
  environment: ide1
  script:
@@ -88,7 +88,7 @@ env-ide1:
 # env-cid1:
 #  stage: deploy
 #  image:
-#     name: registry.gitlab.com/sysf/docker/image/helmfile:latest
+#     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
 #     entrypoint: [""]
 #  environment: cid1
 #  script:
@@ -104,7 +104,7 @@ env-ide1:
 # env-cid2:
 #  stage: deploy
 #  image:
-#     name: registry.gitlab.com/sysf/docker/image/helmfile:latest
+#     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
 #     entrypoint: [""]
 #  environment: cid2
 #  script:
