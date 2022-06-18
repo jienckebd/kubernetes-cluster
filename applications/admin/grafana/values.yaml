@@ -41,7 +41,7 @@ grafana:
     mountPath: /opt/bitnami/grafana/conf/grafana.ini
     subPath: grafana.ini
 
-plugins: "redis-datasource"
+plugins: "redis-datasource,grafana-gitlab-datasource"
 
 metrics:
   enabled: true

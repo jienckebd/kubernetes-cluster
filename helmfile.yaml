@@ -26,6 +26,7 @@ helmfiles:
   - path: applications/rook-ceph/rook-ceph-cluster/helmfile.yaml
 
   # Gitlab.
+  - path: applications/gitlab/gitlab/helmfile.yaml
   - path: applications/gitlab/gitlab-runner-kubernetes/helmfile.yaml
   - path: applications/gitlab/gitlab-runner-docker/helmfile.yaml
   - path: applications/gitlab/kubefledged/helmfile.yaml

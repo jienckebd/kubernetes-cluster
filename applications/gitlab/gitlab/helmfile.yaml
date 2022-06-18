@@ -1,0 +1,17 @@
+repositories:
+  - name: gitlab
+    url: https://charts.gitlab.io
+
+releases:
+  - name: gitlab
+    namespace: gitlab
+    chart: gitlab/gitlab
+    # version: 5.10.4
+    timeout: 6000
+    installed: true
+
+    values:
+      - values.yaml
+
+environments:
+  gitlab: {  }

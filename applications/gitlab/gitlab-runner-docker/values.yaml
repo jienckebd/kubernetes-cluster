@@ -43,13 +43,13 @@ imagePullPolicy: IfNotPresent
 ## The GitLab Server URL (with protocol) that want to register the runner against
 ## ref: https://docs.gitlab.com/runner/commands/README.html#gitlab-runner-register
 ##
-gitlabUrl: https://gitlab.com/
+gitlabUrl: https://gitlab.sysf.one/
 
 ## The Registration Token for adding new Runners to the GitLab Server. This must
 ## be retrieved from your GitLab Instance.
 ## ref: https://docs.gitlab.com/ce/ci/runners/README.html
 ##
-runnerRegistrationToken: "GR1348941qPgWiy8AyGxBsbXPsgDo"
+runnerRegistrationToken: "NUuLRmkTVpuPP4OfPm5o3QUAV48kn1CfhQtQiicWxUlm5bsMe2XilV6Svi5LLbl4"
 
 ## The Runner Token for adding new Runners to the GitLab Server. This must
 ## be retrieved from your GitLab Instance. It is token of already registered runner.

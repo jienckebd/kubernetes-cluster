@@ -70,6 +70,7 @@ kubectl create configmap fluentd-forwarder -n admin --from-file=/Users/bry/sys/e
 
 kubectl create namespace gitlab
 kubectl create secret generic -n gitlab google-application-credentials --from-file=gcs-application-credentials-file=/Users/bry/sys/etc/gcloud/sa/gitlab-runner.json
+kubectl apply -f /Users/bry/sys/etc/k8s/gitlab-sso-oidc.yaml
 
 cd /Users/bry/sys/kubernetes/cluster/sysf/k8s
 kubectl apply -k ./

@@ -1,0 +1,42 @@
+global:
+  hosts:
+    domain: sysf.one
+    # hostSuffix: staging
+    https: true
+    externalIP: 35.245.33.158
+    gitlab:
+      name: gitlab.sysf.one
+      https: true
+    registry:
+      name: registry.gitlab.sysf.one
+      https: true
+    minio:
+      name: minio.gitlab.sysf.one
+      https: true
+    smartcard:
+      name: smartcard.gitlab.sysf.one
+    kas:
+      name: kas.gitlab.sysf.one
+    pages:
+      name: pages.gitlab.sysf.one
+      https: true
+    ssh: gitlab.sysf.one
+  ingress:
+    configureCertmanager: true
+  appConfig:
+    omniauth:
+      enabled: true
+      syncProfileFromProvider: true
+      blockAutoCreatedUsers: false
+      allowSingleSignOn: true
+      autoSignInWithProvider: openid_connect
+      providers:
+        - secret: gitlab-sso-oidc
+certmanager-issuer:
+  email: bryan.jiencke@gmail.com
+certmanager:
+  install: true
+gitlab-runner:
+  install: false
+pages:
+  enabled: true
