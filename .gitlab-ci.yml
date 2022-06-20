@@ -5,6 +5,8 @@ before_script:
   - env
   - uname -a
   - kubectl config use-context kubernetes/cluster/sysf:sysf
+  - helm repo add --username gitlab-ci-token --password $CI_JOB_TOKEN nginx-php-fpm https://gitlab.sysf.one/api/v4/projects/7/packages/helm/stable
+  - helm repo update
 
 admin:
   stage: deploy
@@ -14,7 +16,6 @@ admin:
   environment: admin
   script:
     - helmfile --environment admin apply --suppress-secrets
-
 
 gitlab:
   stage: deploy
