@@ -93,6 +93,8 @@ velero backup create ns--env-admin--test5 --snapshot-volumes=true --include-clus
 velero backup create ns--env-admin--test4 --snapshot-volumes=true --include-cluster-resources=true --default-volumes-to-restic --include-namespaces admin --wait
 velero backup create ns--env-prd--test1 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces env-prd --wait
 
+velero backup create ns--gitlab--test1 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces gitlab --wait
+
 velero backup create ns--env-prd--1 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces env-prd --wait
 velero backup create ns--env-admin--3 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces admin --wait
 
