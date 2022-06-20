@@ -5,7 +5,6 @@ before_script:
   - env
   - uname -a
   - kubectl config use-context kubernetes/cluster/sysf:sysf
-  - helm repo update
 
 admin:
   stage: deploy
