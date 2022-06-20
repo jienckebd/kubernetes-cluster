@@ -5,6 +5,8 @@ helmDefaults:
 repositories:
   - name: nginx-php-fpm
     url: https://gitlab.sysf.one/api/v4/projects/7/packages/helm/stable
+    username: gitlab-ci-token
+    password: {{ env "CI_JOB_TOKEN" }}
 
 releases:
   - name: web
