@@ -40,6 +40,9 @@ extraVolumes:
     secret:
       secretName: theentityframework.com-tls
 
+imagePullSecrets:
+  - name: gitlab-pull-secret
+
 phpfpm:
   resources:
     limits: {}
