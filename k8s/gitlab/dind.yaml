@@ -15,6 +15,7 @@ spec:
     requests:
       storage: 50Gi
 
+
 ---
 ## Deployment for docker-dind
 apiVersion: apps/v1
