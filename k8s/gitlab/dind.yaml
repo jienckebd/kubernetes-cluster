@@ -8,7 +8,7 @@ metadata:
   name: docker-dind-data
   namespace: gitlab
 spec:
-  storageClassName: standard-rwo
+  storageClassName: ceph-block
   accessModes:
     - ReadWriteOnce
   resources:
