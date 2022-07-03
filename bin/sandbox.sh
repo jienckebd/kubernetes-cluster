@@ -55,7 +55,6 @@ gcloud dns --project=bdbd-310322 record-sets transaction execute --zone=tef
 
 echo | openssl s_client -showcerts -servername gnupg.org -connect k8s.theentityframework.com:8443 2>/dev/null | openssl x509 -inform pem -noout -text
 
-
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep gitlab | awk '{print $1}')
 
 kubectl --namespace kasten-io port-forward service/gateway 8080:8000
