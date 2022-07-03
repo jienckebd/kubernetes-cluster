@@ -67,7 +67,6 @@ kubectl get pv | grep Released | awk '$1 {print$1}' | while read vol; do kubectl
 
 kubectl create secret generic keycloak-tls --from-file=/Users/bry/sys/etc/k8s/tls-sys/keycloak.truststore.jks --from-file=/Users/bry/sys/etc/k8s/tls-sys/keycloak-0.keystore.jks
 
-
 velero install \
     --provider gcp \
     --plugins velero/velero-plugin-for-gcp:v1.4.1 \
