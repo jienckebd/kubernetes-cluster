@@ -106,6 +106,8 @@ velero restore create --from-backup ns--env-admin--test1
 velero restore create --from-backup env-prd--24h-20220407213605
 velero restore create --from-backup env-ide1--24h-20220309135221
 
+velero restore create --from-backup ns--gitlab--test5
+
 
 kubectl create clusterrolebinding "kasten-admin--bryan.jiencke@gmail.com" --clusterrole=kasten-admin --user=bryan.jiencke@gmail.com
 kubectl create clusterrolebinding "kasten-admin--bryan.jiencke@gmail.com--cluster-admin" --clusterrole=cluster-admin --user=bryan.jiencke@gmail.com

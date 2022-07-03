@@ -2,11 +2,11 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: nfs-bryan
-  namespace: gitlab
+  namespace: ops
 spec:
   storageClassName: nfs-client
   accessModes:
-    - ReadWriteOnce 
+    - ReadWriteOnce
   resources:
     requests:
-      storage: 8Ti 
+      storage: 8Ti

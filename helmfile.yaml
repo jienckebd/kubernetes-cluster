@@ -1,5 +1,7 @@
 helmDefaults:
   cleanupOnFail: false
+  args:
+    - "--no-color"
 
 helmfiles:
 
@@ -27,11 +29,13 @@ helmfiles:
 
   # Gitlab.
   - path: applications/gitlab/gitlab/helmfile.yaml
-  - path: applications/gitlab/gitlab-runner-kubernetes/helmfile.yaml
-  - path: applications/gitlab/gitlab-runner-docker/helmfile.yaml
-  - path: applications/gitlab/kubefledged/helmfile.yaml
-  # - path: applications/gitlab/nfs-subdir-external-provisioner/helmfile.yaml
-  - path: applications/gitlab/gke-preemptible-killer/helmfile.yaml
+
+  # Ops.
+  - path: applications/ops/gitlab-runner-kubernetes/helmfile.yaml
+  - path: applications/ops/gitlab-runner-docker/helmfile.yaml
+  - path: applications/ops/kubefledged/helmfile.yaml
+  # - path: applications/ops/nfs-subdir-external-provisioner/helmfile.yaml
+  - path: applications/ops/gke-preemptible-killer/helmfile.yaml
 
 environments:
   prd: {  }
@@ -42,3 +46,4 @@ environments:
   admin: {  }
   rook-ceph: {  }
   gitlab: {  }
+  ops: {  }

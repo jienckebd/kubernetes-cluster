@@ -4,7 +4,7 @@ repositories:
 
 releases:
   - name: gitlab-runner-docker
-    namespace: gitlab
+    namespace: ops
     chart: gitlab/gitlab-runner
     version: 0.41.0
     installed: true
@@ -13,4 +13,4 @@ releases:
       - values.yaml
 
 environments:
-  gitlab: {  }
+  ops: {  }

@@ -69,8 +69,10 @@ kubectl create configmap elasticsearch-output -n admin --from-file=/Users/bry/sy
 kubectl create configmap fluentd-forwarder -n admin --from-file=/Users/bry/sys/etc/k8s/configmap/fluentd-forwarder/fluentd.conf
 
 kubectl create namespace gitlab
-kubectl create secret generic -n gitlab google-application-credentials --from-file=gcs-application-credentials-file=/Users/bry/sys/etc/gcloud/sa/gitlab-runner.json
 kubectl apply -f /Users/bry/sys/etc/k8s/gitlab-sso-oidc.yaml
+
+kubectl create namespace ops
+kubectl create secret generic -n ops google-application-credentials --from-file=gcs-application-credentials-file=/Users/bry/sys/etc/gcloud/sa/gitlab-runner.json
 
 kubectl apply -f /Users/bry/sys/etc/k8s/gitlab-pull-secret.yml
 

@@ -6,7 +6,7 @@ metadata:
   labels:
     app: docker-dind
   name: docker-dind-data
-  namespace: gitlab
+  namespace: ops
 spec:
   storageClassName: ceph-block
   accessModes:
@@ -14,7 +14,6 @@ spec:
   resources:
     requests:
       storage: 50Gi
-
 
 ---
 ## Deployment for docker-dind
@@ -24,7 +23,7 @@ metadata:
   labels:
     app: docker-dind
   name: docker-dind
-  namespace: gitlab
+  namespace: ops
 spec:
   strategy:
     type: Recreate
@@ -76,7 +75,7 @@ metadata:
   labels:
     app: docker-dind
   name: docker-dind
-  namespace: gitlab
+  namespace: ops
 spec:
   ports:
     - port: 2375
@@ -92,7 +91,7 @@ kind: CronJob
 metadata:
   labels:
     app: docker-dind
-  namespace: gitlab
+  namespace: ops
   name: docker-dind-clear-cache
 spec:
   jobTemplate:

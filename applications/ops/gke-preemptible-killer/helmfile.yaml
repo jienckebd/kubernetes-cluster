@@ -7,7 +7,7 @@ repositories:
 
 releases:
   - name: gke-preemptible-killer
-    namespace: gitlab
+    namespace: ops
     chart: estafette/estafette-gke-preemptible-killer
     installed: true
 
@@ -15,4 +15,4 @@ releases:
       - values.yaml
 
 environments:
-  gitlab: {  }
+  ops: {  }

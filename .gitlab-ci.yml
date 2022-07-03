@@ -24,6 +24,15 @@ gitlab:
   script:
     - helmfile --environment gitlab apply --suppress-secrets
 
+ops:
+  stage: deploy
+  image:
+    name: registry.gitlab.sysf.one/docker/image/helmfile:latest
+    entrypoint: [""]
+  environment: ops
+  script:
+    - helmfile --environment ops apply --suppress-secrets
+
 env-prd:
  stage: deploy
  image:
