@@ -4,7 +4,7 @@ repositories:
 
 releases:
   - name: reflector
-    namespace: admin
+    namespace: ops
     chart: emberstack/reflector
     version: 6.1.47
     installed: true
@@ -13,4 +13,4 @@ releases:
       - values.yaml
 
 environments:
-  admin: {  }
+  ops: {  }
