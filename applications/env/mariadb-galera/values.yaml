@@ -273,7 +273,7 @@ db:
 # rootUser:
 #   password: root
 
-# existingSecret: mariadb-galera
+existingSecret: mariadb-galera
 
 # galera:
 #   bootstrap:
