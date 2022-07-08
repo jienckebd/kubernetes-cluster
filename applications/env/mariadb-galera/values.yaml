@@ -270,10 +270,10 @@ db:
   user: drupal
   name: drupal
 
-# rootUser:
-#   password: root
+rootUser:
+  password: root
 
-existingSecret: mariadb-galera
+# existingSecret: mariadb-galera
 
 # galera:
 #   bootstrap:

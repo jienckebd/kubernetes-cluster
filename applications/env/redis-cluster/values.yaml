@@ -12,16 +12,7 @@ redis:
     - name: "redis-data-memory"
       emptyDir:
         medium: Memory
-        sizeLimit: 2Gi
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: cloud.google.com/gke-nodepool
-            operator: In
-            values:
-            - default-pool
+        sizeLimit: 1Gi
 
 containerSecurityContext:
   runAsUser: 0
