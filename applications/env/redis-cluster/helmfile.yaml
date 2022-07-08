@@ -9,7 +9,7 @@ releases:
   - name: redis-cluster
     namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
     chart: bitnami/redis-cluster
-    version: 7.4.5
+    version: 7.6.4
     installed: true
 
     values:
