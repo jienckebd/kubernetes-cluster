@@ -15,4 +15,5 @@ resources:
   - env/mariadb-galera.yml
   - gitlab/dind.yaml
   - gitlab/image-cache.yaml
+  - certs-production.yml
 #  - gitlab/omniauth-keycloak-secret.yaml

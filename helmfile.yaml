@@ -6,7 +6,7 @@ helmDefaults:
 helmfiles:
 
   # Admin / one.
-  - path: applications/admin/cert-manager/helmfile.yaml
+  # - path: applications/admin/cert-manager/helmfile.yaml
   - path: applications/admin/nginx-ingress-controller/helmfile.yaml
   - path: applications/admin/kube-prometheus/helmfile.yaml
   - path: applications/admin/grafana/helmfile.yaml
