@@ -20,9 +20,9 @@ containerSecurityContext:
   privileged: true
 
 persistence:
-  storageClass: ceph-filesystem
+  storageClass: ceph-block
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
 
 cluster:
   nodes: 6
