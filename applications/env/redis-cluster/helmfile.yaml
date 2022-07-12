@@ -15,8 +15,8 @@ releases:
     values:
       - values.yaml
       - env/{{ .Environment.Name }}/values.yaml
-      - cluster:
-          init: {{ env "SYS_HELM_NEW" | default "false" }}
+      # - cluster:
+      #     init: {{ env "SYS_HELM_NEW" | default "false" }}
 
 environments:
   prd: {  }
