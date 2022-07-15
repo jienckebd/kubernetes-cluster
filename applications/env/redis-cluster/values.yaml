@@ -27,3 +27,4 @@ persistence:
 cluster:
   nodes: 6
   init: true
+
