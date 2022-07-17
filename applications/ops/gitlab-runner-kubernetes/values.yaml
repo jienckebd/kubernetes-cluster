@@ -295,6 +295,10 @@ runners:
           Shared = true
           [runners.cache.gcs]
             BucketName = "sysf-12-gitlab-runners-cache"
+        [[runners.kubernetes.volumes.secret]]
+          name = "ssh-config"
+          mount_path = "/root/.ssh-workaround"
+          read_only = true
 
   cache:
       secretName: google-application-credentials
