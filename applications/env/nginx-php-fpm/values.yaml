@@ -45,7 +45,7 @@ imagePullSecrets:
 
 phpfpm:
   resources:
-    limits: {}
+    limits: []
     requests:
       cpu: 50m
       memory: 2048Mi
@@ -68,7 +68,7 @@ nginx:
       name: theentityframework-com-tls
       readOnly: true
   resources:
-    limits: {}
+    limits: []
     requests:
       cpu: 50m
       memory: 256Mi
