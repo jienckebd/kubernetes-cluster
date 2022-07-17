@@ -35,6 +35,7 @@ ops:
     - "kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: ops/' | kubectl apply --namespace=ops -f - || true"
     - helmfile --environment ops apply --suppress-secrets
 
+
 env-prd:
  stage: deploy
  image:
