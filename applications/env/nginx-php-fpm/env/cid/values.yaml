@@ -31,7 +31,6 @@ extraVolumes:
     hostPath:
       path: /builds/drupal/instance/sysf
 
-
 phpfpm:
   extraVolumeMounts:
     - mountPath: /app
