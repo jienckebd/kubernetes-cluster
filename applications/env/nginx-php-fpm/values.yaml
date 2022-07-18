@@ -51,3 +51,4 @@ nginx:
 
 ingress:
   enabled: false
+
