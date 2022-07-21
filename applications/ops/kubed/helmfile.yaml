@@ -1,0 +1,16 @@
+repositories:
+  - name: appscode
+    url: https://charts.appscode.com/stable/
+
+releases:
+  - name: kubed
+    namespace: ops
+    chart: appscode/kubed
+    version: 0.13.2
+    installed: true
+
+    values:
+      - values.yaml
+
+environments:
+  ops: {  }

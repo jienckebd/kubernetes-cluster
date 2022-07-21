@@ -6,13 +6,7 @@ stringData:
 kind: Secret
 metadata:
   annotations:
-    meta.helm.sh/release-name: mariadb-galera
-    meta.helm.sh/release-namespace: default
-  labels:
-    app.kubernetes.io/instance: mariadb-galera
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/name: mariadb-galera
-    helm.sh/chart: mariadb-galera-7.1.1
+    kubed.appscode.com/sync: "env=true"
   name: mariadb-galera
   namespace: default
 type: Opaque

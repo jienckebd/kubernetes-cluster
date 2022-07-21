@@ -14,7 +14,6 @@ helmfiles:
   - path: applications/admin/elasticsearch/helmfile.yaml
   - path: applications/admin/fluentd/helmfile.yaml
   - path: applications/admin/kubernetes-dashboard/helmfile.yaml
-  - path: applications/admin/reflector/helmfile.yaml
 
   # Env / many.
   - path: applications/env/mariadb-galera/helmfile.yaml
@@ -34,8 +33,10 @@ helmfiles:
   - path: applications/ops/gitlab-runner-kubernetes/helmfile.yaml
   - path: applications/ops/gitlab-runner-docker/helmfile.yaml
   - path: applications/ops/kubefledged/helmfile.yaml
-  # - path: applications/ops/nfs-subdir-external-provisioner/helmfile.yaml
+  - path: applications/ops/kubed/helmfile.yaml
   - path: applications/ops/gke-preemptible-killer/helmfile.yaml
+  # - path: applications/ops/nfs-subdir-external-provisioner/helmfile.yaml
+  # - path: applications/ops/reflector/helmfile.yaml
 
 environments:
   prd: {  }
