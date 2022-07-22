@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cluster-cache-composer
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: ceph-filesystem
+  volumeName: "cluster-cache-composer"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cluster-cache-npm
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: ceph-filesystem
+  volumeName: "cluster-cache-composer"
