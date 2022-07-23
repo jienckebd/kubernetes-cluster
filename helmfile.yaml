@@ -21,6 +21,7 @@ helmfiles:
   - path: applications/env/elasticsearch/helmfile.yaml
   - path: applications/env/nginx-php-fpm/helmfile.yaml
   - path: applications/env/node/helmfile.yaml
+  # - path: applications/env/nfs-subdir-external-provisioner/helmfile.yaml
 
   # rook-ceph.
   - path: applications/rook-ceph/rook-ceph/helmfile.yaml

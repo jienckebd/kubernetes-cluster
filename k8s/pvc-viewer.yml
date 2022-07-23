@@ -2,15 +2,24 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: dataaccess
+  namespace: admin
 spec:
   containers:
   - name: alpine
     image: alpine:latest
     command: ['sleep', 'infinity']
+    securityContext:
+       privileged: true
     volumeMounts:
     - name: data-keycloak-postgresql-0
       mountPath: /data
+    - name: nfs-test1
+      mountPath: /mnt/cluster_cache
   volumes:
   - name: data-keycloak-postgresql-0
     persistentVolumeClaim:
       claimName: data-keycloak-postgresql-0
+  - name: nfs-test1
+    nfs:
+      server: nfs-server-provisioner.ops.svc.cluster.local
+      path: /export/cluster-cache

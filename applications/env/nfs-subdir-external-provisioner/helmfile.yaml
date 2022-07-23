@@ -1,0 +1,19 @@
+repositories:
+  - name: nfs-subdir-external-provisioner
+    url: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner
+
+releases:
+  - name: nfs-subdir-external-provisioner
+    namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
+    chart: nfs-subdir-external-provisioner/nfs-subdir-external-provisioner
+    installed: true
+
+    values:
+      - values.yaml
+
+environments:
+  prd: {  }
+  stg: {  }
+  dev: {  }
+  cid: {  }
+  ide: {  }
