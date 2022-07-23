@@ -170,3 +170,5 @@ gcloud beta container node-pools create local-ssd \
 mkdir -p /mnt/ram-mariadb-data
 
 mount -t tmpfs -o size=1g tmpfs /bitnami/ram
+
+kubectl annotate secret sysf.one-tls kubed.appscode.com/sync="" -n admin --overwrite
