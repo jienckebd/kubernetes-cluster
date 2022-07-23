@@ -1,0 +1,15 @@
+repositories:
+  - name: stable
+    url: https://charts.helm.sh/stable
+
+releases:
+  - name: nfs-server-provisioner
+    namespace: ops
+    chart: stable/nfs-server-provisioner
+    installed: true
+
+    values:
+      - values.yaml
+
+environments:
+  ops: {  }
