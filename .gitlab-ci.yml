@@ -42,8 +42,6 @@ env-prd:
     entrypoint: [""]
  environment: prd
  script:
-   - helmfile version
-   - helm version
    - kubectl create namespace env-prd || true
    - kubectl label ns env-prd env=true || true
    - export SYS_HELM_NEW="false"

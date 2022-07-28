@@ -30,6 +30,7 @@ extraVolumes:
   - name: cluster-storage
     persistentVolumeClaim:
       claimName: cluster-storage
+      readOnly: false
 
 imagePullSecrets:
   - name: gitlab-pull-secret
