@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: cluster-cache--env-ide1
+  name: cluster-storage--env-prd
 spec:
   capacity:
     storage: 5Gi
@@ -17,8 +17,8 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: cluster-cache
-  namespace: env-ide1
+  name: cluster-storage
+  namespace: env-prd
 spec:
   accessModes:
     - ReadWriteMany
@@ -26,4 +26,4 @@ spec:
   resources:
     requests:
       storage: 5Gi
-  volumeName: cluster-cache--env-ide1
+  volumeName: cluster-storage--env-prd
