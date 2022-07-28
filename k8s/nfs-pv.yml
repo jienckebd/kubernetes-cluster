@@ -9,8 +9,8 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    server: nfs-server-provisioner.ops.svc.cluster.local
-    path: "/"
+    server: nfs-server-provisioner-0.nfs-server-provisioner.ops.svc.cluster.local
+    path: "/export"
   mountOptions:
     - nfsvers=4.2
 ---
