@@ -44,9 +44,7 @@ phpfpm:
     requests:
       cpu: 50m
       memory: 2048Mi
-  extraEnvVars:
-    - name: COMPOSER_HOME
-      value: /mnt/cluster-storage/composer
+  extraEnvVars: {}
 nginx:
   extraVolumeMounts:
     - mountPath: "/etc/letsencrypt/sysf.one"
