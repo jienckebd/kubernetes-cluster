@@ -2,15 +2,15 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: cluster-storage--env-ide1
+  name: cluster-storage--env-prd
 spec:
   capacity:
     storage: 5Gi
   accessModes:
     - ReadWriteMany
   nfs:
-    server: nfs-server-provisioner-0.nfs-server-provisioner.ops.svc.cluster.local
-    path: "/export"
+    server: 10.136.11.122
+    path: "/export/pvc-349f0caf-33c7-4ad5-9478-4d6e4a51d9dd"
   mountOptions:
     - nfsvers=4.2
 ---
@@ -18,7 +18,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: cluster-storage
-  namespace: env-ide1
+  namespace: env-prd
 spec:
   accessModes:
     - ReadWriteMany
@@ -26,4 +26,4 @@ spec:
   resources:
     requests:
       storage: 5Gi
-  volumeName: cluster-storage--env-ide1
+  volumeName: cluster-storage--env-prd
