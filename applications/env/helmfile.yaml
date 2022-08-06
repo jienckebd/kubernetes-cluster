@@ -60,6 +60,7 @@ releases:
     namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
     chart: nginx-php-fpm/nginx-php-fpm
     installed: true
+    wait: true
     values:
       - web/values.yaml
       - web/env/{{ .Environment.Name }}/values.yaml
