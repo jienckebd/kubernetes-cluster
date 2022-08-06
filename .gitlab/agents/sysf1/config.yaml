@@ -1,4 +1,5 @@
 ci_access:
   groups:
   - id: kubernetes
-
+  - id: drupal
+  - id: terraform
