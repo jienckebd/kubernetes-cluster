@@ -1,0 +1,33 @@
+helmDefaults:
+  wait: false
+  cleanupOnFail: false
+
+repositories:
+  - name: gitlab
+    url: https://charts.gitlab.io
+
+releases:
+  - name: gitlab-runner-docker
+    namespace: gitlab-runner
+    chart: gitlab/gitlab-runner
+    version: 0.43.1
+    installed: true
+    values:
+      - gitlab-runner-docker/values.yaml
+  - name: gitlab-runner-kubernetes
+    namespace: gitlab-runner
+    chart: gitlab/gitlab-runner
+    version: 0.43.1
+    installed: true
+    values:
+      - gitlab-runner-kubernetes/values.yaml
+  - name: gitlab-runner-ssh-web
+    namespace: gitlab-runner
+    chart: gitlab/gitlab-runner
+    version: 0.43.1
+    installed: true
+    values:
+      - gitlab-runner-ssh-web/values.yaml
+
+environments:
+  gitlab-runner: {  }

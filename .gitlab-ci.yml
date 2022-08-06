@@ -15,7 +15,6 @@ admin:
   script:
     - helmfile --environment admin apply --suppress-secrets
 
-
 # gitlab:
 #   stage: deploy
 #   image:
@@ -24,6 +23,15 @@ admin:
 #   environment: gitlab
 #   script:
 #     - helmfile --environment gitlab apply --suppress-secrets
+
+# gitlab-runner:
+#   stage: deploy
+#   image:
+#     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
+#     entrypoint: [""]
+#   environment: gitlab-runner
+#   script:
+#     - helmfile --file applications/gitlab-runner/helmfile.yaml --environment gitlab-runner apply --suppress-secrets
 
 ops:
   stage: deploy

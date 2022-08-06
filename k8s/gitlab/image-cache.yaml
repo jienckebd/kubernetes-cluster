@@ -18,3 +18,5 @@ spec:
     - bitnami/node
     - bitnami/mongodb
     - registry.gitlab.sysf.one/docker/image/php-fpm
+    - registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper
+    - registry.gitlab.com/gitlab-org/gitlab-runner

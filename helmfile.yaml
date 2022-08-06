@@ -28,15 +28,17 @@ helmfiles:
   # Gitlab.
   - path: applications/gitlab/gitlab/helmfile.yaml
 
+  # Gitlab runners.
+  - path: applications/gitlab-runner/gitlab-runner-kubernetes/helmfile.yaml
+  - path: applications/gitlab-runner/gitlab-runner-docker/helmfile.yaml
+  - path: applications/gitlab-runner/gitlab-runner-ssh-web/helmfile.yaml
+
   # Ops.
-  - path: applications/ops/gitlab-runner-kubernetes/helmfile.yaml
-  - path: applications/ops/gitlab-runner-docker/helmfile.yaml
   - path: applications/ops/kubefledged/helmfile.yaml
   - path: applications/ops/kubed/helmfile.yaml
   - path: applications/ops/gke-preemptible-killer/helmfile.yaml
   - path: applications/ops/nfs-server-provisioner/helmfile.yaml
   # - path: applications/ops/nfs-subdir-external-provisioner/helmfile.yaml
-  # - path: applications/ops/reflector/helmfile.yaml
 
 environments:
   prd: {  }
@@ -47,4 +49,5 @@ environments:
   admin: {  }
   rook-ceph: {  }
   gitlab: {  }
+  gitlab-runner: {  }
   ops: {  }
