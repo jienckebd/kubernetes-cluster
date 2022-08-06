@@ -1,7 +1,5 @@
 helmDefaults:
   cleanupOnFail: false
-  args:
-    - "--no-color"
 
 helmfiles:
 

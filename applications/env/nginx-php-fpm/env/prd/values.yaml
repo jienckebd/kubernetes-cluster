@@ -48,7 +48,7 @@ extraVolumes:
       secretName: theentityframework.com-tls
   - name: cluster-cache
     persistentVolumeClaim:
-      claimName: cluster-cache
+      claimName: cluster-cache-cluster-storage-connector
       readOnly: false
 
 nginx:
