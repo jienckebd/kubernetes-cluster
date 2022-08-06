@@ -22,8 +22,8 @@ ingress:
 
 phpfpm:
   extraVolumeMounts:
-    - name: cluster-storage
-      mountPath: /mnt/cluster-storage
+    - name: cluster-cache
+      mountPath: /mnt/cluster-cache
   resources:
     limits: {}
     requests:
@@ -46,9 +46,9 @@ extraVolumes:
   - name: theentityframework-com-tls
     secret:
       secretName: theentityframework.com-tls
-  - name: cluster-storage
+  - name: cluster-cache
     persistentVolumeClaim:
-      claimName: cluster-storage
+      claimName: cluster-cache
       readOnly: false
 
 nginx:

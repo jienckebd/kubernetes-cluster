@@ -29,7 +29,7 @@ extraVolumes:
       secretName: sysf.one-tls
   - name: cluster-cache
     persistentVolumeClaim:
-      claimName: cluster-cache-cluster-storage-connector
+      claimName: web-nginx-php-fpm-pvc
       readOnly: false
 
 imagePullSecrets:

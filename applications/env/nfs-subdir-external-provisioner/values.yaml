@@ -1,3 +1,0 @@
-nfs:
-  server: nfs-server-provisioner.ops.svc.cluster.local
-  path: /export
