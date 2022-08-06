@@ -1,0 +1,72 @@
+helmDefaults:
+  wait: false
+  cleanupOnFail: false
+
+repositories:
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
+  - name: cluster-storage-connector
+    url: https://gitlab.sysf.one/api/v4/projects/14/packages/helm/stable
+    username: {{ env "CI_JOB_USERNAME" | default "gitlab-ci-token" }}
+    password: {{ env "CI_JOB_TOKEN" }}
+  - name: nginx-php-fpm
+    url: https://gitlab.sysf.one/api/v4/projects/7/packages/helm/stable
+    username: {{ env "CI_JOB_USERNAME" | default "gitlab-ci-token" }}
+    password: {{ env "CI_JOB_TOKEN" }}
+
+releases:
+  - name: cluster-cache
+    namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
+    chart: cluster-storage-connector/cluster-storage-connector
+    installed: true
+    values:
+      - cluster-cache/values.yaml
+      - cluster-cache/env/{{ .Environment.Name }}/values.yaml
+  - name: elasticsearch
+    namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
+    chart: bitnami/elasticsearch
+    version: 17.9.3
+    installed: true
+    values:
+      - elasticsearch/values.yaml
+      - elasticsearch/env/{{ .Environment.Name }}/values.yaml
+  - name: mariadb-galera
+    namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
+    chart: bitnami/mariadb-galera
+    version: 7.3.6
+    installed: true
+    values:
+      - mariadb-galera/values.yaml
+      - mariadb-galera/env/{{ .Environment.Name }}/values.yaml
+  - name: node
+    namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
+    chart: bitnami/node
+    version: 17.0.17
+    installed: true
+    values:
+      - node/values.yaml
+      - node/env/{{ .Environment.Name }}/values.yaml
+  - name: redis-cluster
+    namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
+    chart: bitnami/redis-cluster
+    version: 7.6.4
+    installed: true
+    values:
+      - redis-cluster/values.yaml
+      - redis-cluster/env/{{ .Environment.Name }}/values.yaml
+      # - cluster:
+      #     init: {{ env "SYS_HELM_NEW" | default "false" }}
+  - name: web
+    namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
+    chart: nginx-php-fpm/nginx-php-fpm
+    installed: true
+    values:
+      - web/values.yaml
+      - web/env/{{ .Environment.Name }}/values.yaml
+
+environments:
+  prd: {  }
+  stg: {  }
+  dev: {  }
+  cid: {  }
+  ide: {  }

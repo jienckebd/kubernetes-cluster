@@ -4,7 +4,7 @@ helmDefaults:
 helmfiles:
 
   # Admin / one.
-  # - path: applications/admin/cert-manager/helmfile.yaml
+  - path: applications/admin/cert-manager/helmfile.yaml
   - path: applications/admin/nginx-ingress-controller/helmfile.yaml
   - path: applications/admin/kube-prometheus/helmfile.yaml
   - path: applications/admin/grafana/helmfile.yaml
@@ -18,7 +18,7 @@ helmfiles:
   - path: applications/env/mariadb-galera/helmfile.yaml
   - path: applications/env/redis-cluster/helmfile.yaml
   - path: applications/env/elasticsearch/helmfile.yaml
-  - path: applications/env/nginx-php-fpm/helmfile.yaml
+  - path: applications/env/web/helmfile.yaml
   - path: applications/env/node/helmfile.yaml
 
   # rook-ceph.
