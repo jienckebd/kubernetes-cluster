@@ -2,7 +2,7 @@ ingress:
   enabled: true
   annotations:
     kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: letsencrypt
+    cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
     - k8s.sys.sysf.one
   # tls:

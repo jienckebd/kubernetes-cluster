@@ -6,9 +6,8 @@ releases:
   - name: kube-prometheus
     namespace: admin
     chart: bitnami/kube-prometheus
-    version: 8.0.10
+    version: 8.0.14
     installed: true
-    disableValidation: true
     values:
       - values.yaml
 

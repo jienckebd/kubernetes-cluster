@@ -76,6 +76,10 @@ kubectl apply -f /Users/bry/sys/etc/k8s/gitlab-sso-oidc.yaml
 kubectl create namespace ops
 kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: ops/' | kubectl apply --namespace=ops -f -
 
+kubectl create secret generic clouddns \
+--from-file=/Users/bry/sys/etc/k8s/clouddns.key.json \
+--namespace=admin
+
 cd /Users/bry/sys/kubernetes/cluster/sysf/k8s
 kubectl apply -k ./
 cd -

@@ -21,7 +21,7 @@ ingress:
   certManager: true
   annotations:
     kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: letsencrypt
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 
 extraEnvVars:
   - name: KEYCLOAK_EXTRA_ARGS

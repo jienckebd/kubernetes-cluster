@@ -2,41 +2,21 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt
+  name: letsencrypt-prod
   namespace: admin
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
     email: 'bryan.jiencke@gmail.com'
     privateKeySecretRef:
-      name: letsencrypt-account-key
+      name: letsencrypt-prod-account-key
     solvers:
     - dns01:
         cloudDNS:
           project: bdbd-310322
           serviceAccountSecretRef:
-            name: clouddns-dns01-solver-svc-acct
-            key: key.json
-
----
-apiVersion: cert-manager.io/v1
-kind: Issuer
-metadata:
-  name: letsencrypt
-  namespace: admin
-spec:
-  acme:
-    server: https://acme-v02.api.letsencrypt.org/directory
-    email: 'bryan.jiencke@gmail.com'
-    privateKeySecretRef:
-      name: letsencrypt-account-key
-    solvers:
-    - dns01:
-        cloudDNS:
-          project: bdbd-310322
-          serviceAccountSecretRef:
-            name: clouddns-dns01-solver-svc-acct
-            key: key.json
+            name: clouddns
+            key: clouddns.key.json
 
 ---
 apiVersion: cert-manager.io/v1
@@ -47,8 +27,11 @@ metadata:
 spec:
   secretName: sysf.one-tls
   issuerRef:
-    name: letsencrypt
+    name: letsencrypt-prod
     kind: ClusterIssuer
+  secretTemplate:
+    annotations:
+      kubed.appscode.com/sync: ""
   dnsNames:
   - 'sysf.one'
   - '*.sysf.one'
@@ -68,8 +51,11 @@ metadata:
 spec:
   secretName: systemf.one-tls
   issuerRef:
-    name: letsencrypt
+    name: letsencrypt-prod
     kind: ClusterIssuer
+  secretTemplate:
+    annotations:
+      kubed.appscode.com/sync: "env=true"
   dnsNames:
   - 'systemf.one'
   - '*.systemf.one'
@@ -83,8 +69,11 @@ metadata:
 spec:
   secretName: theentityframework.com-tls
   issuerRef:
-    name: letsencrypt
+    name: letsencrypt-prod
     kind: ClusterIssuer
+  secretTemplate:
+    annotations:
+      kubed.appscode.com/sync: "env=true"
   dnsNames:
   - 'theentityframework.com'
   - '*.theentityframework.com'
@@ -98,8 +87,11 @@ metadata:
 spec:
   secretName: bryanjiencke.com-tls
   issuerRef:
-    name: letsencrypt
+    name: letsencrypt-prod
     kind: ClusterIssuer
+  secretTemplate:
+    annotations:
+      kubed.appscode.com/sync: "env=true"
   dnsNames:
   - 'bryanjiencke.com'
   - '*.bryanjiencke.com'
@@ -113,8 +105,11 @@ metadata:
 spec:
   secretName: stevenjiencke.com-tls
   issuerRef:
-    name: letsencrypt
+    name: letsencrypt-prod
     kind: ClusterIssuer
+  secretTemplate:
+    annotations:
+      kubed.appscode.com/sync: "env=true"
   dnsNames:
   - 'stevenjiencke.com'
   - '*.stevenjiencke.com'
