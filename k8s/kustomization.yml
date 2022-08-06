@@ -12,7 +12,6 @@ resources:
   - volume-snapshot-class/rook-ceph.yml
   - volume-snapshot-class/gce-useast-4.yml
   # - nfs/nfs.yml
-  - env/mariadb-galera.yml
   - gitlab/dind.yaml
   - gitlab/image-cache.yaml
   - certs-production.yml

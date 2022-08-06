@@ -61,22 +61,20 @@ kubectl create secret generic -n default sys-env-var-config-dev --from-env-file=
 kubectl create secret generic -n default sys-env-var-config-ide --from-env-file=/Users/bry/sys/etc/k8s/env/ide.env
 kubectl create secret generic -n default sys-env-var-config-cid --from-env-file=/Users/bry/sys/etc/k8s/env/cid.env
 
-# kubectl create secret generic ssh-config -n default --from-file=/Users/bry/sys/etc/k8s/ssh-config
-kubectl apply -f /Users/bry/sys/etc/k8s/ssh-config.yml
-
 kubectl create namespace admin
 kubectl create secret generic config-grafana -n admin --from-file=/Users/bry/sys/etc/k8s/grafana.ini
 kubectl create configmap elasticsearch-output -n admin --from-file=/Users/bry/sys/etc/k8s/configmap/elasticsearch-output/fluentd.conf
 kubectl create configmap fluentd-forwarder -n admin --from-file=/Users/bry/sys/etc/k8s/configmap/fluentd-forwarder/fluentd.conf
 
+cd /Users/bry/sys/etc/k8s/secret
+kubectl apply -k ./
+cd -
+
 kubectl create namespace gitlab
 kubectl apply -f /Users/bry/sys/etc/k8s/gitlab-sso-oidc.yaml
 
 kubectl create namespace ops
-kubectl create secret generic -n ops google-application-credentials --from-file=gcs-application-credentials-file=/Users/bry/sys/etc/gcloud/sa/gitlab-runner.json
 kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: ops/' | kubectl apply --namespace=ops -f -
-
-kubectl apply -f /Users/bry/sys/etc/k8s/gitlab-pull-secret.yml
 
 cd /Users/bry/sys/kubernetes/cluster/sysf/k8s
 kubectl apply -k ./
