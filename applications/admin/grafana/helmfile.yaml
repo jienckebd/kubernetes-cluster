@@ -6,7 +6,7 @@ releases:
   - name: grafana
     namespace: admin
     chart: bitnami/grafana
-    version: 7.6.14
+    version: 8.0.7
     installed: true
 
     values:

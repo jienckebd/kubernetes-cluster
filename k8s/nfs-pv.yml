@@ -9,8 +9,8 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    server: 10.136.11.122
-    path: "/export/pvc-349f0caf-33c7-4ad5-9478-4d6e4a51d9dd"
+    server: 10.136.15.87
+    path: "/export/pvc-47add5ba-94d7-485e-b347-5416cf04ef50"
   mountOptions:
     - nfsvers=4.2
 ---

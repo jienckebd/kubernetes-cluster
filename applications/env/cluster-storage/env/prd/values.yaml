@@ -1,0 +1,75 @@
+sys:
+  context: cloud
+  subcontext: prd
+  uri: https://sysf.one/
+
+helmDefaults:
+  wait: true
+
+ingress:
+  enabled: true
+  hosts:
+    - bryanjiencke.com
+    - www.bryanjiencke.com
+    - sysf.one
+    - www.sysf.one
+    - systemf.ome
+    - www.systemf.one
+    - stevenjiencke.com
+    - www.stevenjiencke.com
+    - theentityframework.com
+    - www.theentityframework.com
+
+phpfpm:
+  extraVolumeMounts:
+    - name: cluster-storage
+      mountPath: /mnt/cluster-storage
+  resources:
+    limits: {}
+    requests:
+      cpu: 50m
+      memory: 2048Mi
+
+extraVolumes:
+  - name: sysf-one-tls
+    secret:
+      secretName: sysf.one-tls
+  - name: bryanjiencke-com-tls
+    secret:
+      secretName: bryanjiencke.com-tls
+  - name: stevenjiencke-com-tls
+    secret:
+      secretName: stevenjiencke.com-tls
+  - name: systemf-one-tls
+    secret:
+      secretName: systemf.one-tls
+  - name: theentityframework-com-tls
+    secret:
+      secretName: theentityframework.com-tls
+  - name: cluster-storage
+    persistentVolumeClaim:
+      claimName: cluster-storage
+      readOnly: false
+
+nginx:
+  extraVolumeMounts:
+    - mountPath: "/etc/letsencrypt/sysf.one"
+      name: sysf-one-tls
+      readOnly: true
+    - mountPath: "/etc/letsencrypt/bryanjiencke.com"
+      name: bryanjiencke-com-tls
+      readOnly: true
+    - mountPath: "/etc/letsencrypt/stevenjiencke.com"
+      name: stevenjiencke-com-tls
+      readOnly: true
+    - mountPath: "/etc/letsencrypt/systemf.one"
+      name: systemf-one-tls
+      readOnly: true
+    - mountPath: "/etc/letsencrypt/theentityframework.com"
+      name: theentityframework-com-tls
+      readOnly: true
+  resources:
+    limits: {}
+    requests:
+      cpu: 50m
+      memory: 256Mi

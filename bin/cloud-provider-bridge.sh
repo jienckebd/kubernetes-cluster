@@ -83,7 +83,7 @@ kubectl apply -k ./
 cd -
 
 cd /Users/bry/sys/kubernetes/cluster/sysf
-helmfile --environment=rook-ceph apply
+helmfile --no-color --environment=rook-ceph apply
 cd -
 
 # kubectl create namespace env-prd

@@ -1,0 +1,26 @@
+helmDefaults:
+  wait: true
+  cleanupOnFail: false
+
+repositories:
+  - name: cluster-storage-connector
+    url: https://gitlab.sysf.one/api/v4/projects/14/packages/helm/stable
+    username: {{ env "CI_JOB_USERNAME" | default "gitlab-ci-token" }}
+    password: {{ env "CI_JOB_TOKEN" }}
+
+releases:
+  - name: cluster-storage
+    namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
+    chart: cluster-storage-connector/cluster-storage-connector
+    installed: true
+
+    values:
+      - values.yaml
+      - env/{{ .Environment.Name }}/values.yaml
+
+environments:
+  prd: {  }
+  stg: {  }
+  dev: {  }
+  cid: {  }
+  ide: {  }
