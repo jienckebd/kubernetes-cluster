@@ -12,6 +12,8 @@ admin:
     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
     entrypoint: [""]
   environment: admin
+  tags:
+    - kubernetes
   script:
     - helmfile --environment admin apply --suppress-secrets
 
@@ -21,6 +23,8 @@ admin:
 #     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
 #     entrypoint: [""]
 #   environment: gitlab
+#   tags:
+#     - kubernetes
 #   script:
 #     - helmfile --environment gitlab apply --suppress-secrets
 
@@ -30,6 +34,8 @@ admin:
 #     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
 #     entrypoint: [""]
 #   environment: gitlab-runner
+#   tags:
+#     - kubernetes
 #   script:
 #     - helmfile --file applications/gitlab-runner/helmfile.yaml --environment gitlab-runner apply --suppress-secrets
 
@@ -39,6 +45,8 @@ ops:
     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
     entrypoint: [""]
   environment: ops
+  tags:
+    - kubernetes
   script:
     - kubectl create namespace ops || true
     - helmfile --environment ops apply --suppress-secrets
@@ -49,6 +57,8 @@ env-prd:
     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
     entrypoint: [""]
  environment: prd
+ tags:
+    - kubernetes
  script:
    - kubectl create namespace env-prd || true
    - kubectl label ns env-prd env=true || true
@@ -63,6 +73,8 @@ env-prd:
 #     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
 #     entrypoint: [""]
 #  environment: stg
+#  tags:
+#     - kubernetes
 #  script:
 #    - kubectl create namespace env-stg || true
 #    - kubectl label ns env-stg env=true || true
@@ -77,6 +89,8 @@ env-prd:
 #     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
 #     entrypoint: [""]
 #  environment: dev
+#  tags:
+#     - kubernetes
 #  script:
 #    - kubectl create namespace env-dev || true
 #    - kubectl label ns env-dev env=true || true
@@ -91,6 +105,8 @@ env-ide1:
     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
     entrypoint: [""]
  environment: ide1
+ tags:
+    - kubernetes
  script:
    - export SYS_HELM_NAMESPACE_SUFFIX=ide1
    - export SYS_HELM_NEW="false"
@@ -106,6 +122,8 @@ env-ide1:
 #     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
 #     entrypoint: [""]
 #  environment: cid1
+#  tags:
+#     - kubernetes
 #  script:
 #    - export SYS_HELM_NAMESPACE_SUFFIX=cid1
 #    - export SYS_HELM_NEW="false"
@@ -121,6 +139,8 @@ env-ide1:
 #     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
 #     entrypoint: [""]
 #  environment: cid2
+#  tags:
+#     - kubernetes
 #  script:
 #    - export SYS_HELM_NAMESPACE_SUFFIX=cid2
 #    - export SYS_HELM_NEW="false"
