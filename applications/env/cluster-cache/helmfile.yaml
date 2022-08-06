@@ -1,5 +1,5 @@
 helmDefaults:
-  wait: true
+  wait: false
   cleanupOnFail: false
 
 repositories:
@@ -9,7 +9,7 @@ repositories:
     password: {{ env "CI_JOB_TOKEN" }}
 
 releases:
-  - name: cluster-storage
+  - name: cluster-cache
     namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
     chart: cluster-storage-connector/cluster-storage-connector
     installed: true

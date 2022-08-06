@@ -27,9 +27,9 @@ extraVolumes:
   - name: sysf-one-tls
     secret:
       secretName: sysf.one-tls
-  - name: cluster-storage
+  - name: cluster-cache
     persistentVolumeClaim:
-      claimName: cluster-storage
+      claimName: cluster-cache-cluster-storage-connector
       readOnly: false
 
 imagePullSecrets:
@@ -37,8 +37,8 @@ imagePullSecrets:
 
 phpfpm:
   extraVolumeMounts:
-    - name: cluster-storage
-      mountPath: /mnt/cluster-storage
+    - name: cluster-cache
+      mountPath: /mnt/cluster-cache
   resources:
     limits: {}
     requests:
