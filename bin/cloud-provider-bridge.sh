@@ -28,7 +28,6 @@ gcloud container clusters create sysf \
 --zone us-east4-a --project sysf-12 \
 --system-config-from-file=/Users/bry/sys/etc/k8s/node-system.yml
 
-
 # gcloud container clusters create sysf2 \
 # --no-enable-basic-auth \
 # --no-enable-master-authorized-networks \
