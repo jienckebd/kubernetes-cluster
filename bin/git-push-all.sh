@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-alias cs="git add -A; git commit -m WIP; git push origin master"
+source /Users/bry/sys/docker/image/php-fpm/bashrc-common.sh
 shopt -s expand_aliases
 
 cd /Users/bry/sys/docker/image/gcloud-sdk
