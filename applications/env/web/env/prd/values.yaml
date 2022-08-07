@@ -27,7 +27,7 @@ phpfpm:
   resources:
     limits: {}
     requests:
-      cpu: 50m
+      cpu: 500m
       memory: 2048Mi
 
 extraVolumes:
@@ -71,5 +71,11 @@ nginx:
   resources:
     limits: {}
     requests:
-      cpu: 50m
+      cpu: 500m
       memory: 256Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 5
+  maxReplicas: 10
+  targetCPU: 90
