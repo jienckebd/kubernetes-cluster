@@ -8,7 +8,6 @@ releases:
     chart: rook/rook-ceph
     version: 1.8.4
     installed: true
-
     values:
       - values.yaml
 

@@ -280,3 +280,8 @@ existingSecret: mariadb-galera
 #     forceBootstrap: true
 #     bootstrapFromNode: 3
 #     forceSafeToBootstrap: true
+
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: true

@@ -16,4 +16,5 @@ resources:
   - gitlab/image-cache.yaml
   - gitlab/image-cache-gitlab.yaml
   - certs-production.yml
+  - prometheus/podmonitor.yml
 #  - gitlab/omniauth-keycloak-secret.yaml

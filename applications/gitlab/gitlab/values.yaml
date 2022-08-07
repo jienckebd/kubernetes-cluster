@@ -1,6 +1,6 @@
 global:
   grafana:
-    enabled: true
+    enabled: false
   hosts:
     domain: sysf.one
     # hostSuffix: staging
@@ -45,3 +45,5 @@ gitlab-runner:
   install: false
 pages:
   enabled: true
+prometheus:
+  install: false

@@ -33,15 +33,19 @@ prometheus:
         - job_name: 'rook-ceph--rook-ceph-mgr'
           static_configs:
             - targets: ['rook-ceph-mgr.rook-ceph.svc.cluster.local:9283']
-        - job_name: 'admin--nginx-ingress-controller-metrics'
+        - job_name: 'gitlab'
           static_configs:
-            - targets: ['nginx-ingress-controller-metrics.admin.svc.cluster.local:9913']
-        - job_name: 'admin--grafana'
+            - targets: ['gitlab-nginx-ingress-controller-metrics.gitlab.svc.cluster.local:10254']
+            - targets: ['gitlab-postgresql-metrics.gitlab.svc.cluster.local:9187']
+            - targets: ['gitlab-redis-metrics.gitlab.svc.cluster.local:9121']
+            - targets: ['gitlab-webservice-default.gitlab.svc.cluster.local:8083']
+            - targets: ['gitlab-gitaly.gitlab.svc.cluster.local:9236']
+            - targets: ['gitlab-gitlab-exporter.gitlab.svc.cluster.local:9168']
+            - targets: ['gitlab-kas.gitlab.svc.cluster.local:8151']
+        - job_name: 'gitlab-runner'
           static_configs:
-            - targets: ['grafana.admin.svc.cluster.local:3000']
-        - job_name: 'admin--keycloak-metrics'
-          static_configs:
-            - targets: ['keycloak-metrics.admin.svc.cluster.local:9990']
+            - targets: ['gitlab-runner-docker.gitlab-runner.svc.cluster.local:9252']
+            - targets: ['gitlab-runner-kubernetes.gitlab-runner.svc.cluster.local:9252']
 
 operator:
   affinity:
@@ -64,3 +68,6 @@ alertmanager:
             operator: In
             values:
             - default-pool
+
+coreDns:
+  enabled: false

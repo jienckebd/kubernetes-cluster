@@ -24,12 +24,14 @@ rbac:
     enabled: false
     resourceNames:
     - gitlab-runner
+service:
+  enabled: true
 metrics:
   enabled: true
   portName: metrics
   port: 9252
   serviceMonitor:
-    enabled: true
+    enabled: false
 runners:
   helpers:
     image: "registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:x86_64-32fc1585"

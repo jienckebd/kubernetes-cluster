@@ -28,3 +28,7 @@ cluster:
   nodes: 6
   init: true
 
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: true

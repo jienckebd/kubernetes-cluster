@@ -68,3 +68,8 @@ coordinating:
     requests:
       cpu: 500m
       memory: 512Mi
+
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: true

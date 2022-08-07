@@ -10,7 +10,6 @@ releases:
     namespace: ops
     chart: estafette/estafette-gke-preemptible-killer
     installed: true
-
     values:
       - values.yaml
 

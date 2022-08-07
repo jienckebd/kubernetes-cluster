@@ -7,7 +7,6 @@ releases:
     namespace: ops
     chart: nfs-subdir-external-provisioner/nfs-subdir-external-provisioner
     installed: true
-
     values:
       - values.yaml
 

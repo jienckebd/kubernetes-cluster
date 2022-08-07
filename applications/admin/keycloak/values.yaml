@@ -29,6 +29,8 @@ extraEnvVars:
 
 metrics:
   enabled: true
+  serviceMonitor:
+    enabled: true
 
 affinity:
   nodeAffinity:

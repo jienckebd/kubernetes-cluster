@@ -31,3 +31,8 @@ forwarder:
       value: "root"
     - name: FLUENTD_DAEMON_GROUP
       value: "root"
+
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: true

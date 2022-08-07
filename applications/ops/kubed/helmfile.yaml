@@ -8,7 +8,6 @@ releases:
     chart: appscode/kubed
     version: 0.13.2
     installed: true
-
     values:
       - values.yaml
 

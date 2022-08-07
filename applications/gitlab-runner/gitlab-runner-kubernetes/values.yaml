@@ -20,12 +20,14 @@ rbac:
     enabled: false
     resourceNames:
     - gitlab-runner
+service:
+  enabled: true
 metrics:
   enabled: true
   portName: metrics
   port: 9252
   serviceMonitor:
-    enabled: true
+    enabled: false
 runners:
   cache:
       secretName: google-application-credentials

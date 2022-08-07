@@ -8,3 +8,8 @@ mongodb:
     rootPassword: drupal
     username: drupal
     password: drupal
+
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: true

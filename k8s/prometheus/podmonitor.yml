@@ -1,0 +1,24 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: velero
+  namespace: velero
+spec:
+  selector:
+    matchLabels:
+      deploy: velero
+  podMetricsEndpoints:
+  - targetPort: 8085
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: gitlab-agent
+  namespace: gitlab-agent
+spec:
+  selector:
+    matchLabels:
+      app: gitlab-agent
+  podMetricsEndpoints:
+  - targetPort: 8080

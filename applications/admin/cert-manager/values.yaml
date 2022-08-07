@@ -34,6 +34,6 @@ cainjector:
             - default-pool
 
 metrics:
+  enabled: true
   serviceMonitor:
     enabled: true
-    namespace: admin

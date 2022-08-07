@@ -45,3 +45,5 @@ plugins: "redis-datasource,grafana-gitlab-datasource"
 
 metrics:
   enabled: true
+  serviceMonitor:
+    enabled: true

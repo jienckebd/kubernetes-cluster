@@ -7,7 +7,6 @@ releases:
     namespace: ops
     chart: stable/nfs-server-provisioner
     installed: true
-
     values:
       - values.yaml
 
