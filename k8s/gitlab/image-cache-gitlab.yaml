@@ -11,4 +11,4 @@ spec:
   cacheSpec:
   - images:
     - registry.gitlab.com/gitlab-org/gitlab-runner:alpine-v15.2.1
-    # - registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:alpine-v15.2.1
+    - registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:x86_64-32fc1585
