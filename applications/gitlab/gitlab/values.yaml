@@ -1,4 +1,6 @@
 global:
+  grafana:
+    enabled: true
   hosts:
     domain: sysf.one
     # hostSuffix: staging

@@ -41,6 +41,7 @@ spec:
   - '*.platform.sys.sysf.one'
   - '*.network.sys.sysf.one'
   - '*.gitlab.sysf.one'
+  - '*.k8s.sysf.one'
 
 ---
 apiVersion: cert-manager.io/v1

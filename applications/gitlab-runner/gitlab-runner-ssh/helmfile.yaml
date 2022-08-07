@@ -3,7 +3,7 @@ repositories:
     url: https://charts.gitlab.io
 
 releases:
-  - name: gitlab-runner-ssh-web
+  - name: gitlab-runner-ssh
     namespace: gitlab-runner
     chart: gitlab/gitlab-runner
     version: 0.43.1

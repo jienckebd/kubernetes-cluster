@@ -29,17 +29,18 @@ metrics:
 runners:
   cache:
       secretName: google-application-credentials
-  tags: "sysf,ssh-web"
+  tags: "sysf,ssh"
   runUntagged: false
   config: |
     [[runners]]
       executor = "ssh"
       [runners.ssh]
-        host = "web-nginx-php-fpm"
+        host = "web-nginx-php-fpm.env-prd.cluster.local"
         port = "22"
         user = "www-data"
-        identity_file = "/home/user/.ssh/id_rsa"
-        [[runners.kubernetes.volumes.secret]]
+        identity_file = "/root/.ssh-workaround/id_rsa"
+        disable_strict_host_key_checking = false
+        [[runners.ssh.volumes.secret]]
           name = "ssh-config"
-          mount_path = "/home/user/.ssh"
+          mount_path = "/root/.ssh-workaround"
           read_only = true
