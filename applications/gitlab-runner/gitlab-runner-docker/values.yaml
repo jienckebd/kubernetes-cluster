@@ -1,3 +1,7 @@
+image:
+  registry: registry.gitlab.com
+  image: gitlab-org/gitlab-runner
+  tag: alpine-v15.2.1
 gitlabUrl: https://gitlab.sysf.one/
 runnerRegistrationToken: "NUuLRmkTVpuPP4OfPm5o3QUAV48kn1CfhQtQiicWxUlm5bsMe2XilV6Svi5LLbl4"
 concurrent: 10
@@ -27,6 +31,12 @@ metrics:
   serviceMonitor:
     enabled: true
 runners:
+  helpers:
+    image: "bitnami/gitlab-runner-helper"
+  cache:
+      secretName: google-application-credentials
+  tags: "sysf,docker"
+  runUntagged: true
   config: |
     [[runners]]
       executor = "docker"
@@ -38,7 +48,3 @@ runners:
           Shared = true
           [runners.cache.gcs]
             BucketName = "sysf-12-gitlab-runners-cache"
-  cache:
-      secretName: google-application-credentials
-  tags: "sysf,docker"
-  runUntagged: true

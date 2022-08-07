@@ -27,6 +27,10 @@ metrics:
   serviceMonitor:
     enabled: true
 runners:
+  cache:
+      secretName: google-application-credentials
+  tags: "sysf,kubernetes"
+  runUntagged: false
   config: |
     [[runners]]
       [runners.kubernetes]
@@ -41,7 +45,3 @@ runners:
           name = "ssh-config"
           mount_path = "/root/.ssh-workaround"
           read_only = true
-  cache:
-      secretName: google-application-credentials
-  tags: "sysf,kubernetes"
-  runUntagged: false

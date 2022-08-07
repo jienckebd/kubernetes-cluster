@@ -17,6 +17,7 @@ spec:
     - bitnami/redis-cluster
     - bitnami/node
     - bitnami/mongodb
+    - bitnami/nginx
     - registry.gitlab.sysf.one/docker/image/php-fpm
-    - registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper
-    - registry.gitlab.com/gitlab-org/gitlab-runner
+    - registry.gitlab.sysf.one/docker/image/helmfile
+    - registry.gitlab.sysf.one/docker/image/kubectl

@@ -1,0 +1,14 @@
+---
+apiVersion: kubefledged.io/v1alpha2
+kind: ImageCache
+metadata:
+  name: imagecache-gitlab
+  namespace: ops
+  labels:
+    app: kubefledged
+    component: imagecache
+spec:
+  cacheSpec:
+  - images:
+    - registry.gitlab.com/gitlab-org/gitlab-runner:alpine-v15.2.1
+    # - registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:alpine-v15.2.1

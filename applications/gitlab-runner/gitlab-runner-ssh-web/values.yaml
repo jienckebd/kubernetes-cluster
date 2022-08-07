@@ -27,6 +27,10 @@ metrics:
   serviceMonitor:
     enabled: true
 runners:
+  cache:
+      secretName: google-application-credentials
+  tags: "sysf,ssh-web"
+  runUntagged: false
   config: |
     [[runners]]
       executor = "ssh"
@@ -39,7 +43,3 @@ runners:
           name = "ssh-config"
           mount_path = "/home/user/.ssh"
           read_only = true
-  cache:
-      secretName: google-application-credentials
-  tags: "sysf,ssh-web"
-  runUntagged: false
