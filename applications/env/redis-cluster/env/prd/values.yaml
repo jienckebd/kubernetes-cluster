@@ -1,4 +1,4 @@
 cluster:
-  nodes: 6
-  replicas: 2
+  nodes: 8
+  replicas: 1
   init: true
