@@ -1,15 +1,5 @@
 prometheus:
 
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: cloud.google.com/gke-nodepool
-            operator: In
-            values:
-            - default-pool
-
   ingress:
     enabled: true
     hostname: pro.sys.sysf.one
@@ -46,28 +36,6 @@ prometheus:
           static_configs:
             - targets: ['gitlab-runner-docker.gitlab-runner.svc.cluster.local:9252']
             - targets: ['gitlab-runner-kubernetes.gitlab-runner.svc.cluster.local:9252']
-
-operator:
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: cloud.google.com/gke-nodepool
-            operator: In
-            values:
-            - default-pool
-
-alertmanager:
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: cloud.google.com/gke-nodepool
-            operator: In
-            values:
-            - default-pool
 
 coreDns:
   enabled: false

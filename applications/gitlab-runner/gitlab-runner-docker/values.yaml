@@ -5,15 +5,6 @@ image:
 gitlabUrl: https://gitlab.sysf.one/
 runnerRegistrationToken: "NUuLRmkTVpuPP4OfPm5o3QUAV48kn1CfhQtQiicWxUlm5bsMe2XilV6Svi5LLbl4"
 concurrent: 10
-affinity:
-  nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: cloud.google.com/gke-nodepool
-          operator: In
-          values:
-          - default-pool
 secrets:
   - name: google-application-credentials
 rbac:

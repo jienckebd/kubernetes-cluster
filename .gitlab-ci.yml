@@ -49,6 +49,7 @@ ops:
     - kubernetes
   script:
     - kubectl create namespace ops || true
+    - kubectl label --overwrite ns ops namespace-node-affinity=enabled
     - helmfile --environment ops apply --suppress-secrets
 
 env-prd:
@@ -60,8 +61,6 @@ env-prd:
  tags:
     - kubernetes
  script:
-   - kubectl create namespace env-prd || true
-   - kubectl label ns env-prd env=true || true
    - export SYS_HELM_NEW="false"
    - kubectl config set-context --current --namespace=env-prd
    - "kubectl get secret sys-env-var-config-prd --namespace=default -o yaml | sed 's/namespace: default/namespace: env-prd/' | sed 's/name: sys-env-var-config-prd/name: sys-env-var-config/' | kubectl apply --namespace=env-prd -f - || true"
@@ -76,8 +75,6 @@ env-prd:
 #  tags:
 #     - kubernetes
 #  script:
-#    - kubectl create namespace env-stg || true
-#    - kubectl label ns env-stg env=true || true
 #    - export SYS_HELM_NEW="false"
 #    - kubectl config set-context --current --namespace=env-stg
 #    - "kubectl get secret sys-env-var-config-stg --namespace=default -o yaml | sed 's/namespace: default/namespace: env-stg/' | sed 's/name: sys-env-var-config-stg/name: sys-env-var-config/' | kubectl apply --namespace=env-stg -f - || true"
@@ -92,60 +89,26 @@ env-prd:
 #  tags:
 #     - kubernetes
 #  script:
-#    - kubectl create namespace env-dev || true
-#    - kubectl label ns env-dev env=true || true
 #    - export SYS_HELM_NEW="true"
 #    - kubectl config set-context --current --namespace=env-dev
 #    - "kubectl get secret sys-env-var-config-dev --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | sed 's/name: sys-env-var-config-dev/name: sys-env-var-config/' | kubectl apply --namespace=env-dev -f - || true"
 #    - helmfile --file applications/env/helmfile.yaml --environment dev apply --suppress-secrets
 
-env-ide1:
- stage: deploy
- image:
-    name: registry.gitlab.sysf.one/docker/image/helmfile:latest
-    entrypoint: [""]
- environment: ide1
- tags:
-    - kubernetes
- script:
-   - export SYS_HELM_NAMESPACE_SUFFIX=ide1
-   - export SYS_HELM_NEW="false"
-   - kubectl create namespace env-ide1 || true
-   - kubectl label ns env-ide1 env=true || true
-   - kubectl config set-context --current --namespace=env-ide1
-   - "kubectl get secret sys-env-var-config-ide --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | sed 's/name: sys-env-var-config-ide/name: sys-env-var-config/' | kubectl apply --namespace=env-ide1 -f - || true"
-   - helmfile --file applications/env/helmfile.yaml --environment ide apply --suppress-secrets
-
-# env-cid1:
+# env-ide1:
 #  stage: deploy
 #  image:
 #     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
 #     entrypoint: [""]
-#  environment: cid1
+#  environment: ide1
 #  tags:
 #     - kubernetes
 #  script:
-#    - export SYS_HELM_NAMESPACE_SUFFIX=cid1
+#    - export SYS_HELM_NAMESPACE_SUFFIX=ide1
 #    - export SYS_HELM_NEW="false"
-#    - kubectl create namespace env-cid1 || true
-#    - kubectl label ns env-cid1 env=true || true
-#    - kubectl config set-context --current --namespace=env-cid1
-#    - "kubectl get secret sys-env-var-config-ide --namespace=default -o yaml | sed 's/namespace: default/namespace: env-cid1/' | sed 's/name: sys-env-var-config-ide/name: sys-env-var-config/' | kubectl apply --namespace=env-cid1 -f - || true"
-#    - helmfile --file applications/env/helmfile.yaml --environment ide apply --suppress-secrets
-
-# env-cid2:
-#  stage: deploy
-#  image:
-#     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
-#     entrypoint: [""]
-#  environment: cid2
-#  tags:
-#     - kubernetes
-#  script:
-#    - export SYS_HELM_NAMESPACE_SUFFIX=cid2
-#    - export SYS_HELM_NEW="false"
-#    - kubectl create namespace env-cid2 || true
-#    - kubectl label ns env-cid2 env=true || true
-#    - kubectl config set-context --current --namespace=env-cid2
-#    - "kubectl get secret sys-env-var-config-ide --namespace=default -o yaml | sed 's/namespace: default/namespace: env-cid2/' | sed 's/name: sys-env-var-config-ide/name: sys-env-var-config/' | kubectl apply --namespace=env-cid2 -f - || true"
+#    - kubectl create namespace env-ide1 || true
+#    - kubectl label --overwrite ns env-ide1 env=true
+#    - kubectl label --overwrite ns env-ide1 namespace-node-affinity=enabled
+#    - kubectl annotate --overwrite ns env-ide1 scheduler.alpha.kubernetes.io/node-selector='cloud.google.com/gke-nodepool=ephemeral'
+#    - kubectl config set-context --current --namespace=env-ide1
+#    - "kubectl get secret sys-env-var-config-ide --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | sed 's/name: sys-env-var-config-ide/name: sys-env-var-config/' | kubectl apply --namespace=env-ide1 -f - || true"
 #    - helmfile --file applications/env/helmfile.yaml --environment ide apply --suppress-secrets

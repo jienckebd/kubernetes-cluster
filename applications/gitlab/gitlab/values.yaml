@@ -24,7 +24,7 @@ global:
       https: true
     ssh: gitlab.sysf.one
   ingress:
-    configureCertmanager: false
+    configureCertmanager: true
     tls:
       enabled: true
       secretName: sysf.one-tls
@@ -37,8 +37,8 @@ global:
       autoSignInWithProvider: openid_connect
       providers:
         - secret: gitlab-sso-oidc
-# certmanager-issuer:
-#   email: bryan.jiencke@gmail.com
+certmanager-issuer:
+  email: bryan.jiencke@gmail.com
 certmanager:
   install: false
 gitlab-runner:

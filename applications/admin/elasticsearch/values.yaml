@@ -1,13 +1,4 @@
 data:
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: cloud.google.com/gke-nodepool
-            operator: In
-            values:
-            - default-pool
   autoscaling:
     enabled: true
     minReplicas: 2
@@ -24,15 +15,6 @@ data:
       - ReadWriteMany
 
 master:
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: cloud.google.com/gke-nodepool
-            operator: In
-            values:
-            - default-pool
   autoscaling:
     enabled: true
     minReplicas: 2
@@ -49,15 +31,6 @@ master:
       - ReadWriteMany
 
 coordinating:
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: cloud.google.com/gke-nodepool
-            operator: In
-            values:
-            - default-pool
   autoscaling:
     enabled: true
     minReplicas: 2

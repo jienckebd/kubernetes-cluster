@@ -5,6 +5,7 @@ commonLabels:
   source: "sys.k8s"
 
 resources:
+#  - ns.yml
   - cronjob/service-account.yml
   - cronjob/pod-maintain.yml
   - gitlab/service-account.yml

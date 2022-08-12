@@ -1,7 +1,6 @@
 auth:
   adminPassword: drupal
   managementPassword: drupal
-
 postgresql:
   postgresqlPassword: "drupal"
   postgresqlPostgresPassword: drupal
@@ -10,10 +9,8 @@ postgresql:
     storageClass: ceph-filesystem
     accessModes:
       - ReadWriteMany
-
 service:
   type: ClusterIP
-
 ingress:
   enabled: true
   hostname: id.sys.sysf.one
@@ -22,22 +19,10 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt-prod
-
 extraEnvVars:
   - name: KEYCLOAK_EXTRA_ARGS
     value: "-Dkeycloak.frontendUrl=https://id.sys.sysf.one/auth"
-
 metrics:
   enabled: true
   serviceMonitor:
     enabled: true
-
-affinity:
-  nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: cloud.google.com/gke-nodepool
-          operator: In
-          values:
-          - default-pool

@@ -55,10 +55,15 @@ gcloud container clusters create sysf \
 kubectl patch storageclass standard \
     -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
 
-kubectl create secret generic -n default sys-env-var-config-prd --from-env-file=/Users/bry/sys/etc/k8s/env/prd.env
-kubectl create secret generic -n default sys-env-var-config-stg --from-env-file=/Users/bry/sys/etc/k8s/env/stg.env
-kubectl create secret generic -n default sys-env-var-config-dev --from-env-file=/Users/bry/sys/etc/k8s/env/dev.env
-kubectl create secret generic -n default sys-env-var-config-ide --from-env-file=/Users/bry/sys/etc/k8s/env/ide.env
+# kubectl patch storageclass ceph-block \
+#     -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
+# kubectl patch storageclass standard-rwo \
+#     -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+
+kubectl create secret generic -n default sys-env-var-config-prd --from-env-file=/Users/bry/sys/etc/k8s/env/prd.env;
+kubectl create secret generic -n default sys-env-var-config-stg --from-env-file=/Users/bry/sys/etc/k8s/env/stg.env;
+kubectl create secret generic -n default sys-env-var-config-dev --from-env-file=/Users/bry/sys/etc/k8s/env/dev.env;
+kubectl create secret generic -n default sys-env-var-config-ide --from-env-file=/Users/bry/sys/etc/k8s/env/ide.env;
 kubectl create secret generic -n default sys-env-var-config-cid --from-env-file=/Users/bry/sys/etc/k8s/env/cid.env
 
 kubectl create namespace admin
@@ -66,15 +71,12 @@ kubectl create secret generic config-grafana -n admin --from-file=/Users/bry/sys
 kubectl create configmap elasticsearch-output -n admin --from-file=/Users/bry/sys/etc/k8s/configmap/elasticsearch-output/fluentd.conf
 kubectl create configmap fluentd-forwarder -n admin --from-file=/Users/bry/sys/etc/k8s/configmap/fluentd-forwarder/fluentd.conf
 
+kubectl create namespace gitlab
+kubectl apply -f /Users/bry/sys/etc/k8s/secret/gitlab-sso-oidc.yaml
+
 cd /Users/bry/sys/etc/k8s/secret
 kubectl apply -k ./
 cd -
-
-kubectl create namespace gitlab
-kubectl apply -f /Users/bry/sys/etc/k8s/gitlab-sso-oidc.yaml
-
-kubectl create namespace ops
-kubectl get secret ssh-config --namespace=default -o yaml | sed 's/namespace: default/namespace: ops/' | kubectl apply --namespace=ops -f -
 
 kubectl create secret generic clouddns \
 --from-file=/Users/bry/sys/etc/k8s/clouddns.key.json \
@@ -87,6 +89,18 @@ cd -
 cd /Users/bry/sys/kubernetes/cluster/sysf
 helmfile --no-color --environment=rook-ceph apply
 cd -
+
+velero install \                                                                                                                                                                                                                          ✔  10259  20:21:08
+    --provider gcp \
+    --plugins velero/velero-plugin-for-gcp:v1.4.1 \
+    --bucket sysf-12--velero--0 \
+    --secret-file ~/sys/etc/gcloud/sa/credentials-velero \
+    --features=EnableCSI \
+    --use-restic \
+    --restic-pod-cpu-request=50m \
+    --restic-pod-mem-request=128Mi \
+    --velero-pod-cpu-request=50m \
+    --velero-pod-mem-request=128Mi
 
 # kubectl create namespace env-prd
 # kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: .*/namespace: env-prd/' | kubectl apply --namespace=env-prd -f -

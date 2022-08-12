@@ -7,16 +7,6 @@ persistence:
   accessMode: ReadWriteMany
   size: 50Gi
 
-affinity:
-  nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: cloud.google.com/gke-nodepool
-          operator: In
-          values:
-          - default-pool
-
 autoscaling:
   enabled: false
   minReplicas: 2

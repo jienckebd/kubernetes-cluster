@@ -1,0 +1,49 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rook-ceph
+  annotations:
+    scheduler.alpha.kubernetes.io/node-selector: cloud.google.com/gke-nodepool=persistent
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: admin
+  annotations:
+    scheduler.alpha.kubernetes.io/node-selector: cloud.google.com/gke-nodepool=persistent
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gitlab
+  annotations:
+    scheduler.alpha.kubernetes.io/node-selector: cloud.google.com/gke-nodepool=persistent
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gitlab-runner
+  annotations:
+    scheduler.alpha.kubernetes.io/node-selector: cloud.google.com/gke-nodepool=ephemeral
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gitlab-agent
+  annotations:
+    scheduler.alpha.kubernetes.io/node-selector: cloud.google.com/gke-nodepool=persistent
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ops
+  annotations:
+    scheduler.alpha.kubernetes.io/node-selector: cloud.google.com/gke-nodepool=persistent
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: velero
+  annotations:
+    scheduler.alpha.kubernetes.io/node-selector: cloud.google.com/gke-nodepool=persistent
