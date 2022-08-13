@@ -1,11 +1,21 @@
 toolbox:
   enabled: true
 cephClusterSpec:
+  # placement:
+  #   all:
+  #     nodeAffinity:
+  #       requiredDuringSchedulingIgnoredDuringExecution:
+  #         nodeSelectorTerms:
+  #         - matchExpressions:
+  #           - key: cloud.google.com/gke-nodepool
+  #             operator: In
+  #             values:
+  #             - default-pool
   network:
     hostNetwork: false
   dashboard:
     enabled: true
-    ssl: false
+    ssl: true
   storage:
     storageClassDeviceSets:
       - name: set1
@@ -76,7 +86,7 @@ cephClusterSpec:
             spec:
               resources:
                 requests:
-                  storage: 500Gi
+                  storage: 400Gi
               # IMPORTANT: Change the storage class depending on your environment
               storageClassName: standard-rwo
               volumeMode: Block

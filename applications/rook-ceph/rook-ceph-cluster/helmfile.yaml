@@ -8,6 +8,7 @@ releases:
     chart: rook/rook-ceph-cluster
     version: 1.8.5
     installed: true
+
     values:
       - values.yaml
 

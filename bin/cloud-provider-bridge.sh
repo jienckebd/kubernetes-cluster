@@ -90,18 +90,6 @@ cd /Users/bry/sys/kubernetes/cluster/sysf
 helmfile --no-color --environment=rook-ceph apply
 cd -
 
-velero install \                                                                                                                                                                                                                          ✔  10259  20:21:08
-    --provider gcp \
-    --plugins velero/velero-plugin-for-gcp:v1.4.1 \
-    --bucket sysf-12--velero--0 \
-    --secret-file ~/sys/etc/gcloud/sa/credentials-velero \
-    --features=EnableCSI \
-    --use-restic \
-    --restic-pod-cpu-request=50m \
-    --restic-pod-mem-request=128Mi \
-    --velero-pod-cpu-request=50m \
-    --velero-pod-mem-request=128Mi
-
 # kubectl create namespace env-prd
 # kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: .*/namespace: env-prd/' | kubectl apply --namespace=env-prd -f -
 
