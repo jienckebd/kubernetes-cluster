@@ -36,7 +36,7 @@ helmfiles:
   # Ops.
   - path: applications/ops/kubefledged/helmfile.yaml
   - path: applications/ops/kubed/helmfile.yaml
-  - path: applications/ops/gke-preemptible-killer/helmfile.yaml
+  # - path: applications/ops/gke-preemptible-killer/helmfile.yaml
   - path: applications/ops/nfs-server-provisioner/helmfile.yaml
   # - path: applications/ops/nfs-subdir-external-provisioner/helmfile.yaml
 
