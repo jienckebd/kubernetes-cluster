@@ -103,21 +103,21 @@ env-prd:
 #    - "kubectl get secret sys-env-var-config-dev --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | sed 's/name: sys-env-var-config-dev/name: sys-env-var-config/' | kubectl apply --namespace=env-dev -f - || true"
 #    - helmfile --file applications/env/helmfile.yaml --environment dev apply --suppress-secrets
 
-# env-ide1:
-#  stage: deploy
-#  image:
-#     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
-#     entrypoint: [""]
-#  environment: ide1
-#  tags:
-#     - kubernetes
-#  script:
-#    - export SYS_HELM_NAMESPACE_SUFFIX=ide1
-#    - export SYS_HELM_NEW="false"
-#    - kubectl create namespace env-ide1 || true
-#    - kubectl label --overwrite ns env-ide1 env=true
-#    - kubectl label --overwrite ns env-ide1 namespace-node-affinity=enabled
-#    - kubectl annotate --overwrite ns env-ide1 scheduler.alpha.kubernetes.io/node-selector='cloud.google.com/gke-nodepool=ephemeral'
-#    - kubectl config set-context --current --namespace=env-ide1
-#    - "kubectl get secret sys-env-var-config-ide --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | sed 's/name: sys-env-var-config-ide/name: sys-env-var-config/' | kubectl apply --namespace=env-ide1 -f - || true"
-#    - helmfile --file applications/env/helmfile.yaml --environment ide apply --suppress-secrets
+env-ide1:
+ stage: deploy
+ image:
+    name: registry.gitlab.sysf.one/docker/image/helmfile:latest
+    entrypoint: [""]
+ environment: ide1
+ tags:
+    - kubernetes
+ script:
+   - export SYS_HELM_NAMESPACE_SUFFIX=ide1
+   - export SYS_HELM_NEW="false"
+   - kubectl create namespace env-ide1 || true
+   - kubectl label --overwrite ns env-ide1 env=true
+   - kubectl label --overwrite ns env-ide1 namespace-node-affinity=enabled
+   - kubectl annotate --overwrite ns env-ide1 scheduler.alpha.kubernetes.io/node-selector='cloud.google.com/gke-nodepool=ephemeral'
+   - kubectl config set-context --current --namespace=env-ide1
+   - "kubectl get secret sys-env-var-config-ide --namespace=default -o yaml | sed 's/namespace: default/namespace: env-ide1/' | sed 's/name: sys-env-var-config-ide/name: sys-env-var-config/' | kubectl apply --namespace=env-ide1 -f - || true"
+   - helmfile --file applications/env/helmfile.yaml --environment ide apply --suppress-secrets
