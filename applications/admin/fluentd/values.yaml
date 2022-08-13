@@ -18,4 +18,3 @@ forwarder:
 #   enabled: true
 #   serviceMonitor:
 #     enabled: true
-
