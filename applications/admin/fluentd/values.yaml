@@ -2,7 +2,7 @@ aggregator:
   configMap: elasticsearch-output
   extraEnvVars:
     - name: ELASTICSEARCH_HOST
-      value: "elasticsearch-coordinating-hl.admin.svc.cluster.local"
+      value: "elasticsearch-coordinating.admin.svc.cluster.local"
     - name: ELASTICSEARCH_PORT
       value: "9200"
 
