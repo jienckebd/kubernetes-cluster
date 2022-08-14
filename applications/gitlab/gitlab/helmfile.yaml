@@ -6,7 +6,7 @@ releases:
   - name: gitlab
     namespace: gitlab
     chart: gitlab/gitlab
-    version: 6.1.2
+    version: 6.2.2
     timeout: 6000
     installed: true
 
