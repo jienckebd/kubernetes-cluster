@@ -2,7 +2,7 @@ aggregator:
   configMap: elasticsearch-output
   extraEnvVars:
     - name: ELASTICSEARCH_HOST
-      value: "elasticsearch-coordinating.admin.svc.cluster.local"
+      value: "elasticsearch-coordinating-only.admin.svc.cluster.local"
     - name: ELASTICSEARCH_PORT
       value: "9200"
 
@@ -14,8 +14,7 @@ forwarder:
     - name: FLUENTD_DAEMON_GROUP
       value: "root"
 
-# metrics:
-#   enabled: true
-#   serviceMonitor:
-#     enabled: true
-
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: true

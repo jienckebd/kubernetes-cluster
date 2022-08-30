@@ -1,9 +1,9 @@
 data:
-  autoscaling:
-    enabled: true
-    minReplicas: 2
-    maxReplicas: 5
-    targetCPU: 90
+  # autoscaling:
+  #   enabled: true
+  #   minReplicas: 2
+  #   maxReplicas: 5
+  #   targetCPU: 90
   resources:
     limits: {}
     requests:
@@ -15,11 +15,11 @@ data:
       - ReadWriteMany
 
 master:
-  autoscaling:
-    enabled: true
-    minReplicas: 2
-    maxReplicas: 5
-    targetCPU: 90
+  # autoscaling:
+  #   enabled: true
+  #   minReplicas: 2
+  #   maxReplicas: 5
+  #   targetCPU: 90
   resources:
     limits: {}
     requests:
@@ -31,11 +31,11 @@ master:
       - ReadWriteMany
 
 coordinating:
-  autoscaling:
-    enabled: true
-    minReplicas: 2
-    maxReplicas: 5
-    targetCPU: 90
+  # autoscaling:
+  #   enabled: true
+  #   minReplicas: 2
+  #   maxReplicas: 5
+  #   targetCPU: 90
   resources:
     limits: {}
     requests:

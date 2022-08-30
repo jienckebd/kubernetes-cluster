@@ -26,7 +26,7 @@ prometheus:
         - job_name: 'gitlab'
           static_configs:
             - targets: ['gitlab-nginx-ingress-controller-metrics.gitlab.svc.cluster.local:10254']
-            - targets: ['gitlab-postgresql-metrics.gitlab.svc.cluster.local:9187']
+            # - targets: ['gitlab-postgresql-metrics.gitlab.svc.cluster.local:9187']
             - targets: ['gitlab-redis-metrics.gitlab.svc.cluster.local:9121']
             - targets: ['gitlab-webservice-default.gitlab.svc.cluster.local:8083']
             - targets: ['gitlab-gitaly.gitlab.svc.cluster.local:9236']

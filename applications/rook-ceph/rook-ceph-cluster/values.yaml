@@ -15,7 +15,7 @@ cephClusterSpec:
     hostNetwork: false
   dashboard:
     enabled: true
-    ssl: true
+    ssl: false
   storage:
     storageClassDeviceSets:
       - name: set1
@@ -95,6 +95,9 @@ cephClusterSpec:
 
 ingress:
   dashboard:
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      cert-manager.io/cluster-issuer: letsencrypt-prod
     host:
       name: ceph.sys.sysf.one
       path: "/"

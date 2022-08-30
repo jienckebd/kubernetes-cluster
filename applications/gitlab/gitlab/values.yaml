@@ -47,3 +47,6 @@ pages:
   enabled: true
 prometheus:
   install: false
+postgresql:
+  metrics:
+    enabled: false
