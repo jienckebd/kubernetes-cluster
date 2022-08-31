@@ -28,7 +28,7 @@ phpfpm:
     limits: {}
     requests:
       cpu: 500m
-      memory: 2048Mi
+      memory: 1024Mi
 
 extraVolumes:
   - name: sysf-one-tls
@@ -71,7 +71,7 @@ nginx:
   resources:
     limits: {}
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 256Mi
 
 autoscaling:
