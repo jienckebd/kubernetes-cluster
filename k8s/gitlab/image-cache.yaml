@@ -21,9 +21,7 @@ spec:
     - docker.io/bitnami/cert-manager-webhook:1.9.1-debian-11-r3
     - docker.io/bitnami/cert-manager:1.9.1-debian-11-r4
     - docker.io/bitnami/elasticsearch-exporter:1.3.0-debian-10-r110
-    - docker.io/bitnami/elasticsearch-exporter:1.5.0-debian-11-r3
     - docker.io/bitnami/elasticsearch:7.17.0-debian-10-r11
-    - docker.io/bitnami/elasticsearch:8.3.3-debian-11-r3
     - docker.io/bitnami/fluentd:1.14.4-debian-10-r11
     - docker.io/bitnami/grafana:9.0.6-debian-11-r2
     - docker.io/bitnami/keycloak:16.1.1-debian-10-r11
