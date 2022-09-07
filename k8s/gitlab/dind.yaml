@@ -8,12 +8,12 @@ metadata:
   name: docker-dind-data
   namespace: ops
 spec:
-  storageClassName: standard-rwo
+  storageClassName: gp2
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 50Gi
+      storage: 20Gi
 
 ---
 ## Deployment for docker-dind

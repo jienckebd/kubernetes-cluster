@@ -9,13 +9,14 @@ resources:
   - cronjob/service-account.yml
   - cronjob/pod-maintain.yml
   - gitlab/service-account.yml
+  - namespace-node-affinity.yml
 #  - cluster-issuer/sys.yml
-  - volume-snapshot-class/rook-ceph.yml
-  - volume-snapshot-class/gce-useast-4.yml
+  # - volume-snapshot-class/rook-ceph.yml
+  # - volume-snapshot-class/gce-useast-4.yml
   # - nfs/nfs.yml
   - gitlab/dind.yaml
   - gitlab/image-cache.yaml
-  - gitlab/image-cache-gitlab.yaml
-  - certs-production.yml
+  # - gitlab/image-cache-gitlab.yaml
+  # - certs-production.yml
   - prometheus/podmonitor.yml
 #  - gitlab/omniauth-keycloak-secret.yaml

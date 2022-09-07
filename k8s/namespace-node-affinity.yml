@@ -1,0 +1,43 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: namespace-node-affinity
+  namespace: default
+data:
+  default: |
+    tolerations:
+      - key: "k8s.sysf.one/nodestate"
+        operator: "Equal"
+        value: "persistent"
+        effect: "PreferNoSchedule"
+  kube-system: |
+    tolerations:
+      - key: "k8s.sysf.one/nodestate"
+        operator: "Equal"
+        value: "persistent"
+        effect: "PreferNoSchedule"
+  kube-node-lease: |
+    tolerations:
+      - key: "k8s.sysf.one/nodestate"
+        operator: "Equal"
+        value: "persistent"
+        effect: "PreferNoSchedule"
+  kube-public: |
+    tolerations:
+      - key: "k8s.sysf.one/nodestate"
+        operator: "Equal"
+        value: "persistent"
+        effect: "PreferNoSchedule"
+  rook-ceph: |
+    tolerations:
+      - key: "k8s.sysf.one/nodestate"
+        operator: "Equal"
+        value: "persistent"
+        effect: "PreferNoSchedule"
+  velero: |
+    tolerations:
+      - key: "k8s.sysf.one/nodestate"
+        operator: "Equal"
+        value: "persistent"
+        effect: "PreferNoSchedule"

@@ -1,5 +1,5 @@
 gitlabUrl: https://gitlab.sysf.one/
-runnerRegistrationToken: "NUuLRmkTVpuPP4OfPm5o3QUAV48kn1CfhQtQiicWxUlm5bsMe2XilV6Svi5LLbl4"
+runnerRegistrationToken: "yh1BRTKTgeBeaVzQ1r6G8FGzMamvs4WvE4fFgn2gI8Eg2jrzl2guNmNOtgyDyIct"
 concurrent: 10
 secrets:
   - name: google-application-credentials

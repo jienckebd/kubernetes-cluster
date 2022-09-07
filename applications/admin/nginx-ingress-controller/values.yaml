@@ -1,8 +1,10 @@
-service:
-  loadBalancerIP: 35.199.10.52
+# service:
+#   loadBalancerIP: 23.23.246.214
+#   annotations:
+#     service.beta.kubernetes.io/aws-load-balancer-eip-allocations: eipalloc-0d11bfcbcc11ea1da
 
 tcp:
-  22: "env-prd/web-nginx-php-fpm:22"
+  22: "gitlab/gitlab-gitlab-shell:22"
 
 extraArgs:
   enable-ssl-passthrough: ""

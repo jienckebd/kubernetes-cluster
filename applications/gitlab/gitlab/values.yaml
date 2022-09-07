@@ -5,7 +5,6 @@ global:
     domain: sysf.one
     # hostSuffix: staging
     https: true
-    externalIP: 35.245.33.158
     gitlab:
       name: gitlab.sysf.one
       https: true
@@ -17,17 +16,25 @@ global:
       https: true
     smartcard:
       name: smartcard.gitlab.sysf.one
+      https: true
     kas:
       name: kas.gitlab.sysf.one
+      https: true
     pages:
       name: pages.gitlab.sysf.one
       https: true
     ssh: gitlab.sysf.one
   ingress:
-    configureCertmanager: true
+    configureCertmanager: false
+    class: nginx
+    # annotations:
+    #   # kubernetes.io/ingress.class: nginx
+    #   cert-manager.io/cluster-issuer: letsencrypt-prod
     tls:
       enabled: true
       secretName: sysf.one-tls
+  gitlab_kas:
+    enabled: false
   appConfig:
     omniauth:
       enabled: true
@@ -48,5 +55,26 @@ pages:
 prometheus:
   install: false
 postgresql:
+  persistence:
+    accessModes:
+      - ReadWriteMany
   metrics:
     enabled: false
+minio:
+  persistence:
+    accessMode: ReadWriteMany
+nginx-ingress:
+  enabled: false
+redis:
+  master:
+    persistence:
+      accessModes:
+        - ReadWriteMany
+  replica:
+    persistence:
+      accessModes:
+        - ReadWriteMany
+gitlab:
+  gitaly:
+    persistence:
+      accessMode: ReadWriteMany

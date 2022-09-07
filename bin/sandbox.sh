@@ -172,3 +172,5 @@ mkdir -p /mnt/ram-mariadb-data
 mount -t tmpfs -o size=1g tmpfs /bitnami/ram
 
 kubectl annotate secret sysf.one-tls kubed.appscode.com/sync="" -n admin --overwrite
+
+kubectl patch cephcluster/rook-ceph -p '{"metadata":{"finalizers":[]}}' --type=merge

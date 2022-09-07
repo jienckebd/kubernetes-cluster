@@ -31,7 +31,6 @@ helmfiles:
   # Gitlab runners.
   - path: applications/gitlab-runner/gitlab-runner-kubernetes/helmfile.yaml
   - path: applications/gitlab-runner/gitlab-runner-docker/helmfile.yaml
-  - path: applications/gitlab-runner/gitlab-runner-ssh-web/helmfile.yaml
 
   # Ops.
   - path: applications/ops/kubefledged/helmfile.yaml
