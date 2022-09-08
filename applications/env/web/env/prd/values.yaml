@@ -8,17 +8,25 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    nginx.ingress.kubernetes.io/ssl-passthrough: true
-    nginx.ingress.kubernetes.io/force-ssl-redirect: true
+    nginx.ingress.kubernetes.io/ssl-passthrough: 'true'
+    nginx.ingress.kubernetes.io/force-ssl-redirect: 'true'
     nginx.ingress.kubernetes.io/default-backend: fallback-backend
   hosts:
+    - bryanjiencke.com
+    - www.bryanjiencke.com
     - sysf.one
-    - "*.sysf.one"
+    - www.sysf.one
+    - systemf.ome
+    - www.systemf.one
+    - stevenjiencke.com
+    - www.stevenjiencke.com
+    - theentityframework.com
+    - www.theentityframework.com
 
 phpfpm:
   extraVolumeMounts:
-    - name: cluster-cache
-      mountPath: /mnt/cluster-cache
+  - name: cluster-cache
+    mountPath: /mnt/cluster-cache
   resources:
     limits: {}
     requests:
@@ -48,21 +56,21 @@ extraVolumes:
 
 nginx:
   extraVolumeMounts:
-    - mountPath: "/etc/letsencrypt/sysf.one"
-      name: sysf-one-tls
-      readOnly: true
-    - mountPath: "/etc/letsencrypt/bryanjiencke.com"
-      name: bryanjiencke-com-tls
-      readOnly: true
-    - mountPath: "/etc/letsencrypt/stevenjiencke.com"
-      name: stevenjiencke-com-tls
-      readOnly: true
-    - mountPath: "/etc/letsencrypt/systemf.one"
-      name: systemf-one-tls
-      readOnly: true
-    - mountPath: "/etc/letsencrypt/theentityframework.com"
-      name: theentityframework-com-tls
-      readOnly: true
+  - mountPath: "/etc/letsencrypt/sysf.one"
+    name: sysf-one-tls
+    readOnly: true
+  - mountPath: "/etc/letsencrypt/bryanjiencke.com"
+    name: bryanjiencke-com-tls
+    readOnly: true
+  - mountPath: "/etc/letsencrypt/stevenjiencke.com"
+    name: stevenjiencke-com-tls
+    readOnly: true
+  - mountPath: "/etc/letsencrypt/systemf.one"
+    name: systemf-one-tls
+    readOnly: true
+  - mountPath: "/etc/letsencrypt/theentityframework.com"
+    name: theentityframework-com-tls
+    readOnly: true
   resources:
     limits: {}
     requests:

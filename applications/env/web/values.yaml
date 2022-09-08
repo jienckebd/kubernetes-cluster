@@ -27,8 +27,8 @@ imagePullSecrets:
 
 phpfpm:
   extraVolumeMounts:
-    - name: cluster-cache
-      mountPath: /mnt/cluster-cache
+  - name: cluster-cache
+    mountPath: /mnt/cluster-cache
   resources:
     limits: {}
     requests:
@@ -37,9 +37,9 @@ phpfpm:
   extraEnvVars: {}
 nginx:
   extraVolumeMounts:
-    - mountPath: "/etc/letsencrypt/sysf.one"
-      name: sysf-one-tls
-      readOnly: true
+  - mountPath: "/etc/letsencrypt/sysf.one"
+    name: sysf-one-tls
+    readOnly: true
   resources:
     limits: {}
     requests:
@@ -51,5 +51,5 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    nginx.ingress.kubernetes.io/ssl-passthrough: true
-    nginx.ingress.kubernetes.io/force-ssl-redirect: true
+    nginx.ingress.kubernetes.io/ssl-passthrough: 'true'
+    nginx.ingress.kubernetes.io/force-ssl-redirect: 'true'
