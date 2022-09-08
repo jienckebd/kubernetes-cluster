@@ -13,22 +13,22 @@ autoscaling:
   maxReplicas: 5
   targetCPU: 80
 
-extraVolumes:
-  - name: sysf-one-tls
-    secret:
-      secretName: sysf.one-tls
-  - name: cluster-cache
-    persistentVolumeClaim:
-      claimName: cluster-cache-cluster-storage-connector
-      readOnly: false
+# extraVolumes:
+#   - name: sysf-one-tls
+#     secret:
+#       secretName: sysf.one-tls
+#   - name: cluster-cache
+#     persistentVolumeClaim:
+#       claimName: cluster-cache-cluster-storage-connector
+#       readOnly: false
 
 imagePullSecrets:
   - name: gitlab-pull-secret
 
 phpfpm:
-  extraVolumeMounts:
-    - name: cluster-cache
-      mountPath: /mnt/cluster-cache
+  # extraVolumeMounts:
+  #   - name: cluster-cache
+  #     mountPath: /mnt/cluster-cache
   resources:
     limits: {}
     requests:
@@ -36,10 +36,10 @@ phpfpm:
       memory: 2048Mi
   extraEnvVars: {}
 nginx:
-  extraVolumeMounts:
-    - mountPath: "/etc/letsencrypt/sysf.one"
-      name: sysf-one-tls
-      readOnly: true
+  # extraVolumeMounts:
+  #   - mountPath: "/etc/letsencrypt/sysf.one"
+  #     name: sysf-one-tls
+  #     readOnly: true
   resources:
     limits: {}
     requests:
