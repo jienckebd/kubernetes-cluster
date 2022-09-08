@@ -74,4 +74,3 @@ autoscaling:
   minReplicas: 5
   maxReplicas: 10
   targetCPU: 90
-
