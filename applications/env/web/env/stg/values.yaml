@@ -4,6 +4,6 @@ sys:
   uri: https://stg.env.sys.sysf.one/
 
 ingress:
-  enabled: true
+  enabled: "true"
   hosts:
     - stg.env.sys.sysf.one

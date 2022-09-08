@@ -3,7 +3,7 @@ sys:
   subcontext: cid1
 
 persistence:
-  enabled: false
+  enabled: "false"
 
 autoscaling:
   minReplicas: 1

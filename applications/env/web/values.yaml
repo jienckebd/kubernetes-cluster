@@ -1,14 +1,14 @@
 helmDefaults:
-  wait: true
+  wait: "true"
 
 persistence:
-  enabled: true
+  enabled: "true"
   storageClass: ceph-filesystem
   accessMode: ReadWriteMany
   size: 50Gi
 
 autoscaling:
-  enabled: false
+  enabled: "false"
   minReplicas: 2
   maxReplicas: 5
   targetCPU: 80
@@ -20,7 +20,7 @@ extraVolumes:
   - name: cluster-cache
     persistentVolumeClaim:
       claimName: cluster-cache-cluster-storage-connector
-      readOnly: false
+      readOnly: "false"
 
 imagePullSecrets:
   - name: gitlab-pull-secret
@@ -39,7 +39,7 @@ nginx:
   extraVolumeMounts:
     - mountPath: "/etc/letsencrypt/sysf.one"
       name: sysf-one-tls
-      readOnly: true
+      readOnly: "true"
   resources:
     limits: {}
     requests:
@@ -47,7 +47,7 @@ nginx:
       memory: 256Mi
 
 ingress:
-  enabled: true
+  enabled: "true"
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
