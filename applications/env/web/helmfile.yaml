@@ -1,6 +1,6 @@
 helmDefaults:
-  wait: "true"
-  cleanupOnFail: "false"
+  wait: true
+  cleanupOnFail: false
 
 repositories:
   - name: nginx-php-fpm
@@ -12,7 +12,7 @@ releases:
   - name: web
     namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
     chart: nginx-php-fpm/nginx-php-fpm
-    installed: "true"
+    installed: true
     values:
       - values.yaml
       - env/{{ .Environment.Name }}/values.yaml

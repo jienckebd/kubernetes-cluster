@@ -4,12 +4,12 @@ sys:
   uri: https://sysf.one/
 
 ingress:
-  enabled: "true"
+  enabled: true
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-passthrough: true
+    nginx.ingress.kubernetes.io/force-ssl-redirect: true
     nginx.ingress.kubernetes.io/default-backend: fallback-backend
   hosts:
     - sysf.one
@@ -44,25 +44,25 @@ extraVolumes:
   - name: cluster-cache
     persistentVolumeClaim:
       claimName: cluster-cache-cluster-storage-connector
-      readOnly: "false"
+      readOnly: false
 
 nginx:
   extraVolumeMounts:
     - mountPath: "/etc/letsencrypt/sysf.one"
       name: sysf-one-tls
-      readOnly: "true"
+      readOnly: true
     - mountPath: "/etc/letsencrypt/bryanjiencke.com"
       name: bryanjiencke-com-tls
-      readOnly: "true"
+      readOnly: true
     - mountPath: "/etc/letsencrypt/stevenjiencke.com"
       name: stevenjiencke-com-tls
-      readOnly: "true"
+      readOnly: true
     - mountPath: "/etc/letsencrypt/systemf.one"
       name: systemf-one-tls
-      readOnly: "true"
+      readOnly: true
     - mountPath: "/etc/letsencrypt/theentityframework.com"
       name: theentityframework-com-tls
-      readOnly: "true"
+      readOnly: true
   resources:
     limits: {}
     requests:
@@ -70,7 +70,7 @@ nginx:
       memory: 256Mi
 
 autoscaling:
-  enabled: "true"
+  enabled: true
   minReplicas: 5
   maxReplicas: 10
   targetCPU: 90

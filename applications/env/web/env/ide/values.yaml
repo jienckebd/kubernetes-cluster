@@ -4,6 +4,6 @@ sys:
   uri: https://ide1.env.sys.sysf.one/
 
 ingress:
-  enabled: "true"
+  enabled: true
   hosts:
     - ide1.env.sys.sysf.one
