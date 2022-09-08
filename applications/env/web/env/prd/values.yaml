@@ -25,44 +25,44 @@ phpfpm:
       cpu: 500m
       memory: 1024Mi
 
-extraVolumes:
-  - name: sysf-one-tls
-    secret:
-      secretName: sysf.one-tls
-  - name: bryanjiencke-com-tls
-    secret:
-      secretName: bryanjiencke.com-tls
-  - name: stevenjiencke-com-tls
-    secret:
-      secretName: stevenjiencke.com-tls
-  - name: systemf-one-tls
-    secret:
-      secretName: systemf.one-tls
-  - name: theentityframework-com-tls
-    secret:
-      secretName: theentityframework.com-tls
-  - name: cluster-cache
-    persistentVolumeClaim:
-      claimName: cluster-cache-cluster-storage-connector
-      readOnly: false
+# extraVolumes:
+#   - name: sysf-one-tls
+#     secret:
+#       secretName: sysf.one-tls
+#   - name: bryanjiencke-com-tls
+#     secret:
+#       secretName: bryanjiencke.com-tls
+#   - name: stevenjiencke-com-tls
+#     secret:
+#       secretName: stevenjiencke.com-tls
+#   - name: systemf-one-tls
+#     secret:
+#       secretName: systemf.one-tls
+#   - name: theentityframework-com-tls
+#     secret:
+#       secretName: theentityframework.com-tls
+#   - name: cluster-cache
+#     persistentVolumeClaim:
+#       claimName: cluster-cache-cluster-storage-connector
+#       readOnly: false
 
 nginx:
-  extraVolumeMounts:
-    - mountPath: "/etc/letsencrypt/sysf.one"
-      name: sysf-one-tls
-      readOnly: true
-    - mountPath: "/etc/letsencrypt/bryanjiencke.com"
-      name: bryanjiencke-com-tls
-      readOnly: true
-    - mountPath: "/etc/letsencrypt/stevenjiencke.com"
-      name: stevenjiencke-com-tls
-      readOnly: true
-    - mountPath: "/etc/letsencrypt/systemf.one"
-      name: systemf-one-tls
-      readOnly: true
-    - mountPath: "/etc/letsencrypt/theentityframework.com"
-      name: theentityframework-com-tls
-      readOnly: true
+  # extraVolumeMounts:
+  #   - mountPath: "/etc/letsencrypt/sysf.one"
+  #     name: sysf-one-tls
+  #     readOnly: true
+  #   - mountPath: "/etc/letsencrypt/bryanjiencke.com"
+  #     name: bryanjiencke-com-tls
+  #     readOnly: true
+  #   - mountPath: "/etc/letsencrypt/stevenjiencke.com"
+  #     name: stevenjiencke-com-tls
+  #     readOnly: true
+  #   - mountPath: "/etc/letsencrypt/systemf.one"
+  #     name: systemf-one-tls
+  #     readOnly: true
+  #   - mountPath: "/etc/letsencrypt/theentityframework.com"
+  #     name: theentityframework-com-tls
+  #     readOnly: true
   resources:
     limits: {}
     requests:
