@@ -182,7 +182,7 @@ kubectl -n rook-ceph patch cephclusters.ceph.rook.io rook-ceph -p '{"metadata":{
 kubectl -n rook-ceph patch cephfilesystem.ceph.rook.io ceph-filesystem -p '{"metadata":{"finalizers": []}}' --type=merge
 kubectl -n rook-ceph patch cephobjectstore.ceph.rook.io ceph-objectstore -p '{"metadata":{"finalizers": []}}' --type=merge
 
-kubectl patch ns velero -p '{"metadata":{"spec":{"finalizers":"finalizers": []}}}' --type=merge
+kubectl patch ns test2 -p '{"spec":{"finalizers": []}}' --type=merge
 
 kubectl patch pvc data-keycloak-postgresql-0 -p '{"metadata":{"finalizers":null}}'
 
