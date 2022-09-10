@@ -22,6 +22,8 @@ ingress:
     - www.stevenjiencke.com
     - theentityframework.com
     - www.theentityframework.com
+    - bostondrupal.com
+    - www.bostondrupal.com
 
 phpfpm:
   extraVolumeMounts:

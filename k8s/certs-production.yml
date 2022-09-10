@@ -114,3 +114,21 @@ spec:
   dnsNames:
   - 'stevenjiencke.com'
   - '*.stevenjiencke.com'
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: bostondrupal.com-tls
+  namespace: admin
+spec:
+  secretName: bostondrupal.com-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  secretTemplate:
+    annotations:
+      kubed.appscode.com/sync: "env=true"
+  dnsNames:
+  - 'bostondrupal.com'
+  - '*.bostondrupal.com'

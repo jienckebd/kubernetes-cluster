@@ -1,6 +1,6 @@
 nfs:
-  server: 172.20.117.147
-  path: "/export/pvc-d260b7cf-9c22-425a-aaab-63e99f19571e"
+  server: 172.20.35.234
+  path: "/export/pvc-da4b8810-bf72-4bf9-9999-70730e0c3a5b"
 mountOptions:
   - nfsvers=4.2
 size: 5Gi

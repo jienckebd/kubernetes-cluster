@@ -1,7 +1,10 @@
-# service:
-#   loadBalancerIP: 23.23.246.214
-#   annotations:
-#     service.beta.kubernetes.io/aws-load-balancer-eip-allocations: eipalloc-0d11bfcbcc11ea1da
+service:
+  # loadBalancerIP: 23.23.246.214
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-name: "sysf-nlb"
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
+    service.beta.kubernetes.io/aws-load-balancer-eip-allocations: eipalloc-03f3a28093c1f9394,eipalloc-0c44b9949094d02b2
 
 tcp:
   22: "gitlab/gitlab-gitlab-shell:22"

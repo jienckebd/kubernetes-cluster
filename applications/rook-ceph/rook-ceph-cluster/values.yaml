@@ -22,7 +22,7 @@ cephClusterSpec:
             spec:
               resources:
                 requests:
-                  storage: 200Gi
+                  storage: 100Gi
               storageClassName: gp2
               volumeMode: Block
               accessModes:
@@ -168,3 +168,9 @@ cephObjectStores:
       parameters:
         # note: objectStoreNamespace and objectStoreName are configured by the chart
         region: us-east-1
+
+cephFileSystemVolumeSnapshotClass:
+  enabled: true
+
+cephBlockPoolsVolumeSnapshotClass:
+  enabled: true

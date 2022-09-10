@@ -1,0 +1,13 @@
+---
+# 1.17 <= K8s <= v1.19
+# apiVersion: snapshot.storage.k8s.io/v1beta1
+# K8s >= v1.20
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  name: cephfs-pvc-snapshot
+  namespace: admin
+spec:
+  volumeSnapshotClassName: ceph-filesystem
+  source:
+    persistentVolumeClaimName: grafana
