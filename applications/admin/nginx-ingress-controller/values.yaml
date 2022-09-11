@@ -7,7 +7,7 @@ service:
     service.beta.kubernetes.io/aws-load-balancer-eip-allocations: eipalloc-03f3a28093c1f9394,eipalloc-0c44b9949094d02b2
 
 tcp:
-  22: "gitlab/gitlab-gitlab-shell:22"
+  22: "env-prd/web-nginx-php-fpm:22"
 
 extraArgs:
   enable-ssl-passthrough: ""

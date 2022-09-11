@@ -26,7 +26,7 @@ global:
     ssh: gitlab.sysf.one
   ingress:
     configureCertmanager: false
-    class: nginx
+    # class: nginx
     # annotations:
     #   # kubernetes.io/ingress.class: nginx
     #   cert-manager.io/cluster-issuer: letsencrypt-prod
@@ -64,7 +64,7 @@ minio:
   persistence:
     accessMode: ReadWriteMany
 nginx-ingress:
-  enabled: false
+  enabled: true
 redis:
   master:
     persistence:
