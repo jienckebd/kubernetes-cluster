@@ -6,9 +6,8 @@ releases:
   - name: nginx-ingress-controller
     namespace: admin
     chart: bitnami/nginx-ingress-controller
-    version: 9.1.5
+    version: 9.2.28
     installed: true
-
     values:
       - values.yaml
 

@@ -18,117 +18,117 @@ spec:
             name: clouddns
             key: clouddns.key.json
 
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: sysf.one-tls
-  namespace: admin
-spec:
-  secretName: sysf.one-tls
-  issuerRef:
-    name: letsencrypt-prod
-    kind: ClusterIssuer
-  secretTemplate:
-    annotations:
-      kubed.appscode.com/sync: ""
-  dnsNames:
-  - 'sysf.one'
-  - '*.sysf.one'
-  - '*.sys.sysf.one'
-  - '*.env.sys.sysf.one'
-  - '*.app.sys.sysf.one'
-  - '*.platform.sys.sysf.one'
-  - '*.network.sys.sysf.one'
-  - '*.gitlab.sysf.one'
-  - '*.k8s.sysf.one'
+# ---
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#   name: sysf.one-tls
+#   namespace: admin
+# spec:
+#   secretName: sysf.one-tls
+#   issuerRef:
+#     name: letsencrypt-prod
+#     kind: ClusterIssuer
+#   secretTemplate:
+#     annotations:
+#       kubed.appscode.com/sync: ""
+#   dnsNames:
+#   - 'sysf.one'
+#   - '*.sysf.one'
+#   - '*.sys.sysf.one'
+#   - '*.env.sys.sysf.one'
+#   - '*.app.sys.sysf.one'
+#   - '*.platform.sys.sysf.one'
+#   - '*.network.sys.sysf.one'
+#   - '*.gitlab.sysf.one'
+#   - '*.k8s.sysf.one'
 
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: systemf.one-tls
-  namespace: admin
-spec:
-  secretName: systemf.one-tls
-  issuerRef:
-    name: letsencrypt-prod
-    kind: ClusterIssuer
-  secretTemplate:
-    annotations:
-      kubed.appscode.com/sync: "env=true"
-  dnsNames:
-  - 'systemf.one'
-  - '*.systemf.one'
+# ---
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#   name: systemf.one-tls
+#   namespace: admin
+# spec:
+#   secretName: systemf.one-tls
+#   issuerRef:
+#     name: letsencrypt-prod
+#     kind: ClusterIssuer
+#   secretTemplate:
+#     annotations:
+#       kubed.appscode.com/sync: "env=true"
+#   dnsNames:
+#   - 'systemf.one'
+#   - '*.systemf.one'
 
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: theentityframework.com-tls
-  namespace: admin
-spec:
-  secretName: theentityframework.com-tls
-  issuerRef:
-    name: letsencrypt-prod
-    kind: ClusterIssuer
-  secretTemplate:
-    annotations:
-      kubed.appscode.com/sync: "env=true"
-  dnsNames:
-  - 'theentityframework.com'
-  - '*.theentityframework.com'
+# ---
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#   name: theentityframework.com-tls
+#   namespace: admin
+# spec:
+#   secretName: theentityframework.com-tls
+#   issuerRef:
+#     name: letsencrypt-prod
+#     kind: ClusterIssuer
+#   secretTemplate:
+#     annotations:
+#       kubed.appscode.com/sync: "env=true"
+#   dnsNames:
+#   - 'theentityframework.com'
+#   - '*.theentityframework.com'
 
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: bryanjiencke.com-tls
-  namespace: admin
-spec:
-  secretName: bryanjiencke.com-tls
-  issuerRef:
-    name: letsencrypt-prod
-    kind: ClusterIssuer
-  secretTemplate:
-    annotations:
-      kubed.appscode.com/sync: "env=true"
-  dnsNames:
-  - 'bryanjiencke.com'
-  - '*.bryanjiencke.com'
+# ---
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#   name: bryanjiencke.com-tls
+#   namespace: admin
+# spec:
+#   secretName: bryanjiencke.com-tls
+#   issuerRef:
+#     name: letsencrypt-prod
+#     kind: ClusterIssuer
+#   secretTemplate:
+#     annotations:
+#       kubed.appscode.com/sync: "env=true"
+#   dnsNames:
+#   - 'bryanjiencke.com'
+#   - '*.bryanjiencke.com'
 
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: stevenjiencke.com-tls
-  namespace: admin
-spec:
-  secretName: stevenjiencke.com-tls
-  issuerRef:
-    name: letsencrypt-prod
-    kind: ClusterIssuer
-  secretTemplate:
-    annotations:
-      kubed.appscode.com/sync: "env=true"
-  dnsNames:
-  - 'stevenjiencke.com'
-  - '*.stevenjiencke.com'
+# ---
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#   name: stevenjiencke.com-tls
+#   namespace: admin
+# spec:
+#   secretName: stevenjiencke.com-tls
+#   issuerRef:
+#     name: letsencrypt-prod
+#     kind: ClusterIssuer
+#   secretTemplate:
+#     annotations:
+#       kubed.appscode.com/sync: "env=true"
+#   dnsNames:
+#   - 'stevenjiencke.com'
+#   - '*.stevenjiencke.com'
 
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: bostondrupal.com-tls
-  namespace: admin
-spec:
-  secretName: bostondrupal.com-tls
-  issuerRef:
-    name: letsencrypt-prod
-    kind: ClusterIssuer
-  secretTemplate:
-    annotations:
-      kubed.appscode.com/sync: "env=true"
-  dnsNames:
-  - 'bostondrupal.com'
-  - '*.bostondrupal.com'
+# ---
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#   name: bostondrupal.com-tls
+#   namespace: admin
+# spec:
+#   secretName: bostondrupal.com-tls
+#   issuerRef:
+#     name: letsencrypt-prod
+#     kind: ClusterIssuer
+#   secretTemplate:
+#     annotations:
+#       kubed.appscode.com/sync: "env=true"
+#   dnsNames:
+#   - 'bostondrupal.com'
+#   - '*.bostondrupal.com'

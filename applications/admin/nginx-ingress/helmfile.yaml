@@ -1,0 +1,15 @@
+repositories:
+  - name: nginx-stable
+    url: https://helm.nginx.com/stable
+
+releases:
+  - name: nginx-ingress
+    namespace: admin
+    chart: nginx-stable/nginx-ingress
+    version: 0.14.0
+    installed: true
+    values:
+      - values.yaml
+
+environments:
+  admin: {  }

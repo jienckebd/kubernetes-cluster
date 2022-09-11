@@ -1,0 +1,74 @@
+---
+apiVersion: k8s.nginx.org/v1alpha1
+kind: TransportServer
+metadata:
+  name: ssh
+  namespace: env-prd
+spec:
+  listener:
+    name: ssh-tcp
+    protocol: TCP
+  upstreams:
+  - name: web-nginx-php-fpm
+    service: web-nginx-php-fpm
+    port: 22
+  action:
+    pass: web-nginx-php-fpm
+---
+apiVersion: k8s.nginx.org/v1alpha1
+kind: TransportServer
+metadata:
+  name: ssh
+  namespace: gitlab
+spec:
+  listener:
+    name: ssh-tcp--gitlab
+    protocol: TCP
+  upstreams:
+  - name: gitlab-gitlab-shell
+    service: gitlab-gitlab-shell
+    port: 22
+  action:
+    pass: gitlab-gitlab-shell
+
+# ---
+# apiVersion: k8s.nginx.org/v1
+# kind: VirtualServer
+# metadata:
+#   name: sysf-one
+#   namespace: env-prd
+# spec:
+#   host: sysf.one
+#   tls:
+#     secret: sysf-one-tls
+#     cert-manager:
+#       cluster-issuer: "letsencrypt-prod"
+#   upstreams:
+#   - name: http
+#     service: web-nginx-php-fpm
+#     port: 80
+#   - name: https
+#     service: web-nginx-php-fpm
+#     port: 443
+#   - name: ssh
+#     service: web-nginx-php-fpm
+#     port: 22
+# ---
+# apiVersion: k8s.nginx.org/v1
+# kind: VirtualServer
+# metadata:
+#   name: gitlab-sysf-one
+#   namespace: gitlab
+# spec:
+#   host: gitlab.sysf.one
+#   tls:
+#     secret: gitlab-sysf-one-tls
+#     cert-manager:
+#       cluster-issuer: "letsencrypt-prod"
+#   upstreams:
+#   - name: http
+#     service: web-nginx-php-fpm
+#     port: 8181
+#   - name: ssh
+#     service: gitlab-gitlab-shell
+#     port: 22

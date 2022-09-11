@@ -1,16 +1,28 @@
 service:
-  # loadBalancerIP: 23.23.246.214
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
     service.beta.kubernetes.io/aws-load-balancer-name: "sysf-nlb"
     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
     service.beta.kubernetes.io/aws-load-balancer-eip-allocations: eipalloc-03f3a28093c1f9394,eipalloc-0c44b9949094d02b2
+  # extraPorts:
+  # - name: 22-tcp
+  #   port: 22
+  #   protocol: TCP
+  #   targetPort: 22-tcp
 
 tcp:
   22: "env-prd/web-nginx-php-fpm:22"
 
-extraArgs:
-  enable-ssl-passthrough: ""
+args:
+  - /nginx-ingress-controller
+  - --default-backend-service=admin/nginx-ingress-controller-default-backend
+  - --election-id=ingress-controller-leader
+  - --controller-class=k8s.io/ingress-nginx
+  - --ingress-class=nginx
+  - --configmap=admin/nginx-ingress-controller
+  - --enable-ssl-passthrough
+  - --tcp-services-configmap=$(POD_NAMESPACE)/nginx-ingress-controller-tcp
+  - --udp-services-configmap=$(POD_NAMESPACE)/nginx-ingress-controller-udp
 
 metrics:
   enabled: true
