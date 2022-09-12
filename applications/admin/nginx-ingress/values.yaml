@@ -1,4 +1,8 @@
 controller:
+
+  nodeSelector:
+    failure-domain.beta.kubernetes.io/zone: us-east-1a
+
   enableCertManager: true
   enableTLSPassthrough: true
 
@@ -15,9 +19,6 @@ controller:
       - name: ssh-tcp
         port: 22
         protocol: TCP
-      # - name: ssh-tcp--gitlab
-      #   port: 22
-      #   protocol: TCP
 
   service:
     customPorts:
