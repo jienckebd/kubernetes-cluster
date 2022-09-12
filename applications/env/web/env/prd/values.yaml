@@ -7,17 +7,11 @@ ingress:
   enabled: true
   hosts:
     - bryanjiencke.com
-    - www.bryanjiencke.com
     - sysf.one
-    - www.sysf.one
     - systemf.ome
-    - www.systemf.one
     - stevenjiencke.com
-    - www.stevenjiencke.com
     - theentityframework.com
-    - www.theentityframework.com
     - bostondrupal.com
-    - www.bostondrupal.com
 
 phpfpm:
   extraVolumeMounts:
