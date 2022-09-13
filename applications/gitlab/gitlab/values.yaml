@@ -34,7 +34,7 @@ global:
       enabled: true
       secretName: sysf.one-tls
   gitlab_kas:
-    enabled: false
+    enabled: true
   appConfig:
     omniauth:
       enabled: true
