@@ -52,6 +52,7 @@ ops:
     - kubectl label --overwrite ns ops namespace-node-affinity=enabled
     - helmfile --environment ops apply --suppress-secrets
 
+
 # env-prd:
 #  stage: deploy
 #  image:
