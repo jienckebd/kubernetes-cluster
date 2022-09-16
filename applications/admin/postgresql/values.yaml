@@ -1,0 +1,11 @@
+primary:
+  persistence:
+    enabled: true
+    accessModes:
+      - ReadWriteMany
+
+auth:
+  username: drupal
+  password: drupal
+  postgresPassword: drupal
+  database: bitnami_keycloak

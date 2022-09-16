@@ -8,6 +8,6 @@ metadata:
   name: cephfs-pvc-snapshot
   namespace: admin
 spec:
-  volumeSnapshotClassName: ceph-filesystem
+  volumeSnapshotClassName: efs-sc
   source:
     persistentVolumeClaimName: grafana

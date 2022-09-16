@@ -8,7 +8,7 @@ ingress:
   hosts:
     - bryanjiencke.com
     - sysf.one
-    - systemf.ome
+    - systemf.one
     - stevenjiencke.com
     - theentityframework.com
     - bostondrupal.com

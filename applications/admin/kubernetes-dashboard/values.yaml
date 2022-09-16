@@ -4,8 +4,8 @@ ingress:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
-    - k8s.sysf.one
+    - k8s.sys.sysf.one
   tls:
-    - secretName: k8s.sysf.one-tls
+    - secretName: sysf.one-tls
       hosts:
-      - k8s.sysf.one
+      - k8s.sys.sysf.one

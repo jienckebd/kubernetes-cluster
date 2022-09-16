@@ -1,6 +1,6 @@
 persistence:
   enabled: true
-  storageClass: ceph-filesystem
+  storageClass: efs-sc
   accessMode: ReadWriteMany
   size: 8Gi
 

@@ -1,14 +1,17 @@
 auth:
+  adminUser: user
   adminPassword: drupal
   managementPassword: drupal
+
 postgresql:
-  postgresqlPassword: "drupal"
-  postgresqlPostgresPassword: drupal
-  persistence:
-    enabled: true
-    storageClass: ceph-filesystem
-    accessModes:
-      - ReadWriteMany
+  enabled: false
+
+externalDatabase:
+  host: postgresql
+  user: drupal
+  password: drupal
+  database: bitnami_keycloak
+
 service:
   type: ClusterIP
 ingress:
@@ -22,7 +25,9 @@ ingress:
 extraEnvVars:
   - name: KEYCLOAK_EXTRA_ARGS
     value: "-Dkeycloak.frontendUrl=https://id.sys.sysf.one/auth"
+
+keycloakConfigCli:
+  enabled: false
+
 metrics:
   enabled: true
-  serviceMonitor:
-    enabled: true

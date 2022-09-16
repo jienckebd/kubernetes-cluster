@@ -3,10 +3,10 @@ repositories:
     url: https://charts.bitnami.com/bitnami
 
 releases:
-  - name: keycloak
+  - name: postgresql
     namespace: admin
-    chart: bitnami/keycloak
-    version: 10.1.0
+    chart: bitnami/postgresql
+    version: 11.9.0
     installed: true
     values:
       - values.yaml

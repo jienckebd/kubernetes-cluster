@@ -14,3 +14,6 @@ extraArgs:
 
 metrics:
   enabled: true
+
+nodeSelector:
+  failure-domain.beta.kubernetes.io/zone: us-east-1a

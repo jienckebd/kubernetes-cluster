@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  password: ZHJ1cGFs
+  postgres-password: ZHJ1cGFs
+kind: Secret
+metadata:
+  name: postgresql
+  namespace: gitlab
+type: Opaque

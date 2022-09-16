@@ -179,7 +179,7 @@ kubectl delete pods --all -force -n env-dev; kubectl delete pods --all -force -n
 kubectl delete pvc --all -n env-dev; kubectl delete pvc --all -n env-stg; kubectl delete pvc --all -n env-prd;
 
 kubectl -n rook-ceph patch cephclusters.ceph.rook.io rook-ceph -p '{"metadata":{"finalizers": []}}' --type=merge
-kubectl -n rook-ceph patch cephfilesystem.ceph.rook.io ceph-filesystem -p '{"metadata":{"finalizers": []}}' --type=merge
+kubectl -n rook-ceph patch cephfilesystem.ceph.rook.io efs-sc -p '{"metadata":{"finalizers": []}}' --type=merge
 kubectl -n rook-ceph patch cephobjectstore.ceph.rook.io ceph-objectstore -p '{"metadata":{"finalizers": []}}' --type=merge
 
 kubectl patch ns test2 -p '{"spec":{"finalizers": []}}' --type=merge

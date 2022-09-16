@@ -6,7 +6,7 @@ releases:
   - name: gitlab
     namespace: gitlab
     chart: gitlab/gitlab
-    version: 6.3.3
+    version: 6.2.3
     installed: true
     values:
       - values.yaml

@@ -10,7 +10,7 @@ data:
       cpu: 100m
       memory: 512Mi
   persistence:
-    storageClass: ceph-filesystem
+    storageClass: efs-sc
     accessModes:
       - ReadWriteMany
 
@@ -26,7 +26,7 @@ master:
       cpu: 100m
       memory: 512Mi
   persistence:
-    storageClass: ceph-filesystem
+    storageClass: efs-sc
     accessModes:
       - ReadWriteMany
 

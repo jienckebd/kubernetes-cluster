@@ -60,82 +60,85 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snaps
 # --monitoring="" \
 # --system-config-from-file=/Users/bry/sys/etc/k8s/node-system.yml
 
-kubectl patch storageclass gp2 \
-    -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
-
-# kubectl patch storageclass ceph-filesystem \
+# kubectl patch storageclass efs-sc \
 #     -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 
 # kubectl patch storageclass ceph-block \
 #     -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
-# kubectl patch storageclass gp2 \
+# kubectl patch storageclass efs-sc \
 #     -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 
-kubectl label ns kube-system namespace-node-affinity=enabled
-# kubectl annotate --overwrite ns kube-system scheduler.alpha.kubernetes.io/node-selector='k8s.sysf.one/nodegroup=persistent'
+# kubectl label ns kube-system namespace-node-affinity=enabled
+# # kubectl annotate --overwrite ns kube-system scheduler.alpha.kubernetes.io/node-selector='k8s.sysf.one/nodegroup=persistent'
 
-kubectl label ns kube-node-lease namespace-node-affinity=enabled
-# kubectl annotate --overwrite ns kube-node-lease scheduler.alpha.kubernetes.io/node-selector='k8s.sysf.one/nodegroup=persistent'
+# kubectl label ns kube-node-lease namespace-node-affinity=enabled
+# # kubectl annotate --overwrite ns kube-node-lease scheduler.alpha.kubernetes.io/node-selector='k8s.sysf.one/nodegroup=persistent'
 
-kubectl label ns kube-public namespace-node-affinity=enabled
-# kubectl annotate --overwrite ns kube-public scheduler.alpha.kubernetes.io/node-selector='k8s.sysf.one/nodegroup=persistent'
+# kubectl label ns kube-public namespace-node-affinity=enabled
+# # kubectl annotate --overwrite ns kube-public scheduler.alpha.kubernetes.io/node-selector='k8s.sysf.one/nodegroup=persistent'
 
-kubectl label ns default namespace-node-affinity=enabled
+# kubectl label ns default namespace-node-affinity=enabled
 # kubectl annotate --overwrite ns default scheduler.alpha.kubernetes.io/node-selector='k8s.sysf.one/nodegroup=persistent'
 
-kubectl create secret generic -n default sys-env-var-config-prd --from-env-file=/Users/bry/sys/etc/k8s/env/prd.env;
-kubectl create secret generic -n default sys-env-var-config-stg --from-env-file=/Users/bry/sys/etc/k8s/env/stg.env;
-kubectl create secret generic -n default sys-env-var-config-dev --from-env-file=/Users/bry/sys/etc/k8s/env/dev.env;
-kubectl create secret generic -n default sys-env-var-config-ide --from-env-file=/Users/bry/sys/etc/k8s/env/ide.env;
+kubectl create secret generic -n default sys-env-var-config-prd --from-env-file=/Users/bry/sys/etc/k8s/env/prd.env &&
+kubectl create secret generic -n default sys-env-var-config-stg --from-env-file=/Users/bry/sys/etc/k8s/env/stg.env &&
+kubectl create secret generic -n default sys-env-var-config-dev --from-env-file=/Users/bry/sys/etc/k8s/env/dev.env &&
+kubectl create secret generic -n default sys-env-var-config-ide --from-env-file=/Users/bry/sys/etc/k8s/env/ide.env &&
 kubectl create secret generic -n default sys-env-var-config-cid --from-env-file=/Users/bry/sys/etc/k8s/env/cid.env
 
 kubectl create namespace admin
-kubectl label ns admin namespace-node-affinity=enabled
+# kubectl label ns admin namespace-node-affinity=enabled
 # kubectl annotate --overwrite ns admin scheduler.alpha.kubernetes.io/node-selector='k8s.sysf.one/nodegroup=ephemeral'
 kubectl create secret generic config-grafana -n admin --from-file=/Users/bry/sys/etc/k8s/grafana.ini
 kubectl create configmap elasticsearch-output -n admin --from-file=/Users/bry/sys/etc/k8s/configmap/elasticsearch-output/fluentd.conf
 kubectl create configmap fluentd-forwarder -n admin --from-file=/Users/bry/sys/etc/k8s/configmap/fluentd-forwarder/fluentd.conf
 
 kubectl create namespace gitlab
-kubectl label ns gitlab namespace-node-affinity=enabled
+# kubectl label ns gitlab namespace-node-affinity=enabled
 # kubectl annotate --overwrite ns gitlab scheduler.alpha.kubernetes.io/node-selector='k8s.sysf.one/nodegroup=ephemeral'
 kubectl apply -f /Users/bry/sys/etc/k8s/secret/gitlab-sso-oidc.yaml
 
 kubectl create namespace gitlab-runner
-kubectl label ns gitlab-runner namespace-node-affinity=enabled
+# kubectl label ns gitlab-runner namespace-node-affinity=enabled
 # kubectl annotate --overwrite ns gitlab-runner scheduler.alpha.kubernetes.io/node-selector='k8s.sysf.one/nodegroup=ephemeral'
 
 kubectl create namespace gitlab-agent
-kubectl label ns gitlab-agent namespace-node-affinity=enabled
+# kubectl label ns gitlab-agent namespace-node-affinity=enabled
 # kubectl annotate --overwrite ns gitlab-agent scheduler.alpha.kubernetes.io/node-selector='k8s.sysf.one/nodegroup=ephemeral'
 
 kubectl create namespace ops
-kubectl label ns ops namespace-node-affinity=enabled
+# kubectl label ns ops namespace-node-affinity=enabled
 # kubectl annotate --overwrite ns ops scheduler.alpha.kubernetes.io/node-selector='k8s.sysf.one/nodegroup=ephemeral'
 
-kubectl create namespace rook-ceph
-kubectl label ns rook-ceph namespace-node-affinity=enabled
+# kubectl create namespace rook-ceph
+# kubectl label ns rook-ceph namespace-node-affinity=enabled
 # kubectl annotate --overwrite ns rook-ceph scheduler.alpha.kubernetes.io/node-selector='k8s.sysf.one/nodegroup=persistent'
 
 kubectl create namespace velero
-kubectl label ns velero namespace-node-affinity=enabled
+# kubectl label ns velero namespace-node-affinity=enabled
 # kubectl annotate --overwrite ns velero scheduler.alpha.kubernetes.io/node-selector='k8s.sysf.one/nodegroup=persistent'
 
 cd /Users/bry/sys/etc/k8s/secret
 kubectl apply -k ./
 cd -
 
+# cd /Users/bry/sys/kubernetes/cluster/sysf/k8s
+# kubectl apply -k ./
+# cd -
+
 kubectl create secret generic clouddns \
 --from-file=/Users/bry/sys/etc/k8s/clouddns.key.json \
 --namespace=admin
 
-kubectl apply -f /Users/bry/sys/kubernetes/cluster/sysf/k8s/namespace-node-affinity.yml
+kubectl patch storageclass gp2 \
+    -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
 
-cd /Users/bry/sys/project/namespace-node-affinity/deployments/base
-kubectl apply -k ./
-cd -
+kubectl patch storageclass efs-sc \
+    -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 
-# cd /Users/bry/sys/kubernetes/cluster/sysf/k8s
+# kubectl apply -f /Users/bry/sys/kubernetes/cluster/sysf/k8s/namespace-node-affinity.yml
+
+# cd /Users/bry/sys/project/namespace-node-affinity/deployments/base
 # kubectl apply -k ./
 # cd -
 

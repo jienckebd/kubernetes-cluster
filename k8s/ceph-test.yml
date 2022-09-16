@@ -19,7 +19,7 @@ spec:
           driver: ceph.rook.io/rook
           fsType: ceph
           options:
-            fsName: ceph-filesystem
+            fsName: efs-sc
             clusterNamespace: rook-ceph
       containers:
       - image: nginx:latest

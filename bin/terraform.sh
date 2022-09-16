@@ -5,7 +5,7 @@ gcloud container clusters get-credentials sysf --zone us-east4-a --project sysf-
 
 kubectl patch storageclass standard \
     -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
-kubectl patch storageclass gp2 \
+kubectl patch storageclass efs-sc \
     -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 
 kubectl create ns gitlab
