@@ -1,7 +1,7 @@
 persistence:
   enabled: true
-  storageClass: ceph-block
-  accessMode: ReadWriteOnce
+  storageClass: efs-sc
+  accessMode: ReadWriteMany
 mongodb:
   enabled: true
   auth:

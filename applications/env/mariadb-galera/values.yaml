@@ -11,9 +11,9 @@
 #       sizeLimit: 2Gi
 persistence:
   enabled: true
-  storageClass: ceph-block
+  storageClass: efs-sc
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
 
 extraVolumeMounts:
     - mountPath: "/bitnami/mariadb/data"
