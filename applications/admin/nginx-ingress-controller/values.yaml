@@ -7,7 +7,7 @@ service:
     service.beta.kubernetes.io/aws-load-balancer-eip-allocations: eipalloc-03f3a28093c1f9394,eipalloc-0c44b9949094d02b2
 
 tcp:
-  22: "gitlab/gitlab-gitlab-shell:22"
+  22: "env-prd/web-nginx-php-fpm:22"
 
 extraArgs:
   enable-ssl-passthrough: ""
@@ -17,3 +17,13 @@ metrics:
 
 nodeSelector:
   failure-domain.beta.kubernetes.io/zone: us-east-1a
+
+# extraVolumes:
+#   - name: nginx-config
+#     configMap:
+#       name: nginx-test1
+
+# extraVolumeMounts:
+#   - name: nginx-config
+#     mountPath: /opt/bitnami/nginx/conf/extra.conf
+#     subPath: nginx.conf

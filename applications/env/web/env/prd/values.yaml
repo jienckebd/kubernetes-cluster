@@ -6,9 +6,9 @@ sys:
 ingress:
   enabled: true
   hosts:
-    - bryanjiencke.com
     - sysf.one
     - systemf.one
+    - bryanjiencke.com
     - stevenjiencke.com
     - theentityframework.com
     - bostondrupal.com

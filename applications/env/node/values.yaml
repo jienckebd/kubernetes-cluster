@@ -1,9 +1,11 @@
 persistence:
   enabled: true
-  storageClass: efs-sc
   accessMode: ReadWriteMany
 mongodb:
   enabled: true
+  persistence:
+    accessModes:
+      - ReadWriteMany
   auth:
     rootPassword: drupal
     username: drupal

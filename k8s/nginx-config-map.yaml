@@ -1,0 +1,29 @@
+
+kind: ConfigMap
+metadata:
+  name: nginx-test1
+  namespace: admin
+apiVersion: v1
+data:
+  nginx.conf: |2-
+
+    stream {
+      server {
+
+        listen sysf.one;
+
+        preread_by_lua_block {
+          ngx.var.proxy_upstream_name="tcp-env-prd-web-nginx-php-fpm-22";
+        }
+
+        listen                  22;
+
+        proxy_timeout           600s;
+        proxy_next_upstream     on;
+        proxy_next_upstream_timeout 600s;
+        proxy_next_upstream_tries   3;
+
+        proxy_pass              upstream_balancer;
+
+      }
+    }

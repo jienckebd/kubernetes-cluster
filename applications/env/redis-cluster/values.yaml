@@ -15,12 +15,12 @@ redis:
         sizeLimit: 1Gi
 
 containerSecurityContext:
-  runAsUser: 0
-  runAsNonRoot: false
-  privileged: true
+  runAsUser: 1001
+  # runAsNonRoot: false
+  # privileged: true
 
 persistence:
-  storageClass: efs-sc
+  storageClass: efs-sc-1001
   accessModes:
     - ReadWriteMany
 
