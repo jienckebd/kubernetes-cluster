@@ -1,0 +1,30 @@
+# ---
+# apiVersion: configuration.konghq.com/v1beta1
+# kind: TCPIngress
+# metadata:
+#   name: ssh
+#   namespace: env-prd
+#   annotations:
+#     kubernetes.io/ingress.class: kong
+# spec:
+#   rules:
+#   - port: 22
+#     host: sysf.one
+#     backend:
+#       serviceName: web-nginx-php-fpm
+#       servicePort: 22
+---
+apiVersion: configuration.konghq.com/v1beta1
+kind: TCPIngress
+metadata:
+  name: ssh
+  namespace: gitlab
+  annotations:
+    kubernetes.io/ingress.class: kong
+spec:
+  rules:
+  - port: 22
+    host: gitlab.sysf.one
+    backend:
+      serviceName: gitlab-gitlab-shell
+      servicePort: 22

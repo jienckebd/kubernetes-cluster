@@ -1,0 +1,53 @@
+proxy:
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-name: "sysf-nlb"
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
+    service.beta.kubernetes.io/aws-load-balancer-eip-allocations: eipalloc-03f3a28093c1f9394,eipalloc-0c44b9949094d02b2
+  ingress:
+    enabled: false
+    hostname: kong-proxy.sys.sysf.one
+    tls: kong-kong-proxy-cert
+    annotations:
+      kubernetes.io/ingress.class: kong
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+  stream:
+    - containerPort: 22
+      servicePort: 22
+      protocol: TCP
+      parameters:
+        - "ssl"
+    - containerPort: 9000
+      servicePort: 9000
+      protocol: TCP
+    - containerPort: 9443
+      servicePort: 9443
+      protocol: TCP
+      parameters:
+        - "ssl"
+
+nodeSelector:
+  failure-domain.beta.kubernetes.io/zone: us-east-1a
+
+certificates:
+  enabled: true
+  clusterIssuer: letsencrypt-prod
+  proxy:
+    commonName: "sysf.one"
+    clusterIssuer: letsencrypt-prod
+    dnsNames:
+      - 'sysf.one'
+      - '*.sysf.one'
+      - '*.sys.sysf.one'
+      - '*.env.sys.sysf.one'
+      - '*.app.sys.sysf.one'
+      - '*.platform.sys.sysf.one'
+      - '*.network.sys.sysf.one'
+      - '*.gitlab.sysf.one'
+      - '*.k8s.sysf.one'
+  admin:
+    commonName: "kong-admin.sys.sysf.one"
+    clusterIssuer: letsencrypt-prod
+  cluster:
+    clusterIssuer: ""
+    issuer: "kong-kong-selfsigned-issuer"
