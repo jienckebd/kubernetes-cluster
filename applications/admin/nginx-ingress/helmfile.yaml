@@ -6,7 +6,7 @@ releases:
   - name: nginx-ingress
     namespace: admin
     chart: nginx-stable/nginx-ingress
-    version: 0.14.0
+    version: 0.15.2
     installed: true
     values:
       - values.yaml

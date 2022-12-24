@@ -1,28 +1,28 @@
-# ---
-# apiVersion: k8s.nginx.org/v1alpha1
-# kind: TransportServer
-# metadata:
-#   name: ssh
-#   namespace: env-prd
-# spec:
-#   listener:
-#     name: ssh-tcp
-#     protocol: TCP
-#   upstreams:
-#   - name: web-nginx-php-fpm
-#     service: web-nginx-php-fpm
-#     port: 22
-#   action:
-#     pass: web-nginx-php-fpm
 ---
 apiVersion: k8s.nginx.org/v1alpha1
 kind: TransportServer
 metadata:
-  name: ssh
+  name: tcp-23
+  namespace: env-prd
+spec:
+  listener:
+    name: tcp-23
+    protocol: TCP
+  upstreams:
+  - name: web-nginx-php-fpm
+    service: web-nginx-php-fpm
+    port: 22
+  action:
+    pass: web-nginx-php-fpm
+---
+apiVersion: k8s.nginx.org/v1alpha1
+kind: TransportServer
+metadata:
+  name: tcp-22
   namespace: gitlab
 spec:
   listener:
-    name: ssh-tcp
+    name: tcp-22
     protocol: TCP
   upstreams:
   - name: gitlab-gitlab-shell

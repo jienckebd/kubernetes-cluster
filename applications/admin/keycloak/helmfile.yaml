@@ -6,7 +6,7 @@ releases:
   - name: keycloak
     namespace: admin
     chart: bitnami/keycloak
-    version: 10.1.0
+    # version: 10.1.0
     installed: true
     values:
       - values.yaml

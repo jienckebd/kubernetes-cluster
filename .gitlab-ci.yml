@@ -6,16 +6,16 @@ before_script:
   - uname -a
   - kubectl config use-context kubernetes/cluster/sysf:sysf1
 
-kong:
-  stage: deploy
-  image:
-    name: registry.gitlab.sysf.one/docker/image/helmfile:latest
-    entrypoint: [""]
-  environment: kong
-  tags:
-    - kubernetes
-  script:
-    - helmfile --environment kong apply --suppress-secrets
+# kong:
+#   stage: deploy
+#   image:
+#     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
+#     entrypoint: [""]
+#   environment: kong
+#   tags:
+#     - kubernetes
+#   script:
+#     - helmfile --environment kong apply --suppress-secrets
 
 admin:
   stage: deploy

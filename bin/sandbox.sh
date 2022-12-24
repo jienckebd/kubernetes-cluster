@@ -220,6 +220,8 @@ dd if=/dev/zero of=/bitnami/mariadb/data/test2.img bs=512 count=1000 oflag=dsync
 
 dd if=/dev/zero of=/bitnami/mariadb/data/test1.img bs=1G count=3 oflag=dsync
 
+dd if=/dev/zero of=/tmp/test1.img bs=1G count=3 oflag=dsync
+
 
 gcloud beta container node-pools create local-ssd \
     --ephemeral-storage local-ssd-count=1 \

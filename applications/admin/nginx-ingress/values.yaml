@@ -1,5 +1,7 @@
 controller:
 
+  setAsDefaultIngress: true
+
   nodeSelector:
     failure-domain.beta.kubernetes.io/zone: us-east-1a
 
@@ -7,25 +9,36 @@ controller:
   enableTLSPassthrough: true
 
   customPorts:
-    - name: "22-tcp"
+    - name: "tcp-22"
       containerPort: 22
       hostPort: 22
+      protocol: TCP
+    - name: "tcp-23"
+      containerPort: 23
+      hostPort: 23
       protocol: TCP
 
   globalConfiguration:
     create: true
     spec:
       listeners:
-      - name: ssh-tcp
+      - name: tcp-22
         port: 22
+        protocol: TCP
+      - name: tcp-23
+        port: 23
         protocol: TCP
 
   service:
     customPorts:
-      - name: 22-tcp
+      - name: tcp-22
         port: 22
         protocol: TCP
-        targetPort: 22-tcp
+        targetPort: tcp-22
+      - name: tcp-23
+        port: 23
+        protocol: TCP
+        targetPort: tcp-23
     annotations:
       service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
       service.beta.kubernetes.io/aws-load-balancer-name: "sysf-nlb"

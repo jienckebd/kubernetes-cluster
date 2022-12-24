@@ -260,17 +260,18 @@ mariadbConfiguration: |-
 db:
   user: drupal
   name: drupal
+  password: drupal
 
-# rootUser:
-#   password: root
+rootUser:
+  password: root
 
-existingSecret: mariadb-galera
+# existingSecret: mariadb-galera
 
-# galera:
-#   bootstrap:
-#     forceBootstrap: true
-#     bootstrapFromNode: 3
-#     forceSafeToBootstrap: true
+galera:
+  bootstrap:
+    forceBootstrap: true
+    bootstrapFromNode: 3
+    forceSafeToBootstrap: true
 
 metrics:
   enabled: true

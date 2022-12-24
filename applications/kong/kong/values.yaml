@@ -17,14 +17,6 @@ proxy:
       protocol: TCP
       parameters:
         - "ssl"
-    - containerPort: 9000
-      servicePort: 9000
-      protocol: TCP
-    - containerPort: 9443
-      servicePort: 9443
-      protocol: TCP
-      parameters:
-        - "ssl"
 
 nodeSelector:
   failure-domain.beta.kubernetes.io/zone: us-east-1a
@@ -44,9 +36,9 @@ certificates:
       - '*.platform.sys.sysf.one'
       - '*.network.sys.sysf.one'
       - '*.gitlab.sysf.one'
-      - '*.k8s.sysf.one'
+      # - '*.k8s.sysf.one'
   admin:
-    commonName: "kong-admin.sys.sysf.one"
+    commonName: "kong-admin3.sys.sysf.one"
     clusterIssuer: letsencrypt-prod
   cluster:
     clusterIssuer: ""
