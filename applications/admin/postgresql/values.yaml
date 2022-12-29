@@ -1,6 +1,7 @@
 primary:
   persistence:
     enabled: true
+    storageClass: efs-sc-1001
     accessModes:
       - ReadWriteMany
 

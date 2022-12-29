@@ -3,7 +3,7 @@ controller:
   setAsDefaultIngress: true
 
   nodeSelector:
-    failure-domain.beta.kubernetes.io/zone: us-east-1a
+    failure-domain.beta.kubernetes.io/zone: us-east-2a
 
   enableCertManager: true
   enableTLSPassthrough: true
@@ -43,7 +43,7 @@ controller:
       service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
       service.beta.kubernetes.io/aws-load-balancer-name: "sysf-nlb"
       service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
-      service.beta.kubernetes.io/aws-load-balancer-eip-allocations: eipalloc-03f3a28093c1f9394,eipalloc-0c44b9949094d02b2
+      service.beta.kubernetes.io/aws-load-balancer-eip-allocations: eipalloc-096fddcfa4774690c,eipalloc-04384e0f2ab1709e1
 
 prometheus:
   create: true

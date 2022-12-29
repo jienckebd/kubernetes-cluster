@@ -1,8 +1,8 @@
 toolbox:
   enabled: true
 cephClusterSpec:
-  network:
-    hostNetwork: false
+  # network:
+  #   hostNetwork: false
   dashboard:
     enabled: true
     ssl: false
@@ -27,23 +27,23 @@ cephClusterSpec:
               volumeMode: Block
               accessModes:
                 - ReadWriteOnce
-      - name: set2
-        count: 2
-        portable: true
-        tuneDeviceClass: true
-        tuneFastDeviceClass: false
-        encrypted: false
-        volumeClaimTemplates:
-          - metadata:
-              name: data2
-            spec:
-              resources:
-                requests:
-                  storage: 100Gi
-              storageClassName: gp2
-              volumeMode: Block
-              accessModes:
-                - ReadWriteOnce
+      # - name: set2
+      #   count: 2
+      #   portable: true
+      #   tuneDeviceClass: true
+      #   tuneFastDeviceClass: false
+      #   encrypted: false
+      #   volumeClaimTemplates:
+      #     - metadata:
+      #         name: data2
+      #       spec:
+      #         resources:
+      #           requests:
+      #             storage: 100Gi
+      #         storageClassName: gp2
+      #         volumeMode: Block
+      #         accessModes:
+      #           - ReadWriteOnce
 
 ingress:
   dashboard:
@@ -167,7 +167,7 @@ cephObjectStores:
       # see https://github.com/rook/rook/blob/master/Documentation/ceph-object-bucket-claim.md#storageclass for available configuration
       parameters:
         # note: objectStoreNamespace and objectStoreName are configured by the chart
-        region: us-east-1
+        region: us-east-2
 
 cephFileSystemVolumeSnapshotClass:
   enabled: true

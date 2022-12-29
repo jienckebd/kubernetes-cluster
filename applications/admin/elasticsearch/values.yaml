@@ -42,6 +42,18 @@ coordinating:
       cpu: 100m
       memory: 512Mi
 
+ingest:
+  # autoscaling:
+  #   enabled: true
+  #   minReplicas: 2
+  #   maxReplicas: 5
+  #   targetCPU: 90
+  resources:
+    limits: {}
+    requests:
+      cpu: 100m
+      memory: 512Mi
+
 metrics:
   enabled: true
   serviceMonitor:

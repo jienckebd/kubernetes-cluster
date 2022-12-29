@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# exit 0
+
 # set -e
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/master/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
@@ -7,6 +9,14 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snaps
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/master/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/master/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/master/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
+
+kubectl apply -f https://raw.githubusercontent.com/nginxinc/kubernetes-ingress/main/deployments/common/crds/k8s.nginx.org_globalconfigurations.yaml
+kubectl apply -f https://raw.githubusercontent.com/nginxinc/kubernetes-ingress/main/deployments/common/crds/k8s.nginx.org_transportservers.yaml
+kubectl apply -f https://raw.githubusercontent.com/nginxinc/kubernetes-ingress/main/deployments/common/crds/k8s.nginx.org_virtualserverroutes.yaml
+kubectl apply -f https://raw.githubusercontent.com/nginxinc/kubernetes-ingress/main/deployments/common/crds/k8s.nginx.org_virtualservers.yaml
+kubectl apply -f https://raw.githubusercontent.com/nginxinc/kubernetes-ingress/main/deployments/common/crds/k8s.nginx.org_policies.yaml
+
+kubectl apply -f /Users/bry/sys/project/bitnami-charts/bitnami/kube-prometheus/crds
 
 # gcloud beta container --project "sysf-12" clusters create "sysf" --zone "us-east4-a" --no-enable-basic-auth --cluster-version "1.22.11-gke.400" --release-channel "regular" --machine-type "c2-standard-4" --image-type "UBUNTU_CONTAINERD" --disk-type "pd-balanced" --disk-size "50" --metadata disable-legacy-endpoints=true --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --max-pods-per-node "110" --spot --num-nodes "5" --enable-private-nodes --master-ipv4-cidr "172.16.0.0/28" --enable-ip-alias --network "projects/sysf-12/global/networks/sysf" --subnetwork "projects/sysf-12/regions/us-east4/subnetworks/us-east4-192" --no-enable-intra-node-visibility --default-max-pods-per-node "110" --enable-autoscaling --min-nodes "5" --max-nodes "8" --no-enable-master-authorized-networks --addons HorizontalPodAutoscaling,HttpLoadBalancing,GcePersistentDiskCsiDriver --enable-autoupgrade --enable-autorepair --max-surge-upgrade 1 --max-unavailable-upgrade 0 --maintenance-window-start "2022-09-01T05:00:00Z" --maintenance-window-end "2022-09-01T09:00:00Z" --maintenance-window-recurrence "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR,SA,SU" --enable-vertical-pod-autoscaling --enable-shielded-nodes --node-locations "us-east4-a"
 
@@ -144,9 +154,13 @@ kubectl patch storageclass efs-sc \
 
 exit 0
 
-cd /Users/bry/sys/kubernetes/cluster/sysf
-helmfile --no-color --environment=rook-ceph apply
-cd -
+# kubectl create -f /Users/bry/sys/project/external-snapshotter/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
+# kubectl create -f /Users/bry/sys/project/external-snapshotter/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
+# kubectl create -f /Users/bry/sys/project/external-snapshotter/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
+
+# cd /Users/bry/sys/kubernetes/cluster/sysf
+# helmfile --no-color --environment=rook-ceph apply
+# cd -
 
 # kubectl create namespace env-prd
 # kubectl get secret mariadb --namespace=default -o yaml | sed 's/namespace: .*/namespace: env-prd/' | kubectl apply --namespace=env-prd -f -

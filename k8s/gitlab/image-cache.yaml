@@ -12,10 +12,10 @@ spec:
   - name: gitlab-pull-secret
   cacheSpec:
   - images:
-    - 602401143452.dkr.ecr.us-east-1.amazonaws.com/amazon-k8s-cni:v1.10.1-eksbuild.1
-    - 602401143452.dkr.ecr.us-east-1.amazonaws.com/eks/aws-efs-csi-driver:v1.4.0
-    - 602401143452.dkr.ecr.us-east-1.amazonaws.com/eks/coredns:v1.8.7-eksbuild.1
-    - 602401143452.dkr.ecr.us-east-1.amazonaws.com/eks/kube-proxy:v1.22.6-eksbuild.1
+    - 602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon-k8s-cni:v1.10.1-eksbuild.1
+    - 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/aws-efs-csi-driver:v1.4.0
+    - 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/coredns:v1.8.7-eksbuild.1
+    - 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/kube-proxy:v1.22.6-eksbuild.1
     - appscode/kubed:v0.13.2
     - bitnami/nginx:1.23.1-debian-11-r21
     - docker.io/bitnami/alertmanager:0.24.0-debian-11-r22

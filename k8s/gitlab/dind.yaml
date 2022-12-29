@@ -8,12 +8,12 @@ metadata:
   name: docker-dind-data
   namespace: ops
 spec:
-  storageClassName: gp2
+  storageClassName: efs-sc-0
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
-      storage: 10Gi
+      storage: 15Gi
 
 ---
 ## Deployment for docker-dind
@@ -26,7 +26,7 @@ metadata:
   namespace: ops
 spec:
   strategy:
-    type: Recreate
+    type: RollingUpdate
   replicas: 1
   selector:
     matchLabels:
@@ -37,7 +37,7 @@ spec:
         app: docker-dind
     spec:
       containers:
-        - image: docker:19.03.12-dind
+        - image: docker:20.10.22-dind
           name: docker-dind
           env:
             - name: DOCKER_HOST

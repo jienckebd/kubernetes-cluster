@@ -6,7 +6,7 @@ releases:
   - name: elasticsearch
     namespace: admin
     chart: bitnami/elasticsearch
-    # version: 17.9.3
+    version: 19.5.5
     installed: true
 
     values:

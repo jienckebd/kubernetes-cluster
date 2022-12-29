@@ -81,22 +81,23 @@ velero install \
 
 velero install \
     --provider aws \
-    --plugins velero/velero-plugin-for-aws:v1.5.0 \
-    --bucket sysf--velero--1 \
-    --backup-location-config region=us-east-1 \
-    --snapshot-location-config region=us-east-1 \
-    --secret-file /Users/bry/sys/etc/aws/credentials-velero \
-    --features=EnableCSI \
-    --use-restic \
-    --restic-pod-cpu-request=50m \
-    --restic-pod-mem-request=128Mi \
+    --plugins velero/velero-plugin-for-aws:v1.6.0 \
+    --bucket sysf--velero--2 \
+    --backup-location-config region=us-east-2 \
+    --secret-file /Users/bry/sys/etc/aws/velero/credentials-velero \
+    --use-volume-snapshots=false \
+    --default-volumes-to-fs-backup=true \
+    --use-node-agent=true \
+    --node-agent-pod-cpu-request=50m \
+    --node-agent-pod-mem-request=128Mi \
     --velero-pod-cpu-request=50m \
     --velero-pod-mem-request=128Mi
+
 
 velero backup-location create backups-primary \
     --provider aws \
     --bucket sysf--velero--1 \
-    --config region=us-east-1 \
+    --config region=us-east-2 \
     --default
 
 velero install \
@@ -142,7 +143,12 @@ velero schedule create mariadb--prd--hourly -n env-prd --selector app.kubernetes
 velero schedule create web--prd--hourly -n env-prd --selector app=web-nginx-php-fpm --schedule="15 * * * *" --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s
 velero schedule create web--ide1--hourly -n env-ide1 --selector app=web-nginx-php-fpm --schedule="45 * * * *" --snapshot-volumes=true --default-volumes-to-restic --ttl 720h0m0s
 
-velero backup create ns--admin--test5 --snapshot-volumes=true --include-cluster-resources=true --default-volumes-to-restic --include-namespaces admin --wait
+velero backup create ns--default--test1 --include-cluster-resources=true --include-namespaces default --wait
+velero backup create ns--admin--test1 --include-namespaces admin --wait
+
+velero backup create ns--gitlab--test1 --include-namespaces gitlab --wait
+
+velero backup create ns--admin--test1 --include-cluster-resources=true --default-volumes-to-fs-backup=true --include-namespaces admin --wait
 velero backup create ns--admin--test4 --snapshot-volumes=true --include-cluster-resources=true --default-volumes-to-restic --include-namespaces admin --wait
 velero backup create ns--env-prd--test1 --snapshot-volumes=true --default-volumes-to-restic --include-namespaces env-prd --wait
 
@@ -179,10 +185,11 @@ kubectl delete pods --all -force -n env-dev; kubectl delete pods --all -force -n
 kubectl delete pvc --all -n env-dev; kubectl delete pvc --all -n env-stg; kubectl delete pvc --all -n env-prd;
 
 kubectl -n rook-ceph patch cephclusters.ceph.rook.io rook-ceph -p '{"metadata":{"finalizers": []}}' --type=merge
-kubectl -n rook-ceph patch cephfilesystem.ceph.rook.io efs-sc -p '{"metadata":{"finalizers": []}}' --type=merge
+kubectl -n rook-ceph patch cephfilesystem.ceph.rook.io ceph-filesystem -p '{"metadata":{"finalizers": []}}' --type=merge
 kubectl -n rook-ceph patch cephobjectstore.ceph.rook.io ceph-objectstore -p '{"metadata":{"finalizers": []}}' --type=merge
+kubectl -n rook-ceph patch cephblockpool.ceph.rook.io ceph-blockpool -p '{"metadata":{"finalizers": []}}' --type=merge
 
-kubectl patch ns test2 -p '{"spec":{"finalizers": []}}' --type=merge
+kubectl patch ns rook-ceph -p '{"spec":{"finalizers": []}}' --type=merge
 
 kubectl patch pvc data-keycloak-postgresql-0 -p '{"metadata":{"finalizers":null}}'
 

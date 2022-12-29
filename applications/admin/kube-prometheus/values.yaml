@@ -10,7 +10,7 @@ prometheus:
 
   persistence:
     enabled: true
-    size: 16Gi
+    size: 32Gi
     accessModes:
       - ReadWriteMany
 

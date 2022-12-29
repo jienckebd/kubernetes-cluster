@@ -1,3 +1,6 @@
 ci_access:
   groups:
   - id: kubernetes
+  - id: drupal
+  - id: helm
+  - id: docker

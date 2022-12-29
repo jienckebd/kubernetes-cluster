@@ -19,7 +19,7 @@ proxy:
         - "ssl"
 
 nodeSelector:
-  failure-domain.beta.kubernetes.io/zone: us-east-1a
+  failure-domain.beta.kubernetes.io/zone: us-east-2a
 
 certificates:
   enabled: true

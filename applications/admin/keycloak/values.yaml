@@ -1,16 +1,26 @@
 auth:
   adminUser: user
   adminPassword: drupal
-  managementPassword: drupal
 
 postgresql:
-  enabled: false
+  auth:
+    postgresPassword: drupal
+    password: drupal
+  primary:
+    persistence:
+      size: 8Gi
+      storageClass: efs-sc-1001
+      accessModes:
+        - ReadWriteMany
 
-externalDatabase:
-  host: postgresql
-  user: drupal
-  password: drupal
-  database: bitnami_keycloak
+# postgresql:
+#   enabled: false
+
+# externalDatabase:
+#   host: postgresql
+#   user: drupal
+#   password: drupal
+#   database: bitnami_keycloak
 
 service:
   type: ClusterIP
@@ -22,12 +32,16 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt-prod
+    # nginx.org/proxy-buffer-size: 8k
+    nginx.ingress.kubernetes.io/proxy-buffer-size: 8k
 extraEnvVars:
-  - name: KEYCLOAK_EXTRA_ARGS
-    value: "-Dkeycloak.frontendUrl=https://id.sys.sysf.one/auth"
+  # - name: KEYCLOAK_EXTRA_ARGS
+  #   value: "-Dkeycloak.frontendUrl=https://id.sys.sysf.one"
+  - name: KEYCLOAK_LOG_LEVEL
+    value: DEBUG
 
-keycloakConfigCli:
-  enabled: false
+# keycloakConfigCli:
+#   enabled: false
 
 metrics:
   enabled: true

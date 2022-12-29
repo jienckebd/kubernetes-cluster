@@ -28,7 +28,7 @@ grafana:
   - name: config-grafana
     mountPath: /opt/bitnami/grafana/conf/grafana.ini
     subPath: grafana.ini
-plugins: "redis-datasource,grafana-gitlab-datasource"
+plugins: "redis-datasource"
 metrics:
   enabled: true
   serviceMonitor:
