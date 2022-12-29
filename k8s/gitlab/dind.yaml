@@ -8,9 +8,9 @@ metadata:
   name: docker-dind-data
   namespace: ops
 spec:
-  storageClassName: efs-sc-0
+  storageClassName: gp2
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 15Gi

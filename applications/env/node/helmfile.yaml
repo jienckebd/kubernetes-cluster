@@ -10,7 +10,7 @@ releases:
   - name: node
     namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
     chart: bitnami/node
-    version: 17.0.17
+    # version: 17.0.17
     installed: true
     values:
       - values.yaml

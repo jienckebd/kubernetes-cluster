@@ -1,5 +1,5 @@
 persistence:
-  accessMode: ReadWriteMany
-  storageClass: efs-sc-0
+  accessMode: ReadWriteOnce
+  storageClass: gp2
   enabled: true
   size: 20Gi
