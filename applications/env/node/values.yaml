@@ -1,9 +1,11 @@
 persistence:
   enabled: true
+  storageClass: efs-sc-1001
   accessMode: ReadWriteMany
 mongodb:
   enabled: true
   persistence:
+    storageClass: efs-sc-1001
     accessModes:
       - ReadWriteMany
   auth:
