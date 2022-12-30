@@ -63,22 +63,22 @@ ops:
     - kubectl label --overwrite ns ops namespace-node-affinity=enabled
     - helmfile --environment ops apply --suppress-secrets
 
-# env-prd:
-#  stage: deploy
-#  image:
-#     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
-#     entrypoint: [""]
-#  environment: prd
-#  tags:
-#     - kubernetes
-#  script:
-#    - export SYS_HELM_NEW="false"
-#    - kubectl create namespace env-prd || true
-#    - kubectl label --overwrite ns env-prd env=true
-#    - kubectl label --overwrite ns env-prd namespace-node-affinity=enabled
-#    - kubectl config set-context --current --namespace=env-prd
-#    - "kubectl get secret sys-env-var-config-prd --namespace=default -o yaml | sed 's/namespace: default/namespace: env-prd/' | sed 's/name: sys-env-var-config-prd/name: sys-env-var-config/' | kubectl apply --namespace=env-prd -f - || true"
-#    - helmfile --file applications/env/helmfile.yaml --environment prd apply --suppress-secrets
+env-prd:
+ stage: deploy
+ image:
+    name: registry.gitlab.sysf.one/docker/image/helmfile:latest
+    entrypoint: [""]
+ environment: prd
+ tags:
+    - kubernetes
+ script:
+   - export SYS_HELM_NEW="false"
+   - kubectl create namespace env-prd || true
+   - kubectl label --overwrite ns env-prd env=true
+   - kubectl label --overwrite ns env-prd namespace-node-affinity=enabled
+   - kubectl config set-context --current --namespace=env-prd
+   - "kubectl get secret sys-env-var-config-prd --namespace=default -o yaml | sed 's/namespace: default/namespace: env-prd/' | sed 's/name: sys-env-var-config-prd/name: sys-env-var-config/' | kubectl apply --namespace=env-prd -f - || true"
+   - helmfile --file applications/env/helmfile.yaml --environment prd apply --suppress-secrets
 
 # env-stg:
 #  stage: deploy
