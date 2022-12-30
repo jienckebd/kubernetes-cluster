@@ -33,7 +33,7 @@ releases:
   - name: mariadb-galera
     namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
     chart: bitnami/mariadb-galera
-    version: 7.4.3
+    # version: 7.4.3
     installed: true
     values:
       - mariadb-galera/values.yaml
@@ -41,7 +41,7 @@ releases:
   - name: node
     namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
     chart: bitnami/node
-    version: 17.0.17
+    # version: 17.0.17
     installed: true
     values:
       - node/values.yaml
@@ -49,7 +49,7 @@ releases:
   - name: redis-cluster
     namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
     chart: bitnami/redis-cluster
-    version: 8.1.3
+    # version: 8.1.3
     installed: true
     values:
       - redis-cluster/values.yaml
