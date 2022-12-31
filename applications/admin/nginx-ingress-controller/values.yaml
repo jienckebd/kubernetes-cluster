@@ -7,9 +7,11 @@ service:
 
 tcp:
   22: "gitlab/gitlab-gitlab-shell:22"
+  2222: "env-prd/web-nginx-php-fpm:22"
 
 extraArgs:
   enable-ssl-passthrough: ""
+  # force-ssl-redirect: "true"
 
 metrics:
   enabled: true
