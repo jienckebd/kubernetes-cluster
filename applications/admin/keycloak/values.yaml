@@ -32,8 +32,8 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    # nginx.org/proxy-buffer-size: 8k
-    nginx.ingress.kubernetes.io/proxy-buffer-size: 8k
+    # nginx.org/proxy-buffer-size: 16k
+    nginx.ingress.kubernetes.io/proxy-buffer-size: 16k
 # extraEnvVars:
   # - name: KEYCLOAK_EXTRA_ARGS
   #   value: "-Dkeycloak.frontendUrl=https://id.sys.sysf.one"

@@ -2,11 +2,11 @@
 apiVersion: k8s.nginx.org/v1alpha1
 kind: TransportServer
 metadata:
-  name: tcp-23
+  name: tcp-2222
   namespace: env-prd
 spec:
   listener:
-    name: tcp-23
+    name: tcp-2222
     protocol: TCP
   upstreams:
   - name: web-nginx-php-fpm

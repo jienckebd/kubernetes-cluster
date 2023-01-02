@@ -1,0 +1,15 @@
+repositories:
+  - name: oauth2-proxy
+    url: https://oauth2-proxy.github.io/manifests
+
+releases:
+  - name: oauth2-proxy
+    namespace: admin
+    chart: oauth2-proxy/oauth2-proxy
+    version: 6.7.3
+    installed: true
+    values:
+      - values.yaml
+
+environments:
+  admin: {  }

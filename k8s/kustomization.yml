@@ -12,5 +12,6 @@ resources:
   - gitlab/image-cache.yaml
   - prometheus/podmonitor.yml
   - cluster-issuer-prod.yml
-  - gitlab-postgresql.yml
+  # - gitlab-postgresql.yml
+  - kubernetes-dashboard-role-binding.yml
 #  - gitlab/omniauth-keycloak-secret.yaml
