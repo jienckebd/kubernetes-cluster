@@ -16,6 +16,7 @@ helmfiles:
   - path: applications/admin/elasticsearch/helmfile.yaml
   - path: applications/admin/fluentd/helmfile.yaml
   - path: applications/admin/kubernetes-dashboard/helmfile.yaml
+  - path: applications/admin/kubeapps/helmfile.yaml
 
   # Env / many.
   - path: applications/env/helmfile.yaml
