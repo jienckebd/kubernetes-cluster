@@ -272,8 +272,8 @@ galera:
     password: drupal
   bootstrap:
     forceBootstrap: true
-    bootstrapFromNode: 3
-    forceSafeToBootstrap: true
+    bootstrapFromNode: 0
+    forceSafeToBootstrap: false
 
 metrics:
   enabled: true
