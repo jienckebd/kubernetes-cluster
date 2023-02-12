@@ -90,7 +90,7 @@ env-stg:
     - kubernetes
  script:
    - export SYS_HELM_NEW="false"
-   - kubectl create namespace env-ide1 || true
+   - kubectl create namespace env-stg || true
    - kubectl label --overwrite ns env-stg env=true
    - kubectl label --overwrite ns env-stg namespace-node-affinity=enabled
    - kubectl config set-context --current --namespace=env-stg
