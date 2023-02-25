@@ -80,40 +80,39 @@ env-prd:
    - "kubectl get secret sys-env-var-config-prd --namespace=default -o yaml | sed 's/namespace: default/namespace: env-prd/' | sed 's/name: sys-env-var-config-prd/name: sys-env-var-config/' | kubectl apply --namespace=env-prd -f - || true"
    - helmfile --file applications/env/helmfile.yaml --environment prd apply --suppress-secrets
 
+# env-stg:
+#  stage: deploy
+#  image:
+#     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
+#     entrypoint: [""]
+#  environment: stg
+#  tags:
+#     - kubernetes
+#  script:
+#    - export SYS_HELM_NEW="false"
+#    - kubectl create namespace env-stg || true
+#    - kubectl label --overwrite ns env-stg env=true
+#    - kubectl label --overwrite ns env-stg namespace-node-affinity=enabled
+#    - kubectl config set-context --current --namespace=env-stg
+#    - "kubectl get secret sys-env-var-config-stg --namespace=default -o yaml | sed 's/namespace: default/namespace: env-stg/' | sed 's/name: sys-env-var-config-stg/name: sys-env-var-config/' | kubectl apply --namespace=env-stg -f - || true"
+#    - helmfile --file applications/env/helmfile.yaml --environment stg apply --suppress-secrets
 
-env-stg:
- stage: deploy
- image:
-    name: registry.gitlab.sysf.one/docker/image/helmfile:latest
-    entrypoint: [""]
- environment: stg
- tags:
-    - kubernetes
- script:
-   - export SYS_HELM_NEW="false"
-   - kubectl create namespace env-stg || true
-   - kubectl label --overwrite ns env-stg env=true
-   - kubectl label --overwrite ns env-stg namespace-node-affinity=enabled
-   - kubectl config set-context --current --namespace=env-stg
-   - "kubectl get secret sys-env-var-config-stg --namespace=default -o yaml | sed 's/namespace: default/namespace: env-stg/' | sed 's/name: sys-env-var-config-stg/name: sys-env-var-config/' | kubectl apply --namespace=env-stg -f - || true"
-   - helmfile --file applications/env/helmfile.yaml --environment stg apply --suppress-secrets
-
-env-dev:
- stage: deploy
- image:
-    name: registry.gitlab.sysf.one/docker/image/helmfile:latest
-    entrypoint: [""]
- environment: dev
- tags:
-    - kubernetes
- script:
-   - export SYS_HELM_NEW="true"
-   - kubectl create namespace env-dev || true
-   - kubectl label --overwrite ns env-dev env=true
-   - kubectl label --overwrite ns env-dev namespace-node-affinity=enabled
-   - kubectl config set-context --current --namespace=env-dev
-   - "kubectl get secret sys-env-var-config-dev --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | sed 's/name: sys-env-var-config-dev/name: sys-env-var-config/' | kubectl apply --namespace=env-dev -f - || true"
-   - helmfile --file applications/env/helmfile.yaml --environment dev apply --suppress-secrets
+# env-dev:
+#  stage: deploy
+#  image:
+#     name: registry.gitlab.sysf.one/docker/image/helmfile:latest
+#     entrypoint: [""]
+#  environment: dev
+#  tags:
+#     - kubernetes
+#  script:
+#    - export SYS_HELM_NEW="true"
+#    - kubectl create namespace env-dev || true
+#    - kubectl label --overwrite ns env-dev env=true
+#    - kubectl label --overwrite ns env-dev namespace-node-affinity=enabled
+#    - kubectl config set-context --current --namespace=env-dev
+#    - "kubectl get secret sys-env-var-config-dev --namespace=default -o yaml | sed 's/namespace: default/namespace: env-dev/' | sed 's/name: sys-env-var-config-dev/name: sys-env-var-config/' | kubectl apply --namespace=env-dev -f - || true"
+#    - helmfile --file applications/env/helmfile.yaml --environment dev apply --suppress-secrets
 
 env-ide1:
  stage: deploy
