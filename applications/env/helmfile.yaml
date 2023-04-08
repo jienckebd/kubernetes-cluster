@@ -33,7 +33,7 @@ releases:
   - name: mariadb-galera
     namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
     chart: bitnami/mariadb-galera
-    version: 7.5.5
+    version: 7.4.12
     installed: true
     values:
       - mariadb-galera/values.yaml

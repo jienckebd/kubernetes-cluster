@@ -15,15 +15,14 @@ persistence:
   accessModes:
     - ReadWriteMany
 
-# extraVolumeMounts:
-#     - mountPath: "/bitnami/mariadb/data"
-#       name: "mariadb-data-memory"
-# extraVolumes:
-#   - name: "mariadb-data-memory"
-#     emptyDir:
-#       medium: Memory
-#       sizeLimit: 2Gi
-
+extraVolumeMounts:
+    - mountPath: "/bitnami/mariadb/data"
+      name: "mariadb-data-memory"
+extraVolumes:
+  - name: "mariadb-data-memory"
+    emptyDir:
+      medium: Memory
+      sizeLimit: 2Gi
 
 mariadbConfiguration: |-
   [client]
