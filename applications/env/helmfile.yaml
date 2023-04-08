@@ -38,6 +38,18 @@ releases:
     values:
       - mariadb-galera/values.yaml
       - mariadb-galera/env/{{ .Environment.Name }}/values.yaml
+      - affinity:
+          podAntiAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: mariadb-galera
+                namespaces:
+                - env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
+                topologyKey: kubernetes.io/hostname
+              weight: 1
+
   - name: node
     namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
     chart: bitnami/node

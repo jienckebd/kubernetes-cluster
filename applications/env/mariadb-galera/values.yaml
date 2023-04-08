@@ -9,6 +9,8 @@
 #     emptyDir:
 #       medium: Memory
 #       sizeLimit: 2Gi
+replicaCount: 3
+
 persistence:
   enabled: true
   storageClass: efs-sc
