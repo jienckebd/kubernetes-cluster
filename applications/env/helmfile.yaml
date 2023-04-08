@@ -25,7 +25,7 @@ releases:
   - name: elasticsearch
     namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
     chart: bitnami/elasticsearch
-    version: 19.5.5
+    # version: 19.5.5
     installed: true
     values:
       - elasticsearch/values.yaml
@@ -33,7 +33,7 @@ releases:
   - name: mariadb-galera
     namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
     chart: bitnami/mariadb-galera
-    version: 7.4.12
+    # version: 7.4.12
     installed: true
     values:
       - mariadb-galera/values.yaml
@@ -41,7 +41,7 @@ releases:
   - name: node
     namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
     chart: bitnami/node
-    version: 19.1.7
+    # version: 19.1.7
     installed: true
     values:
       - node/values.yaml
@@ -49,7 +49,7 @@ releases:
   - name: redis-cluster
     namespace: env-{{ env "SYS_HELM_NAMESPACE_SUFFIX" | default .Environment.Name }}
     chart: bitnami/redis-cluster
-    version: 8.3.4
+    # version: 8.3.4
     installed: true
     values:
       - redis-cluster/values.yaml
