@@ -24,6 +24,7 @@ extraVolumes:
       medium: Memory
       sizeLimit: 2Gi
 
+
 mariadbConfiguration: |-
   [client]
   port=3306
