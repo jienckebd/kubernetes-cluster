@@ -8,7 +8,7 @@ data:
     limits: {}
     requests:
       cpu: 100m
-      memory: 512Mi
+      memory: 128Mi
   persistence:
     storageClass: efs-sc
     accessModes:
@@ -24,7 +24,7 @@ master:
     limits: {}
     requests:
       cpu: 100m
-      memory: 512Mi
+      memory: 128Mi
   persistence:
     storageClass: efs-sc
     accessModes:
@@ -40,7 +40,7 @@ coordinating:
     limits: {}
     requests:
       cpu: 100m
-      memory: 512Mi
+      memory: 128Mi
 
 ingest:
   # autoscaling:
@@ -52,7 +52,7 @@ ingest:
     limits: {}
     requests:
       cpu: 100m
-      memory: 512Mi
+      memory: 128Mi
 
 metrics:
   enabled: true
