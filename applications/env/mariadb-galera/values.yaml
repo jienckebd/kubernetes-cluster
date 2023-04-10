@@ -24,7 +24,7 @@ extraVolumes:
   - name: "mariadb-data-memory"
     emptyDir:
       medium: Memory
-      sizeLimit: 2Gi
+      sizeLimit: 1Gi
 
 mariadbConfiguration: |-
   [client]
@@ -275,7 +275,7 @@ galera:
   bootstrap:
     forceBootstrap: true
     bootstrapFromNode: 0
-    forceSafeToBootstrap: false
+    forceSafeToBootstrap: true
 
 metrics:
   enabled: true
