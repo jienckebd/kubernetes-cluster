@@ -29,6 +29,6 @@ nginx:
 
 autoscaling:
   enabled: true
-  minReplicas: 1
-  maxReplicas: 1
+  minReplicas: 3
+  maxReplicas: 5
   targetCPU: 90

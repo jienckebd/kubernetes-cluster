@@ -7,3 +7,10 @@ ingress:
   enabled: true
   hosts:
     - ide1.env.sys.sysf.one
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 1
+
+replicas: 1
