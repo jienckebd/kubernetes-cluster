@@ -24,7 +24,7 @@ extraVolumes:
   - name: "mariadb-data-memory"
     emptyDir:
       medium: Memory
-      sizeLimit: 1Gi
+      sizeLimit: 2Gi
 
 mariadbConfiguration: |-
   [client]
