@@ -219,8 +219,8 @@ helm install fluentd bitnami/fluentd \
 
 k get secret -n rook-ceph rook-ceph-dashboard-password -o yaml
 
-dd if=/dev/zero of=/app/test1.img bs=1G count=3 oflag=dsync
-dd if=/dev/zero of=/app/test2.img bs=512 count=1000 oflag=dsync
+dd if=/dev/zero of=/tmp/test1.img bs=1G count=3 oflag=dsync
+dd if=/dev/zero of=/tmp/test2.img bs=512 count=1000 oflag=dsync
 
 dd if=/dev/zero of=/bitnami/mariadb/data/test1.img bs=1G count=3 oflag=dsync
 dd if=/dev/zero of=/bitnami/mariadb/data/test2.img bs=512 count=1000 oflag=dsync

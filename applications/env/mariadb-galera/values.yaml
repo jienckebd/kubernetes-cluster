@@ -273,9 +273,9 @@ galera:
   mariabackup:
     password: drupal
   bootstrap:
-    forceBootstrap: true
+    forceBootstrap: false
     bootstrapFromNode: 0
-    forceSafeToBootstrap: true
+    forceSafeToBootstrap: false
 
 metrics:
   enabled: true
