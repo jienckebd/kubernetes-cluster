@@ -1,0 +1,16 @@
+repositories:
+  - name: oracle
+    url: https://oracle.github.io/helm-charts
+
+releases:
+  - name: soainfra
+    namespace: soans
+    chart: oracle/soa-suite
+    version: 0.2.0
+    installed: true
+
+    values:
+      - values.yaml
+
+environments:
+  oracle: {  }

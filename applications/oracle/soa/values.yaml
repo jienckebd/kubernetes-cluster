@@ -1,0 +1,19 @@
+imagePullSecrets:
+  - name: image-secret
+
+domain:
+  domainName: soainfra
+  type: soa
+  credentials:
+    username: weblogic
+    password: Welcome1
+  rcuSchema:
+    credentials:
+      password: ak3m948akakad1l3ks
+  storage:
+    nfs:
+      server: 172.20.194.243
+    path: /export/soa
+oracledb:
+  sysPassword: "Ak3m9482"
+  provision: true

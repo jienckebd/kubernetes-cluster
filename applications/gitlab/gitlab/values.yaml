@@ -87,3 +87,12 @@ gitlab:
   gitaly:
     persistence:
       accessMode: ReadWriteMany
+  webservice:
+    resources:
+      requests:
+        memory: 0
+  sidekiq:
+    enabled: false
+    resources:
+      requests:
+        memory: 0

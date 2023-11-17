@@ -1,0 +1,10 @@
+sumologic:
+  accessId: sulKIEbMEqG4zj
+  accessKey: wut9r7XKP5YRJ7Sf3VVyuhw34ymEkgDWXjMusYz2EtboOaoAT6o98bk20XHvyFeQ
+  clusterName: Kubernetes_cluster-2023-11-10T20:01:09.997Z
+  collectorName: kubernetes-2023-11-10T20:01:09.997Z
+  setup:
+    monitors:
+      enabled: false
+opentelemetry-operator:
+  enabled: true

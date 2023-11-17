@@ -243,3 +243,9 @@ kubectl annotate secret sysf.one-tls kubed.appscode.com/sync="" -n admin --overw
 
 kubectl patch cephcluster/rook-ceph -p '{"metadata":{"finalizers":[]}}' --type=merge
 
+
+kubectl -n soans create secret docker-registry image-secret \
+--docker-server=container-registry.oracle.com \
+--docker-username=bryan.jiencke@gmail.com \
+--docker-password=styFl9mOKmn+z+65gV \
+--docker-email=bryan.jiencke@gmail.com

@@ -1,0 +1,15 @@
+image:
+  tag: 2.6.6
+ports:
+  traefik:
+    expose: true
+  web:
+    exposedPort: 30305
+    nodePort: 30305
+  websecure:
+    exposedPort: 30443
+    nodePort: 30443
+kubernetes:
+  namespaces:
+    - traefik
+    - soans

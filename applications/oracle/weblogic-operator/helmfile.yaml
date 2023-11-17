@@ -1,0 +1,16 @@
+repositories:
+  - name: weblogic-operator
+    url: https://oracle.github.io/weblogic-kubernetes-operator/charts
+
+releases:
+  - name: weblogic-operator
+    namespace: weblogic-operator
+    chart: weblogic-operator/weblogic-operator
+    # version: 3.4.0
+    installed: true
+
+    values:
+      - values.yaml
+
+environments:
+  oracle: {  }

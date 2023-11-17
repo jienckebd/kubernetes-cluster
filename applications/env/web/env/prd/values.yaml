@@ -28,7 +28,7 @@ nginx:
       memory: 256Mi
 
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 3
   maxReplicas: 5
   targetCPU: 90

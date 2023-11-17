@@ -9,7 +9,7 @@ ingress:
     - ide1.env.sys.sysf.one
 
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 1
   maxReplicas: 1
 

@@ -1,0 +1,16 @@
+repositories:
+  - name: sumologic
+    url: https://sumologic.github.io/sumologic-kubernetes-collection
+
+releases:
+  - name: sumologic
+    namespace: sumologic
+    chart: sumologic/sumologic
+    # version: 0.2.0
+    installed: true
+
+    values:
+      - values.yaml
+
+environments:
+  sec: {  }

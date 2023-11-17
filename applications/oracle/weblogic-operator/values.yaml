@@ -1,0 +1,4 @@
+# image: ghcr.io/oracle/weblogic-kubernetes-operator:3.4.0
+serviceAccount: weblogic-operator
+domainNamespaces:
+  - 'soans'

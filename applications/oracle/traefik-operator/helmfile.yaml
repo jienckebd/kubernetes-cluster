@@ -1,0 +1,16 @@
+repositories:
+  - name: traefik
+    url: https://helm.traefik.io/traefik
+
+releases:
+  - name: traefik-operator
+    namespace: traefik
+    chart: traefik/traefik
+    version: 10.19.5
+    installed: true
+
+    values:
+      - values.yaml
+
+environments:
+  oracle: {  }
