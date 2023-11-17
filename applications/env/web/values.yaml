@@ -39,6 +39,7 @@ nginx:
       cpu: 50m
       memory: 64Mi
 
+
 ingress:
   enabled: true
   annotations:
